@@ -10,7 +10,7 @@
     <meta content="Latest news and blog posts from Cloudswap Infotech" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="assets/images/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -180,7 +180,7 @@
         }
 
         .bg-breadcrumb {
-            background: linear-gradient(url('img/blog-banner.jpg'));
+            background: linear-gradient(url('assets/images/blog-banner.jpg'));
 
             padding: 100px 0;
             color: white;
@@ -419,7 +419,7 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <a href="/" class="navbar-brand p-0">
-                <img src="img/logo.png" alt="Cloudswap Infotech Logo">
+                <img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
@@ -440,7 +440,7 @@
                                     </a>
                                 </div>
                                 <div class="col-12 col-md-6" style="padding: 10px 15px;">
-                                    <a href="Quantumsoft Leadership.html" class="dropdown-item"
+                                    <a href="Cloudswap Infotech Leadership.html" class="dropdown-item"
                                         style="white-space: normal; color: white;">
                                         <i class="fas fa-user-tie" style="margin-right: 8px; color: blue;"></i> Our
                                         Leadership
@@ -623,8 +623,8 @@
                     <h4 class="text-uppercase text-primary">Our Blog</h4>
                     <h1 class="display-3 text-capitalize mb-3">Latest Blog & News</h1>
                 </div>
-                <p class="mb-4">Stay updated with the latest trends, insights, and announcements from QuantumSoft
-                    Technologies.</p>
+                <p class="mb-4">Stay updated with the latest trends, insights, and announcements from Cloudswap Infotech
+                    .</p>
             </div>
 
             <div class="blog-container" id="blogContainer">
@@ -685,7 +685,7 @@
                             <h3 class="text-white mb-4">
                                 <a href="index.html">
                                     <img style="width: 225px; display: flex;align-items: center;padding: 0px;"
-                                        src="img/logo.png" alt="logo"></a>
+                                        src="assets/images/logo_CSIT.png" alt="logo"></a>
                             </h3>
                             <p class="mb-3">At Cloudswap Infotech, we believe that technology should be
                                 accessible, effective, and tailored to your business needs. Powered by a team of experts
@@ -730,7 +730,7 @@
                         <a class="btn btn-secondary btn-md-square rounded-circle me-3" href="#"><i
                                 class="fab fa-twitter"></i></a>
                         <a class="btn btn-secondary btn-md-square rounded-circle me-3"
-                            href="https://www.instagram.com/quantumsoft_technologies/profilecard/?igsh=MTYzMGFzYjdsZ3Jtbg=="><i
+                            href="https://www.instagram.com/Cloudswap Infotech_technologies/profilecard/?igsh=MTYzMGFzYjdsZ3Jtbg=="><i
                                 class="fab fa-instagram"></i></a>
                         <a class="btn btn-secondary btn-md-square rounded-circle me-0"
                             href="https://www.linkedin.com/company/93195251/admin"><i
@@ -752,7 +752,7 @@
                         reserved.</span>
                 </div>
                 <div class="col-md-6 text-center text-md-end text-body">
-                    Designed By <a class="border-bottom text-white" href="#">QuantumSoft</a>
+                    Designed By <a class="border-bottom text-white" href="#">Cloudswap Infotech</a>
                 </div>
             </div>
         </div>
@@ -830,12 +830,12 @@
                     // Handle image URL - use the getNewsImage endpoint
                     const imageUrl = news.imageUrl
                         ? `/api/News/getNewsImage/${news.id}`
-                        : 'img/default-news.jpg';
+                        : 'assets/images/default-news.jpg';
 
                     newsCard.innerHTML = `
                         <div class="news-img-container">
                             <img src="${imageUrl}" alt="${news.newsTitle}" class="news-img"
-                                 onerror="this.src='img/default-news.jpg';this.onerror=null;">
+                                 onerror="this.src='assets/images/default-news.jpg';this.onerror=null;">
                         </div>
                         <div class="news-content">
                             <div class="news-meta">
@@ -883,20 +883,20 @@
                 // Set image - use the getNewsImage endpoint
                 const imageUrl = news.imageUrl
                     ? `/api/News/getNewsImage/${news.id}`
-                    : 'img/default-news.jpg';
+                    : 'assets/images/default-news.jpg';
 
                 const modalImage = document.getElementById('modalNewsImage');
                 modalImage.src = imageUrl;
                 modalImage.alt = news.newsTitle || 'News Image';
                 modalImage.onerror = function () {
-                    this.src = 'img/default-news.jpg';
+                    this.src = 'assets/images/default-news.jpg';
                     this.onerror = null;
                 };
 
                 // Update share links
                 const currentUrl = encodeURIComponent(window.location.href.split('?')[0] + `?news=${newsId}`);
                 const title = encodeURIComponent(news.newsTitle || 'Check out this news');
-                const text = encodeURIComponent(news.newsContent ? news.newsContent.substring(0, 100) + '...' : 'Interesting news from QuantumSoft');
+                const text = encodeURIComponent(news.newsContent ? news.newsContent.substring(0, 100) + '...' : 'Interesting news from Cloudswap Infotech');
 
                 document.querySelector('.news-modal .facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
                 document.querySelector('.news-modal .twitter').href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${title}`;
