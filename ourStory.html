@@ -3,12 +3,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Cloudswap Infotech Pvt Ltd</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story</title>
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,87 +27,104 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <title>Contact Us</title>
     <style>
-        /* Styling remains the same from the original */
-    </style>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
-        function validateForm(event) {
-            const form = document.getElementById('contactForm');
-            let isValid = form.checkValidity(); // HTML5 validation
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            flex-direction: column;
+        }
 
-            // Custom dropdown validation
-            const country = document.getElementById('country');
-            const industry = document.getElementById('industry');
-            let dropdownValid = true;
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 20px 0;
+            box-sizing: border-box;
+        }
 
-            if (country.value === "") {
-                country.classList.add('is-invalid');
-                dropdownValid = false;
-            } else {
-                country.classList.remove('is-invalid');
+        .card {
+            width: 48%;
+            /* Adjust to fit two cards side by side */
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popup 1s ease-in-out forwards;
+        }
+
+        .vision-card {
+            background-color: #e8f0fe;
+            animation-delay: 0.2s;
+        }
+
+        .mission-card {
+            background-color: #fce4ec;
+            animation-delay: 0.4s;
+        }
+
+        .card h2 {
+            color: #0b5394;
+            margin-bottom: 15px;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        @keyframes popup {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
             }
 
-            if (industry.value === "") {
-                industry.classList.add('is-invalid');
-                dropdownValid = false;
-            } else {
-                industry.classList.remove('is-invalid');
-            }
-
-            // reCAPTCHA validation
-            const recaptchaResponse = document.querySelector('.g-recaptcha-response').value;
-            if (!recaptchaResponse) {
-                document.getElementById('recaptchaError').innerText = "Please complete the reCAPTCHA.";
-                dropdownValid = false;
-            } else {
-                document.getElementById('recaptchaError').innerText = "";
-            }
-
-            // Prevent form submission if any validation fails
-            if (!isValid || !dropdownValid) {
-                event.preventDefault();
-                form.classList.add('was-validated');
+            to {
+                transform: scale(1);
+                opacity: 1;
             }
         }
-    </script>
-    <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('your-background-image.jpg') center/cover no-repeat;
-        backdrop-filter: blur(10px);
-        /* color: #333; */
-        margin: 0;
-        padding: 0;
-    }
-    #contact .container {
-        max-width: 700px;
-        margin: 30px auto;
-        background-color: rgba(33, 213, 180, 0.8);
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(15px);
-    }
-    h1 {
-        font-size: 2rem;
-        text-align: center;
-        margin-bottom: 20px;
-        color: #016fc2;
-    }
-    .error {
-        color: red;
-        font-size: 0.9em;
-    }
-</style>
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                width: 90%;
+            }
+
+            .card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        .company-info {
+            width: 80%;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .company-info p {
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 
-<body>
 
+<body>
     <!-- Spinner Start -->
     <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -125,7 +139,7 @@
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <a href="/" class="navbar-brand p-0">
                 <!-- <h1 class="text-primary"><i class="fas fa-hand-holding-water me-3"></i>Acuas</h1> -->
-                <img src="assets/images/logo_CSIT.png" alt="Logo">
+                <img src="img/logo_CSIT.png" alt="Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
@@ -312,185 +326,56 @@
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
         </nav>
-            <!-- Header Start -->
-            <div class="container-fluid bg-breadcrumb" style="background: url('assets/images/Contact.png');">
-                <div class="container text-center py-5" style="max-width: 900px;">
-                    <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Contact Us</h4>
-                    <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <!-- <li class="breadcrumb-item"><a href="#"></a></li> -->
-                        <li class="breadcrumb-item active text-primary">Contact Us</li>
-                    </ol>
-                </div>
-            </div>
-            <!-- Header End -->
-        </div>
-        <!-- Navbar & Hero End -->
-
-        <!-- Modal Search Start -->
-        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen">
-                <div class="modal-content rounded-0">
-                    <div class="modal-header">
-                        <h4 class="modal-title mb-0" id="exampleModalLabel">Search by keyword</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex align-items-center">
-                        <div class="input-group w-75 mx-auto d-flex">
-                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
-                            <span id="search-icon-1" class="input-group-text btn border p-3"><i class="fa fa-search text-white"></i></span>
-                        </div>
-                    </div>
-                </div>
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb" style="background:url('img/moinfo\ \(1\).jpg') !important;">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Our Story</h4>
+                <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="about.html">About</a></li>
+                    <li class="breadcrumb-item active text-primary">Our Story</li>
+                </ol>
             </div>
         </div>
-        <!-- Modal Search End -->
+        <!-- Header End -->
 
-        <!-- Contact Start -->
-<div class="container-fluid contact bg-light py-5">
-    <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-6 h-100 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="text-center mx-auto pb-5" style="max-width: 800px;">
-                    <h4 class="text-uppercase text-primary">Let’s Connect</h4>
-                    <h1 class="display-3 text-capitalize mb-3">Send Your Message</h1>
-                </div>
-                <form id="contactForm">
-                    <section id="contact">
-                        <div class="container">
-                            <h1 class="fw-semibold text-gradient" style="color: #016fc2;">Contact Us</h1>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" id="firstName" class="form-control" placeholder="First Name" required>
-                                    <div class="invalid-feedback">Please enter a valid first name (alphabets only).</div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" id="lastName" class="form-control" placeholder="Last Name" required>
-                                    <div class="invalid-feedback">Please enter a valid last name (alphabets only).</div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="country">Country</label>
-                                    <select class="form-select" id="country" required>
-                                        <option value="">Select Country</option>
-                                        <option value="US">United States</option>
-                                        <option value="IN">India</option>
-                                        <option value="GB">United Kingdom</option>
-                                        <option value="CA">Canada</option>
-                                        <option value="AU">Australia</option>
-                                    </select>
-                                    <div class="invalid-feedback">Please select a country.</div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="designation">Designation</label>
-                                    <input type="text" id="designation" class="form-control" placeholder="Designation" required>
-                                    <div class="invalid-feedback">Please enter your designation.</div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="company">Company</label>
-                                    <input type="text" id="company" class="form-control" placeholder="Company" required>
-                                    <div class="invalid-feedback">Please enter your company name.</div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" class="form-control" placeholder="Email Address" required>
-                                    <div class="invalid-feedback">Please enter a valid email address.</div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="phone">Phone</label>
-                                    <input type="tel" id="phone" class="form-control" placeholder="Phone" pattern="\d{10,15}" required>
-                                    <div class="invalid-feedback">Please enter a valid phone number (10 to 15 digits).</div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="industry">Industry</label>
-                                    <select class="form-select" id="industry" required>
-                                        <option value="">Select Industry</option>
-                                        <option value="IT">IT</option>
-                                        <option value="Textile">Textile</option>
-                                        <option value="Banking">Banking</option>
-                                        <option value="E-commerce">E-commerce</option>
-                                        <option value="Fintech">Fintech</option>
-                                    </select>
-                                    <div class="invalid-feedback">Please select an industry.</div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message">Message</label>
-                                <textarea id="message" class="form-control" placeholder="Message" rows="5" required></textarea>
-                                <div class="invalid-feedback">Please enter a message.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="dateCreated">Date Created</label>
-                                <input type="date" id="dateCreated" class="form-control" required>
-                                <div class="invalid-feedback">Please select a date.</div>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" id="dataProcessingConsent" required>
-                                <label class="form-check-label" for="dataProcessingConsent">
-                                    I consent to the <a href="PrivacyPolicy.html" target="_blank">Data Processing Policy</a>
-                                </label>
-                                <div class="invalid-feedback">You must consent to the data processing policy.</div>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" id="termsAndConditions" required>
-                                <label class="form-check-label" for="termsAndConditions">
-                                    I agree to the <a href="TermsandConditions.html" target="_blank">Terms and Conditions</a>
-                                </label>
-                                <div class="invalid-feedback">You must agree to the terms and conditions.</div>
-                            </div>
-                            <input type="submit" class="btn btn-primary d-block mx-auto" value="Get In Touch">
-                        </div>
-                    </section>
-                </form>
-            </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="row g-4">
-                    <div class="col-12">
-                        <div class="d-inline-flex rounded bg-white w-100 p-4">
-                            <i class="fas fa-map-marker-alt fa-2x text-secondary me-4"></i>
-                            <div>
-                                <h4>Address</h4>
-                              <a href="Google map location"> <p class="mb-0">Cloudswap Infotech Pune ,411014</p></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-xl-6">
-                        <div class="d-inline-flex rounded bg-white w-100 p-4">
-                            <i class="fas fa-envelope fa-2x text-secondary me-4"></i>
-                            <div>
-                                <h4>Mail Us</h4>
-                               <a href="/cdn-cgi/l/email-protection#9fbffcf0f1ebfefcebdfeeeafef1ebeaf2ecf0f9ebebfafcf7f1f0f3f0f8f6faecb1fcf0f2"><p class="mb-0"> <span class="__cf_email__" data-cfemail="">[email&#160;protected]</span></p></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-xl-6">
-                        <div class="d-inline-flex rounded bg-white w-100 p-4">
-                            <i class="fa fa-phone-alt fa-2x text-secondary me-4"></i>
-                            <div>
-                                <h4>Telephone</h4>
-                                <a href="tel:+91-8793501997"> <p class="mb-0">+91-8793501997</p></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="h-100 overflow-hidden">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2807244417154!2d73.94225977423869!3d18.561378482540125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c33573bfa8bf%3A0x6015064d985aee34!2sCloudswap Infotech%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1747732732814!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <!-- Main Content -->
+
+    <div class="content-wrapper">
+        <div class="card vision-card">
+            <!-- <h2>Our Vision</h2> -->
+            <img src="img/vision.jpg" alt="Vision Image">
+            <p style="font-size: 22px;">At Cloudswap Infotech Pvt. Ltd., our vision is to drive digital
+                transformation globally, empowering businesses to reach their full potential. We aim to be a trusted
+                partner, recognized for excellence, integrity, and delivering real value to our clients and communities.
+            </p>
+        </div>
+        <div class="card mission-card">
+            <!-- <h2>Our Mission</h2> -->
+            <img src="img/mission.jpg" alt="Mission Image">
+            <p style="font-size: 22px;">At Cloudswap Infotech Pvt. Ltd., our mission is to leverage technology to
+                create impactful solutions that solve complex challenges, drive sustainable growth, and improve lives
+                globally. We are committed to innovation, collaboration, and making a positive impact through our work.
+            </p>
         </div>
     </div>
-</div>
 
-<!-- Contact End -->
+    <!-- Company Info Section -->
+    <div class="company-info">
+        <h1>Company Overview</h1>
+        <p style="font-size: 22px;">Cloudswap Infotech Pvt. Ltd. is a global leader in IT, consulting, and
+            business process services. We specialize in delivering innovative solutions powered by cutting-edge
+            technologies like AI, cloud, and data analytics to help businesses succeed in the digital age, with a
+            diverse portfolio of services, a commitment to sustainability, and a client-first approach, we enable
+            organizations across industries to achieve transformative results. Our expert team drives innovation,
+            ensuring excellence in every project through strategic partnerships and a focus on long-term growth.</p>
+    </div>
+
+
 
 
  <!-- Footer Start -->
@@ -503,7 +388,7 @@
                         <h3 class="text-white mb-4">
                             <a href="index.html">
                                 <img style="width: 225px; display: flex;align-items: center;padding: 0px; "
-                                    src="assets/images/logo_CSIT.png" alt="logo"></a>
+                                    src="img/logo_CSIT.png" alt="logo"></a>
                         </h3>
                         <p class="mb-3">At Cloudswap Infotech, we believe that technology should be
                             accessible, effective, and tailored to your business needs.
@@ -540,15 +425,17 @@
                     <h4 class="text-white mb-4">Contact Info</h4>
 
                     <a href="Google map location"><i class="fa fa-map-marker-alt me-2"></i>
-                        Cloudswap Infotech Pune,411014</a>
-                    <a href="mailto:contact@cloudswapinfotech.com"><i class="fas fa-envelope me-2"></i>contact@cloudswapinfotech.com</a>
-                    <a href="mailto:info@yourdomain.com"><span>contact@cloudswapinfotech.com</span></a>
-                    <a href="+91-8793501997"><i class="fas fa-phone me-2"></i> +91-8793501997</a>
+                            Cloudswap Infotech, WTC Kharadi Fountain Road, CityVista, A Wing, Office No: 11, Third Floor, Kharadi, Pune, Maharashtra 411014</a>
+
+                    <a href="/cdn-cgi/l/email-protection#a5c6cacbd1c4c6d1e5d4d0c4cbd1d0c8d6cac3d1d1c0c6cdcbcac9cac2ccc0d68bc6cac8"><i class="fas fa-envelope me-2"></i>
+                        <span class="__cf_email__" data-cfemail="02616d6c76636176427377636c76776f716d64767667616a6c6d6e6d656b67712c616d6f">[email&#160;protected]</span></a>
+
+                    <a href="tel:+012 345 67890"><i class="fas fa-phone me-2"></i> +91-8793501997</a>
                 </div>
                 <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
-                    <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i
+                    <a class="btn btn-secondary btn-md-square rounded-circle me-3" href="https://www.facebook.com/login/"><i
                             class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i
+                    <a class="btn btn-secondary btn-md-square rounded-circle me-3" href="https://x.com/i/flow/login"><i
                             class="fab fa-twitter"></i></a>
                             <a class="btn btn-secondary btn-md-square rounded-circle me-3" href="https://www.instagram.com/cloudswapinfotech/profilecard/?igsh=MTYzMGFzYjdsZ3Jtbg=="><i
                                 class="fab fa-instagram"></i></a>
@@ -561,7 +448,6 @@
     </div>
 </div>
 <!-- Footer End -->
-
    <!-- Copyright Start -->
    <div class="container-fluid copyright py-4">
     <div class="container">
@@ -583,79 +469,31 @@
 <!-- Copyright End -->
 
 
-<!-- Back to Top -->
-<a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 
 
 
 
 
-<!-- JavaScript Libraries -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/counterup/counterup.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="config/Config.js"></script>
     <script src="js/script.js"></script>
-<!-- Footer and other sections (unchanged) -->
 
-<!-- JavaScript Libraries -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Template Javascript -->
-<script src="js/main.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-    document.getElementById('contactForm').addEventListener('submit', async function (event) {
-        event.preventDefault(); // Prevent default form submission behavior
-
-        const formData = {
-            firstName: document.getElementById('firstName').value,
-            lastName: document.getElementById('lastName').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            country: document.getElementById('country').value,
-            designation: document.getElementById('designation').value,
-            company: document.getElementById('company').value,
-            industry: document.getElementById('industry').value,
-            message: document.getElementById('message').value,
-            dateCreated: document.getElementById('dateCreated').value,
-        };
-
-        try {
-            console.log('Submitting form data:', formData);
-
-            const response = await fetch("/api/contacts/save", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                console.log('Response received:', result);
-                alert('Data submitted successfully: ' + result.message);
-            } else {
-                const error = await response.json();
-                console.error('Server error:', error);
-                alert('Failed to submit data. Error: ' + (error.message || 'Unknown error'));
-            }
-        } catch (error) {
-            console.error('Submission error:', error);
-            alert('An error occurred. Please try again later.');
-        }
-    });
-</script>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!-- WOW.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 </body>
+
 </html>
