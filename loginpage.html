@@ -126,5 +126,18 @@
     function checkInputs(){document.getElementById("username").value.trim()&&document.getElementById("password").value.trim()?(document.getElementById("login-button").disabled=!1,document.getElementById("login-button").classList.add("enabled")):(document.getElementById("login-button").disabled=!0,document.getElementById("login-button").classList.remove("enabled"))}
     function validateLogin(){document.getElementById("username").value.trim()===_0xad3d[0]&&document.getElementById("password").value.trim()===_0xad3d[1]?(alert("Login successful!"),window.location.href="accesslogin.html"):document.getElementById("error-message").textContent="Invalid username or password"}
     </script>
+
+    <!-- Container for the footer -->
+     <div id="footer-container"></div>
+
+     <!-- JavaScript to load the footer -->
+     <script>
+       fetch('address.html')
+         .then(response => response.text())
+         .then(data => {
+           document.getElementById('footer-container').innerHTML = data;
+         })
+         .catch(error => console.error('Error loading footer:', error));
+     </script>
 </body>
 </html>

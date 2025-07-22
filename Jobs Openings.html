@@ -777,79 +777,18 @@
 
 
         <!-- Footer Start -->
-        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <div class="footer-item">
-                                <h3 class="text-white mb-4">
-                                    <a href="index.html">
-                                        <img style="width: 225px; display: flex;align-items: center;padding: 0px; "
-                                            src="assets/images/logo_CSIT.png" alt="logo"></a>
-                                </h3>
-                                <p class="mb-3">At Cloudswap Infotech, we believe that technology should be
-                                    accessible, effective, and tailored to your business needs.
-                                    Powered by a team of experts who are passionate about technology and
-                                    problem-solving.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Short Link's</h4>
-                            <a href="index.html"><i class="fas fa-angle-right me-2"></i>Home</a>
-                            <a href="about.html"><i class="fas fa-angle-right me-2"></i>About</a>
-                            <a href="service.html"><i class="fas fa-angle-right me-2"></i>Service</a>
-                            <a href="blog.html"><i class="fas fa-angle-right me-2"></i>Blogs & News</a>
-                            <a href="Careers.html"><i class="fas fa-angle-right me-2"></i>Careers</a>
-                            <a href="testimonial.html"><i class="fas fa-angle-right me-2"></i>Testimonials</a>
-                            <a href="contact.html"><i class="fas fa-angle-right me-2"></i>Contact</a>
+        <!-- Container for the footer -->
+         <div id="footer-container"></div>
 
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Help Link's</h4>
-                            <a href="TermsandConditions.html"><i class="fas fa-angle-right me-2"></i> Terms &
-                                Conditions</a>
-                            <a href="PrivacyPolicy.html"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                            <a href="help&Faq.html"><i class="fas fa-angle-right me-2"></i> Helps</a>
-                            <a href="help&Faq.html"><i class="fas fa-angle-right me-2"></i> FAQs</a>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Contact Info</h4>
-
-                            <a href="google map location"><i
-                                    class="fa fa-map-marker-alt me-2"></i>
-                                Cloudswap Infotech, Karve Nagar, Pune, Maharashtra 411014</a>
-
-                            <a href="/cdn-cgi/l/email-protection#32515d5c46535146724347535c46475f415d54464657515a5c5d5e5d555b57411c515d5f"><i class="fas fa-envelope me-2"></i>
-                                <span class="__cf_email__" data-cfemail="">[email&#160;protected]</span></a>
-
-                            <a href="tel:+012 345 67890"><i class="fas fa-phone me-2"></i> +91-8793501997</a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
-                            <a class="btn btn-secondary btn-md-square rounded-circle me-3"
-                                href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-secondary btn-md-square rounded-circle me-3"
-                                href="https://x.com/i/flow/login"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-secondary btn-md-square rounded-circle me-3"
-                                href="https://www.instagram.com/cloudswapinfotech/profilecard/?igsh=MTYzMGFzYjdsZ3Jtbg=="><i
-                                    class="fab fa-instagram"></i></a>
-                            <a class="btn btn-secondary btn-md-square rounded-circle me-0"
-                                href="https://www.linkedin.com/company/93195251/admin"><i
-                                    class="fab fa-linkedin-in"></i></a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+         <!-- JavaScript to load the footer -->
+         <script>
+           fetch('address.html')
+             .then(response => response.text())
+             .then(data => {
+               document.getElementById('footer-container').innerHTML = data;
+             })
+             .catch(error => console.error('Error loading footer:', error));
+         </script>
         <!-- Footer End -->
 
         <!-- Copyright Start -->
