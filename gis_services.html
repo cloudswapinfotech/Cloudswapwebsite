@@ -495,7 +495,7 @@
                             <h5>Our Location</h5>
                             <p class="text-muted">Cloudswap Infotech Private Limited, Pune, Maharashtra, India</p>
                             <div class="mt-2">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2807244417154!2d73.94225977423869!3d18.561378482540125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c33573bfa8bf%3A0x6015064d985aee34!2sCloudswap Infotech%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1747732732814!5m2!1sen!2sin" width="100%" height="200" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="https://maps.app.goo.gl/aRPkXrRKytK64j2z7" width="100%" height="200" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
@@ -655,7 +655,7 @@
         // Initialize map
         document.addEventListener('DOMContentLoaded', function() {
             // Basic map initialization
-            const map = L.map('gis-map').setView([18.5614, 73.9485], 13);
+            const map = L.map('gis-map').setView([18.6006092,73.8065466], 11.55);
 
             // Add base layers
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -663,7 +663,7 @@
             }).addTo(map);
 
             // Add a marker for Cloudswap Infotech location
-            L.marker([18.5614, 73.9485]).addTo(map)
+            L.marker([18.6006092,73.8065466]).addTo(map)
                 .bindPopup('Cloudswap Infotech')
                 .openPopup();
 
