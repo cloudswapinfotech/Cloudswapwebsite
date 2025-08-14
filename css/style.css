@@ -1211,3 +1211,239 @@ section h2 {
   color: #00aaff !important;
   text-shadow: 0 0 5px #00aaff;
 }
+/* === Enhanced Global Styling for Attractive Formatting === */
+
+/* Import Google Fonts for modern typography */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+/* Apply base typography improvements */
+body {
+  font-family: 'Open Sans', Arial, sans-serif !important;
+  font-weight: 400;
+  color: #333;
+  background-color: #f9fafc;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Headings improved */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #0d3b66;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: 0.02rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Brand color for headings and links */
+a, a:hover, a:focus {
+  color: #007bff !important; /* Bootstrap’s blue */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: #0056b3 !important;
+  text-decoration: underline;
+}
+
+/* Container and section layout enhancements */
+.container, .container-fluid {
+  max-width: 1140px !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+/* Improve navbar — subtle background and shadow */
+.navbar {
+  background: #ffffff !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.navbar a.nav-link {
+  color: #333333 !important;
+  padding: 0.8rem 1rem;
+  border-radius: 0.3rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar a.nav-link:hover, .navbar a.nav-link.active {
+  background-color: #007bff !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+/* Navbar toggler customizations */
+.navbar-toggler {
+  border: none !important;
+  font-size: 1.5rem !important;
+  color: #007bff !important;
+}
+
+.navbar-toggler:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.5);
+}
+
+/* Hero sections: improved spacing and text styling */
+#hero, .hero-3d-wrapper {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: #fff !important;
+  padding: 5rem 1rem;
+  border-radius: 15px;
+  box-shadow: 0 20px 60px rgba(0, 123, 255, 0.3);
+  text-align: center;
+}
+
+#hero h1, .hero-content h1 {
+  font-size: 3rem !important;
+  font-weight: 900 !important;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#hero p, .hero-content p {
+  font-size: 1.3rem !important;
+  font-weight: 500 !important;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Buttons: modern 3D style with shadow and smooth hover */
+.btn-primary, .btn {
+  background-image: linear-gradient(145deg, #0069d9, #0053ba);
+  border: none !important;
+  border-radius: 50px !important;
+  color: #fff !important;
+  padding: 0.75rem 2.5rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 15px rgba(0, 105, 217, 0.45);
+  transition: background-image 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  user-select: none;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover, .btn:hover {
+  background-image: linear-gradient(145deg, #0053ba, #003d8c);
+  box-shadow: 0 10px 25px rgba(0, 83, 186, 0.75);
+  transform: translateY(-3px) scale(1.05);
+  color: #fff !important;
+}
+
+/* Section spacing and card shadows */
+section {
+  padding: 4rem 0;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+  margin-bottom: 3rem;
+  transition: box-shadow 0.3s ease;
+}
+
+section:hover {
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards used in projects or services */
+.card {
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Images: nicely rounded with shadow */
+img {
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
+/* Navbar dropdown menu enhancements */
+.dropdown-menu {
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255,255,255,0.95);
+  padding: 1rem 1.5rem;
+  transition: all 0.4s ease;
+  min-width: 280px;
+}
+
+/* Footer styling with subtle contrast */
+footer {
+  background-color: #1a1a1a;
+  color: #bbb;
+  padding: 3rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  letter-spacing: 0.04rem;
+  border-top: 3px solid #007bff;
+}
+
+footer a {
+  color: #61dafb;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: #21a1f1;
+  text-decoration: underline;
+}
+
+/* Utility: fade-in effect for sections */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  visibility: hidden;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out, visibility 0.8s;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  #hero h1, .hero-content h1 {
+    font-size: 2.5rem !important;
+  }
+  #hero p, .hero-content p {
+    font-size: 1.1rem !important;
+  }
+  .btn-primary, .btn {
+    padding: 0.6rem 2rem !important;
+    font-size: 1rem !important;
+  }
+}
+@media (max-width: 576px) {
+  #hero h1, .hero-content h1 {
+    font-size: 2rem !important;
+  }
+  #hero p, .hero-content p {
+    font-size: 1rem !important;
+  }
+}
+
+/* Smooth scroll for anchor navigation (optional) */
+html {
+  scroll-behavior: smooth;
+}
