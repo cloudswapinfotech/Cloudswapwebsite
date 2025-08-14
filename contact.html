@@ -4,18 +4,14 @@
     <meta charset="utf-8">
     <title>Cloudswap Infotech Pvt Ltd - Contact Us</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <!-- Favicon -->
     <link href="assets/images/favicon.ico" rel="icon">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet">
-
     <!-- Bootstrap, Icons, FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
     <!-- Custom Styles (Embedded for single file) -->
     <style>
         body {
@@ -54,7 +50,6 @@
     </style>
 </head>
 <body>
-
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
@@ -75,14 +70,12 @@
         </div>
     </div>
 </nav>
-
 <!-- Page Header -->
 <div class="container-fluid bg-light py-5 mb-5">
     <div class="container text-center">
         <h1 class="display-4 text-primary">Contact Us</h1>
     </div>
 </div>
-
 <!-- Contact Section -->
 <div class="container py-5">
     <div class="row g-5">
@@ -100,6 +93,11 @@
                         <label for="lastName" class="form-label">Last Name</label>
                         <input type="text" id="lastName" class="form-control" required>
                         <div class="invalid-feedback">Please enter your last name.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="collection" class="form-label">Collection</label>
+                        <input type="text" id="collection" class="form-control" placeholder="Enter collection details" required>
+                        <div class="invalid-feedback">Please enter the collection details.</div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email Address</label>
@@ -120,13 +118,12 @@
                 </form>
             </div>
         </div>
-
         <!-- Contact Info + Map -->
         <div class="col-lg-6">
             <h4><i class="fas fa-map-marker-alt me-2 text-secondary"></i> Address</h4>
             <p>Cloudswap Infotech, Pune, 411014</p>
             <h4><i class="fas fa-envelope me-2 text-secondary"></i> Email</h4>
-            <p><a href="mailto:contact@gmail.com">contact@gmail.com</a></p>
+            <p><a href="mailto:contact@cloudswapinfotech.com">contact@cloudswapinfotech.com</a></p>
             <h4><i class="fas fa-phone me-2 text-secondary"></i> Phone</h4>
             <p><a href="tel:+918793501997">+91 8793501997</a></p>
             <div class="mt-4">
@@ -135,23 +132,50 @@
         </div>
     </div>
 </div>
-
 <!-- Footer -->
 <div class="footer">
     <p class="mb-0">&copy; 2025 Cloudswap Infotech Pvt Ltd. All Rights Reserved.</p>
 </div>
-
 <!-- Bootstrap & JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Bootstrap validation
+    // Bootstrap validation and mailto compose form submission
     document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
         const form = this;
+
+        // Bootstrap form validation
         if (!form.checkValidity()) {
-            e.preventDefault();
             e.stopPropagation();
+            form.classList.add('was-validated');
+            return;
         }
         form.classList.add('was-validated');
+
+        // Collect form data
+        const firstName = encodeURIComponent(document.getElementById('firstName').value.trim());
+        const lastName = encodeURIComponent(document.getElementById('lastName').value.trim());
+        const collection = encodeURIComponent(document.getElementById('collection').value.trim());
+        const email = encodeURIComponent(document.getElementById('email').value.trim());
+        const phone = encodeURIComponent(document.getElementById('phone').value.trim());
+        const message = encodeURIComponent(document.getElementById('message').value.trim());
+
+        // Construct mailto params
+        const subject = encodeURIComponent('Contact Form Submission from ' + firstName + ' ' + lastName);
+        let body = `First Name: ${firstName}%0D%0A`;
+        body += `Last Name: ${lastName}%0D%0A`;
+        body += `Collection: ${collection}%0D%0A`;
+        body += `Email: ${email}%0D%0A`;
+        body += `Phone: ${phone}%0D%0A%0D%0A`;
+        body += `Message:%0D%0A${message}`;
+
+        // Open default mail client to send email to contact@cloudswapinfotech.com
+        window.location.href = `mailto:contact@cloudswapinfotech.com?subject=${subject}&body=${body}`;
+
+        // Optionally: reset form after mail client opens
+        // form.reset();
+        // form.classList.remove('was-validated');
     });
 </script>
 </body>
