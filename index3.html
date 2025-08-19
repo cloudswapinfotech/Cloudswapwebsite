@@ -1,248 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>Cloudswap Infotech Pvt Ltd</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
-
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-    rel="stylesheet">
-
-  <!-- Icon Font Stylesheet -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-  <!-- Libraries Stylesheet -->
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Template Stylesheet -->
-  <link href="css/style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>YourCompany - Software Development</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style id="dynamic-style"></style>
 </head>
-
 <body>
-
-  <!-- Spinner Start -->
-  <div id="spinner"
-    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
-  <!-- Spinner End -->
-
-  <!-- Navbar & Hero Start -->
-  <div class="container-fluid position-relative p-0">
-
-    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-      <a href="/" class="navbar-brand p-0">
-        <img src="assets/images/logo_CSIT.png" alt="Logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="fa fa-bars"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto py-0">
-          <a href="index.html" class="nav-item nav-link active">Home</a>
-          <div class="nav-item dropdown">
-            <a href="about.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About</a>
-            <div class="dropdown-menu p-3"
-              style="min-width: 300px; width: auto; border: 1px solid #ddd; background-color: rgba(127, 135, 158, 0.6); backdrop-filter: blur(8px);">
-              <div class="row">
-                <div class="col-6">
-                  <h6>Who We Are</h6>
-                  <hr class="dropdown-divider">
-                  <a href="about.html" class="dropdown-item">About Us</a>
-                  <a href="team.html" class="dropdown-item">Our Team</a>
-                </div>
-                <div class="col-6">
-                  <h6>Careers</h6>
-                  <hr class="dropdown-divider">
-                  <a href="careers.html" class="dropdown-item">Job Openings</a>
-                  <a href="contact.html" class="dropdown-item">Contact Us</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="service.html" class="nav-item nav-link">Services</a>
-          <a href="Project.html" class="nav-item nav-link">Projects</a>
-          <a href="Careers.html" class="nav-item nav-link">Careers</a>
-          <a href="contact.html" class="nav-item nav-link">Contact Us</a>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Hero with 3D wrapper -->
-    <section id="hero" class="hero-3d-wrapper text-center text-white d-flex align-items-center justify-content-center"
-      style="min-height: 70vh;">
-      <div class="hero-content">
-        <h1 class="display-4 fw-bold">Innovating Your Digital Future</h1>
-        <p class="lead mb-4">Engaging business solutions with cutting-edge technology.</p>
-        <a href="contact.html" class="btn btn-primary btn-3d px-4 py-2 fs-5">Get in Touch</a>
-      </div>
-    </section>
-  </div>
-
-  <!-- Main content sections with fade-in-section for animation -->
-
-  <section id="about" class="fade-in-section container py-5">
-    <div class="row g-5 align-items-center">
-      <div class="col-lg-6">
-        <h2 class="mb-4">About Us</h2>
-        <p>Cloudswap Infotech Pvt Ltd is a forward-thinking technology company that aims to provide innovative digital
-          solutions to businesses worldwide...</p>
-        <a href="about.html" class="btn btn-outline-primary">Learn More</a>
-      </div>
-      <div class="col-lg-6">
-        <img src="assets/images/about.jpg" alt="About Us" class="img-fluid rounded">
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="fade-in-section bg-light py-5">
-    <div class="container">
-      <h2 class="text-center mb-5">Our Services</h2>
-      <div class="row g-4">
-        <div class="col-md-4 text-center">
-          <i class="fa fa-cogs fa-3x mb-3 text-primary"></i>
-          <h5>Software Development</h5>
-          <p>Custom web and app development tailored to your business needs.</p>
-        </div>
-        <div class="col-md-4 text-center">
-          <i class="fa fa-cloud fa-3x mb-3 text-primary"></i>
-          <h5>Cloud Solutions</h5>
-          <p>Secure and scalable cloud infrastructure services for your growth.</p>
-        </div>
-        <div class="col-md-4 text-center">
-          <i class="fa fa-headset fa-3x mb-3 text-primary"></i>
-          <h5>24/7 Support</h5>
-          <p>Reliable technical support to ensure your operations run smoothly.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="fade-in-section container py-5">
-    <h2 class="mb-5 text-center">Projects</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="assets/images/project1.jpg" class="card-img-top" alt="Project Alpha">
-          <div class="card-body">
-            <h5 class="card-title">Project Alpha</h5>
-            <p class="card-text">Enterprise resource planning system designed for scalability.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="assets/images/project2.jpg" class="card-img-top" alt="Project Beta">
-          <div class="card-body">
-            <h5 class="card-title">Project Beta</h5>
-            <p class="card-text">E-commerce platform launch with seamless user experience.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="assets/images/project3.jpg" class="card-img-top" alt="Project Gamma">
-          <div class="card-body">
-            <h5 class="card-title">Project Gamma</h5>
-            <p class="card-text">Mobile app for customer engagement and data analytics.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- You can add more sections here like Testimonials, Careers, etc. with the fade-in-section class -->
-
-  <!-- Footer Start -->
-  <!-- Container for the footer -->
-   <div id="footer-container"></div>
-
-   <!-- JavaScript to load the footer -->
-   <script>
-     fetch('address.html')
-       .then(response => response.text())
-       .then(data => {
-         document.getElementById('footer-container').innerHTML = data;
-       })
-       .catch(error => console.error('Error loading footer:', error));
-   </script>
- <!-- Footer End -->
-
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-
-  <!-- Bootstrap JS -->
-  <script src="js/bootstrap.bundle.min.js"></script>
-
-  <!-- Template Javascript -->
-  <script src="js/main.js"></script>
-
-  <!-- 3D Hero & Fade-in Animation Script -->
+  <div id="app"></div>
   <script>
-    function toggleNav() {
-      const nav = document.querySelector("#navbarCollapse");
-      if (nav.classList.contains('show')) {
-        nav.classList.remove('show');
-      } else {
-        nav.classList.add('show');
+    // ---- Embedded CSS ----
+    const css = `
+    :root {
+      --primary: #34e2a8;
+      --secondary: #1797ff;
+      --background: #f8fbff;
+      --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--background);
+      font-family: 'Segoe UI', Verdana, Arial, sans-serif;
+      color: #222;
+      min-height: 100vh;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      background: var(--gradient);
+      padding: 0 28px;
+      box-shadow: 0 4px 20px rgba(23,151,255,0.12), 0 1.5px 4px var(--primary);
+    }
+    .logo {
+      height: 64px;
+      margin-right: 22px;
+      filter: drop-shadow(0 1px 5px #1797ff55);
+    }
+    nav { flex: 1; }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      font-size: 1.1rem;
+      margin: 0; padding: 0;
+    }
+    nav li { position: relative; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: background 0.14s, color 0.14s, transform 0.16s;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+    }
+    nav a.active,
+    nav a:hover {
+      background: #fff4;
+      color: var(--primary);
+      transform: translateY(-2px) scale(1.08) rotate(-2deg);
+      box-shadow: 0 0 16px 2px #34e2a8aa, 0 2px 7px #1797ff77;
+    }
+    nav li ul {
+      display: none;
+      position: absolute;
+      background: var(--secondary);
+      top: 38px;
+      left: 0;
+      padding: 0;
+      min-width: 220px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px #34e2a844;
+      z-index: 99;
+      flex-direction: column;
+    }
+    nav li:hover > ul, nav li:focus-within > ul { display: flex; }
+    nav li ul li a {
+      color: #fff;
+      background: none;
+      border-radius: 0;
+      font-size: 1em;
+      padding: 10px 18px;
+    }
+    nav li ul li a:hover,
+    nav li ul li a.active {
+      background: #fff7;
+      color: var(--primary);
+    }
+    .main-3d-card {
+      background: #fff;
+      box-shadow: 0 12px 48px #89f7c559, 0 4px 34px #1797ff33;
+      border-radius: 26px;
+      padding: 2.2rem 2.5rem 2.2rem 2.5rem;
+      margin: 2rem auto;
+      max-width: 970px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      perspective: 700px;
+      transition: box-shadow 0.2s;
+      min-height: 300px;
+    }
+    .main-3d-card:hover {
+      box-shadow: 0 24px 56px 0 #89f7c599, 0 6px 38px #1797ff44;
+      transform: scale(1.02) rotateY(-3deg) skewY(-3deg);
+    }
+    h1, h2, h3 {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 7px #1797ff66);
+      margin-top: 0.7em;
+    }
+    .btn {
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      padding: 12px 24px;
+      margin-top: 16px;
+      font-size: 1.09rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 24px #34e2a866, 0 2px 9px #1797ff44;
+      transition: background 0.15s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #fff;
+      color: var(--secondary);
+      transform: scale(1.08) rotate(-1deg);
+    }
+    .img-3d {
+      border-radius: 13px;
+      box-shadow: 0 6px 24px #1797ff33, 0 2px 10px #34e2a844;
+      transition: transform 0.18s, box-shadow 0.18s;
+      max-width: 98vw;
+      margin-bottom: 1.5rem;
+    }
+    .img-3d:hover {
+      transform: rotateY(8deg) scale(1.04) skewY(-1.5deg);
+      box-shadow: 0 14px 48px #34e2a866, 0 8px 21px #1797ff88;
+    }
+    footer {
+      padding: 2rem;
+      text-align: center;
+      background: var(--gradient);
+      color: #fff;
+      font-size: 1.05rem;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      margin-top: 4rem;
+    }
+    @media (max-width: 800px) {
+      .main-3d-card {
+        padding: 1rem;
+        max-width: 99vw;
       }
+      header { flex-direction: column; }
+      nav ul { flex-wrap: wrap; gap: 11px; }
+    }
+    ul,ol { padding-left: 20px; }
+    `;
+
+    document.getElementById('dynamic-style').textContent = css;
+
+    // ---- Page Data & Rendering ----
+    const PAGES = {
+      home: {
+        title: "Home",
+        content: `
+          <div class="main-3d-card">
+            <h1>Welcome to YourCompany</h1>
+            <p>We are a leading software development firm specializing in web and app solutions, creative content, digital marketing, and more.</p>
+            <img src="images/teamwork.jpg" alt="Teamwork" class="img-3d" width="420">
+            <button class="btn" onclick="router('services')">Explore Our Services</button>
+          </div>
+        `
+      },
+      about: {
+        title: "About Us",
+        content: `
+          <div class="main-3d-card">
+            <h1>About Us</h1>
+            <img src="images/about.jpg" alt="About" class="img-3d" width="400">
+            <p>Founded in 2022, YourCompany delivers innovative digital products globally. Our mission: help businesses grow digitally.</p>
+            <ul>
+              <li>Innovative development</li>
+              <li>Customer-first approach</li>
+              <li>Agile teamwork</li>
+              <li>Continuous learning</li>
+            </ul>
+          </div>
+        `
+      },
+      services: {
+        title: "Services",
+        content: `
+          <div class="main-3d-card">
+            <h1>Our Services</h1>
+            <img src="images/services.jpg" alt="Services" class="img-3d" width="400">
+            <p>See details below:</p>
+            <ul>
+              <li><a href="#web-development" onclick="router('web-development')">Web Development</a></li>
+              <li><a href="#app-development" onclick="router('app-development')">App Development</a></li>
+              <li><a href="#content-creation" onclick="router('content-creation')">Content Creation</a></li>
+              <li><a href="#digital-marketing" onclick="router('digital-marketing')">Digital Marketing</a></li>
+              <li><a href="#social-media-marketing" onclick="router('social-media-marketing')">Social Media Marketing</a></li>
+              <li><a href="#ui-ux-design" onclick="router('ui-ux-design')">UI/UX Design</a></li>
+            </ul>
+          </div>
+        `
+      },
+      "web-development": {
+        title: "Web Development",
+        content: `
+          <div class="main-3d-card">
+            <h1>Web Development</h1>
+            <img src="images/web-dev.jpg" alt="Web Development" class="img-3d" width="360">
+            <p>Modern responsive websites, custom platforms, ecommerce, and more.</p>
+            <ul>
+              <li>Corporate sites</li>
+              <li>Portals & dashboards</li>
+              <li>Support & maintenance</li>
+            </ul>
+          </div>
+        `
+      },
+      "app-development": {
+        title: "App Development",
+        content: `
+          <div class="main-3d-card">
+            <h1>App Development</h1>
+            <img src="images/app-dev.jpg" alt="App Development" class="img-3d" width="350">
+            <p>Build cross-platform apps for startups & enterprise with cutting-edge tools.</p>
+            <ul>
+              <li>iOS & Android apps</li>
+              <li>Hybrid & PWA solutions</li>
+              <li>Ongoing updates</li>
+            </ul>
+          </div>
+        `
+      },
+      "content-creation": {
+        title: "Content Creation",
+        content: `
+          <div class="main-3d-card">
+            <h1>Content Creation</h1>
+            <img src="images/content.jpg" alt="Content Creation" class="img-3d" width="350">
+            <p>Creative text, graphics, branding, and multimedia for digital growth.</p>
+            <ul>
+              <li>Brand stories</li>
+              <li>Explainer videos</li>
+              <li>SEO content</li>
+            </ul>
+          </div>
+        `
+      },
+      "digital-marketing": {
+        title: "Digital Marketing",
+        content: `
+          <div class="main-3d-card">
+            <h1>Digital Marketing</h1>
+            <img src="images/marketing.jpg" alt="Digital Marketing" class="img-3d" width="355">
+            <p>Connect with the right audience via search, display, ads & more.</p>
+          </div>
+        `
+      },
+      "social-media-marketing": {
+        title: "Social Media Marketing",
+        content: `
+          <div class="main-3d-card">
+            <h1>Social Media Marketing</h1>
+            <img src="images/social.jpg" alt="Social Media" class="img-3d" width="340">
+            <p>Grow followers & sales on all major social channels: SMM strategies tailored to you.</p>
+          </div>
+        `
+      },
+      "ui-ux-design": {
+        title: "UI/UX Design",
+        content: `
+          <div class="main-3d-card">
+            <h1>UI/UX Design</h1>
+            <img src="images/uiux.jpg" alt="UI/UX Design" class="img-3d" width="340">
+            <p>Stunning, accessible, and user-focused interfaces for memorable experiences.</p>
+          </div>
+        `
+      },
+      blogs: {
+        title: "Blogs",
+        content: `
+          <div class="main-3d-card">
+            <h1>Blogs</h1>
+            <ul>
+              <li>How to Choose a Software Partner</li>
+              <li>Future Trends in Digital Transformation</li>
+              <li>Best Practices for Secure Development</li>
+            </ul>
+            <img src="images/blogs.jpg" alt="Blogs" class="img-3d" width="400">
+          </div>
+        `
+      },
+      news: {
+        title: "News",
+        content: `
+          <div class="main-3d-card">
+            <h1>News</h1>
+            <ul>
+              <li>2025: Winner of XYZ Tech Award</li>
+              <li>Opened new branch in Singapore</li>
+              <li>New strategic partnership with ABC Inc.</li>
+            </ul>
+          </div>
+        `
+      },
+      projects: {
+        title: "Projects",
+        content: `
+          <div class="main-3d-card">
+            <h1>Our Projects</h1>
+            <img src="images/projects.jpg" alt="Projects" class="img-3d" width="380">
+            <p>
+              <ul>
+                <li>Project Alpha – Enterprise Portal</li>
+                <li>Project Beta – Travel Mobile App</li>
+                <li>Project Gamma – E-commerce Platform</li>
+              </ul>
+            </p>
+          </div>
+        `
+      },
+      careers: {
+        title: "Careers",
+        content: `
+          <div class="main-3d-card">
+            <h1>Careers</h1>
+            <p>Join our diverse and passionate team!</p>
+            <ul>
+              <li>Full-stack Developer</li>
+              <li>Marketing Specialist</li>
+              <li>UI/UX Designer</li>
+            </ul>
+            <img src="images/careers.jpg" alt="Careers" class="img-3d" width="380">
+          </div>
+        `
+      },
+      contact: {
+        title: "Contact Us",
+        content: `
+          <div class="main-3d-card">
+            <h1>Contact Us</h1>
+            <form>
+              <label>Your Name:<br><input type="text" placeholder="Name" style="width:90%"></label><br><br>
+              <label>Email:<br><input type="email" placeholder="Email" style="width:90%"></label><br><br>
+              <label>Message:<br><textarea placeholder="Type your message" rows="4" style="width:90%"></textarea></label><br><br>
+              <button class="btn" type="submit">Send</button>
+            </form>
+            <img src="images/contact.jpg" alt="Contact" class="img-3d" width="350">
+          </div>
+        `
+      },
+      leadership: {
+        title: "Leadership",
+        content: `
+          <div class="main-3d-card">
+            <h1>Leadership</h1>
+            <img src="images/leadership.jpg" alt="Leadership" class="img-3d" width="350">
+            <ul>
+              <li>CEO: Samira Verma</li>
+              <li>CTO: John Lee</li>
+              <li>COO: Priya Nandan</li>
+            </ul>
+          </div>
+        `
+      },
+      testimonials: {
+        title: "Testimonials",
+        content: `
+          <div class="main-3d-card">
+            <h1>Testimonials</h1>
+            <p>
+              <b>ABC Corp:</b> "Their team delivered beyond expectations!"<br>
+              <b>XYZ Ltd:</b> "Impressive results and great communication."
+            </p>
+            <img src="images/testimonials.jpg" alt="Testimonials" class="img-3d" width="300">
+          </div>
+        `
+      }
+    };
+
+    // ---- Navigation Bar ----
+    function navBar(current) {
+      // Use '#' for SPA routing.
+      // Dropdowns for 'Services' and 'Others'
+      return `
+        <header>
+          <img src="images/logo.png" alt="Logo" class="logo">
+          <nav>
+            <ul>
+              <li><a href="#home" class="${current==='home'?'active':''}">Home</a></li>
+              <li><a href="#about" class="${current==='about'?'active':''}">About Us</a></li>
+              <li>
+                <a href="#services" class="${['services','web-development','app-development','content-creation','digital-marketing','social-media-marketing','ui-ux-design'].includes(current)?'active':''}">Services</a>
+                <ul>
+                  <li><a href="#web-development" class="${current==='web-development'?'active':''}">Web Development</a></li>
+                  <li><a href="#app-development" class="${current==='app-development'?'active':''}">App Development</a></li>
+                  <li><a href="#content-creation" class="${current==='content-creation'?'active':''}">Content Creation</a></li>
+                  <li><a href="#digital-marketing" class="${current==='digital-marketing'?'active':''}">Digital Marketing</a></li>
+                  <li><a href="#social-media-marketing" class="${current==='social-media-marketing'?'active':''}">Social Media Marketing</a></li>
+                  <li><a href="#ui-ux-design" class="${current==='ui-ux-design'?'active':''}">UI/UX Design</a></li>
+                </ul>
+              </li>
+              <li><a href="#blogs" class="${current==='blogs'?'active':''}">Blogs</a></li>
+              <li><a href="#news" class="${current==='news'?'active':''}">News</a></li>
+              <li><a href="#projects" class="${current==='projects'?'active':''}">Projects</a></li>
+              <li><a href="#careers" class="${current==='careers'?'active':''}">Careers</a></li>
+              <li><a href="#contact" class="${current==='contact'?'active':''}">Contact Us</a></li>
+              <li>
+                <a href="#" class="${['leadership','testimonials'].includes(current)?'active':''}">Others</a>
+                <ul>
+                  <li><a href="#leadership" class="${current==='leadership'?'active':''}">Leadership</a></li>
+                  <li><a href="#testimonials" class="${current==='testimonials'?'active':''}">Testimonials</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </header>
+      `;
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const hero = document.querySelector(".hero-3d-wrapper");
-      if (hero) {
-        const heroContent = hero.querySelector(".hero-content");
+    // ---- Footer ----
+    function footer() {
+      return `<footer>&copy; 2025 YourCompany. Crafted with passion.</footer>`;
+    }
 
-        hero.addEventListener("mousemove", (e) => {
-          const rect = hero.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * 10;
-          const rotateY = ((x - centerX) / centerX) * 10;
-
-          heroContent.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`;
+    // ---- Router ----
+    function getPage() {
+      // Remove hash and fall back to home
+      let page = location.hash.replace(/^#/, '') || 'home';
+      return PAGES[page] ? page : 'home';
+    }
+    function render() {
+      const current = getPage();
+      document.title = `${PAGES[current].title} | YourCompany`;
+      document.getElementById('app').innerHTML =
+        navBar(current) +
+        PAGES[current].content +
+        footer();
+      // focus, prevent hash-link default
+      setTimeout(() => {
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+          a.onclick = function(e) {
+            const href = this.getAttribute('href');
+            if (href.startsWith("#")) {
+              e.preventDefault();
+              location.hash = href;
+            }
+          };
         });
+      }, 10);
+    }
+    function router(page) {
+      location.hash = '#' + page;
+    }
 
-        hero.addEventListener("mouseleave", () => {
-          heroContent.style.transform = "rotateX(0) rotateY(0) translateZ(0)";
-        });
-      }
-
-      const fadeElems = document.querySelectorAll(".fade-in-section");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
-
-      fadeElems.forEach((el) => observer.observe(el));
-    });
+    window.addEventListener('hashchange', render);
+    render();
+    window.router = router;
   </script>
-
 </body>
-
 </html>
