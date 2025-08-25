@@ -1,235 +1,218 @@
+<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Cloudswap Infotech Pvt Ltd - Contact Us</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact Us - Cloudswap Infotech</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  /* Global and header/footer same as previous pages */
+  *{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
+  body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a {color:#fff;}
+  a:hover {color:#ffcc00;}
+  header,footer {background:#1a1a2e; padding:1rem 3rem; box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
+  header {display:flex; justify-content:space-between; align-items:center; position: sticky; top:0; z-index: 100; transform-style: preserve-3d;}
+  header .logo img {height:50px; filter: drop-shadow(0 0 3px #ffcc00);}
+  nav ul {list-style:none; display:flex; gap:2rem; perspective:800px;}
+  nav ul li {transition: transform 0.3s ease; transform-style: preserve-3d;}
+  nav ul li:hover {transform: rotateX(20deg) translateZ(10px);}
+  footer {text-align:center; margin-top:auto; box-shadow:0 -4px 10px rgba(0,0,0,0.5);}
+  footer .social-icons a {margin: 0 10px; font-size:1.5rem; color:white; transition: color 0.3s ease; display:inline-block;}
+  footer .social-icons a:hover {color:#ffcc00;}
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  #quickLinksBtn, #quickLinksMenu {position: fixed; right: 30px; z-index: 1000; transform-style: preserve-3d;}
+  #quickLinksBtn {
+    bottom: 30px;
+    background: #ffcc00;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(255,204,0,0.6);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  #quickLinksBtn:hover {background:#e6b800;}
+  #quickLinksBtn svg {fill:#1a1a2e; width:30px; height:30px;}
+  #quickLinksMenu {
+    bottom: 100px;
+    background: #1a1a2e;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.7);
+    display: none;
+  }
+  #quickLinksMenu.active {display:block;}
+  #quickLinksMenu a {
+    display: block;
+    color: #ffcc00;
+    margin: 0.5rem 0;
+    font-weight: 600;
+  }
 
-  <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 0;
-      background: linear-gradient(to right, #e0f7fa, #e8f5e9); /* light blue + light green */
-      color: #333;
-    }
-
-    /* Navbar */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 30px;
-      background: #b2dfdb;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .navbar img {
-      height: 45px;
-    }
-    .navbar a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #004d40;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    .navbar a:hover {
-      color: #00796b;
-    }
-
-    /* Header */
-    .header {
-      text-align: center;
-      padding: 50px 20px;
-      background: #80deea;
-      color: #004d40;
-    }
-    .header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      margin: 0;
-    }
-
-    /* Contact Section */
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      padding: 50px 20px;
-    }
-    .form-container, .info-container {
-      flex: 1 1 400px;
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-    }
-    .form-container h2 {
-      color: #00796b;
-      margin-bottom: 20px;
-    }
-    label {
-      font-weight: 600;
-      margin-bottom: 5px;
-      display: block;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-bottom: 15px;
-      transition: border 0.3s;
-    }
-    input:focus, textarea:focus {
-      border-color: #80deea;
-      outline: none;
-    }
-    .btn {
-      background: #4db6ac;
-      border: none;
-      padding: 10px 25px;
-      border-radius: 8px;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #00796b;
-    }
-
-    /* Info Section */
-    .info-container h4 {
-      color: #00796b;
-      margin-top: 15px;
-    }
-    .info-container a {
-      color: #004d40;
-      text-decoration: none;
-    }
-    .info-container a:hover {
-      text-decoration: underline;
-    }
-
-    iframe {
-      margin-top: 15px;
-      border-radius: 8px;
-      border: 0;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 20px;
-      background: #004d40;
-      color: #fff;
-    }
-  </style>
+  main {
+    padding: 4rem 2rem 3rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    perspective: 900px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px #ffcc00;
+    transform-style: preserve-3d;
+  }
+  form {
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgb(255 204 0 / 0.6);
+    transform-style: preserve-3d;
+  }
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+  }
+  input[type="submit"] {
+    cursor: pointer;
+    background: #ffcc00;
+    color: #1a1a2e;
+    font-weight: 700;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 999px;
+    box-shadow: 0 0 20px #ffcc00;
+    transition: background 0.3s ease;
+  }
+  input[type="submit"]:hover {
+    background: #e6b800;
+  }
+  .contact-info {
+    margin-top: 3rem;
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .contact-info a {
+    color: #ffcc00;
+    font-weight: 700;
+    display: inline-block;
+    margin: 0.5rem 1rem;
+  }
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    <a href="index.html"><img src="assets/images/logo_CSIT.png" alt="Logo"></a>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="Project.html">Projects</a>
-      <a href="Careers.html">Careers</a>
-      <a href="contact.html">Contact</a>
-    </div>
+<header>
+  <div class="logo">
+    <a href="index.html"><img src="https://cdn-icons-png.flaticon.com/512/3721/3721895.png" alt="Cloudswap Infotech Logo" /></a>
   </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html" aria-current="page">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- Header -->
-  <div class="header">
-    <h1>Contact Us</h1>
+<main>
+  <h1>Contact Us</h1>
+  <form id="contactForm" action="mailto:contact@cloudswapinfotech.com" method="post" enctype="text/plain" onsubmit="alert('Submitting... Note: This will open your email client to send the message.');">
+    <label for="name">Full Name *</label>
+    <input type="text" id="name" name="Name" required />
+
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="Email" required />
+
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="Phone" required pattern="[+0-9\s\-]+" title="Please enter a valid phone number"/>
+
+    <label for="message">Message *</label>
+    <textarea id="message" name="Message" rows="5" required></textarea>
+
+    <input type="submit" value="Send Message" />
+  </form>
+
+  <div class="contact-info">
+    <a href="tel:+1234567890" title="Call Us">📞 +1 234 567 890</a> |
+    <a href="mailto:contact@cloudswapinfotech.com" title="Email Us">📧 contact@cloudswapinfotech.com</a>
   </div>
+</main>
 
-  <!-- Contact Section -->
-  <div class="container">
-    <!-- Contact Form -->
-    <div class="form-container">
-      <h2>Send Your Message</h2>
-      <form id="contactForm" novalidate>
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" required>
-
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" required>
-
-        <label for="collection">Collection</label>
-        <input type="text" id="collection" placeholder="Enter collection details" required>
-
-        <label for="email">Email Address</label>
-        <input type="email" id="email" required>
-
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" required>
-
-        <label for="message">Your Message</label>
-        <textarea id="message" rows="5" required></textarea>
-
-        <button type="submit" class="btn">Submit</button>
-      </form>
-    </div>
-
-    <!-- Info Section -->
-    <div class="info-container">
-      <h4><i class="fas fa-map-marker-alt"></i> Address</h4>
-      <p>Cloudswap Infotech, Pune, 411014</p>
-
-      <h4><i class="fas fa-envelope"></i> Email</h4>
-      <p><a href="mailto:contact@cloudswapinfotech.com">contact@cloudswapinfotech.com</a></p>
-
-      <h4><i class="fas fa-phone"></i> Phone</h4>
-      <p><a href="tel:+918793501997">+91 8793501997</a></p>
-
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18...YOURMAP..." width="100%" height="250" allowfullscreen="" loading="lazy"></iframe>
-    </div>
+<footer>
+  <div>© 2025 Cloudswap Infotech. All Rights Reserved.</div>
+  <div class="social-icons" style="margin-top: 0.5rem;">
+    <a href="https://www.facebook.com/profile.php?id=61577852488083" target="_blank" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.95v-7.05h-2v-2.9h2v-2.2c0-2 1.18-3.1 3-3.1.87 0 1.65.06 1.88.09v2.18h-1.3c-1.02 0-1.2.5-1.2 1.16v1.9h2.54l-.4 2.9h-2.14V22A10 10 0 0022 12z"/></svg>
+    </a>
+    <a href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09" target="_blank" aria-label="X Twitter">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23 3c-1 .5-2 .8-3 1v.2c1-.2 2-.5 3-1zm-6 7c-4 0-7.5-3-7.5-6.8 0-.3 0-.5 0-.8-3 1.7-5 4.8-5 8.6 0 5 4 9 9 9 4.3 0 7.8-3 8.4-6.9v-.3l-2.9 1.3v.1c.2 1.5 0 3.5-2.2 3.5-1.8 0-2.7-1.6-2.7-3.4v-2c.5 0 1 0 1.5-.1 0-.3 0-.6 0-1 0-1 .2-1.4 1-1.4 1 0 1.8.8 1.8 2v1z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/cloudswapinfotech?" target="_blank" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-2.7 0-4.9 2.2-4.9 4.9v10.2c0 2.7 2.2 4.9 4.9 4.9h10.2c2.7 0 4.9-2.2 4.9-4.9V7c0-2.7-2.2-4.9-4.9-4.9H7.5zm0 2h10.2c1.6 0 2.9 1.3 2.9 2.9v10.2c0 1.6-1.3 2.9-2.9 2.9H7.5c-1.6 0-2.9-1.3-2.9-2.9V7c0-1.6 1.3-2.9 2.9-2.9zm5.1 3a4.6 4.6 0 100 9.3 4.6 4.6 0 000-9.3zm0 2a2.6 2.6 0 110 5.2 2.6 2.6 0 010-5.2zm4.3-.8a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info" target="_blank" aria-label="LinkedIn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.98 3a2.5 2.5 0 100 5.001 2.5 2.5 0 000-5zM2 21h6v-9H2v9zm7.5 0H15V13c0-2.4 3-2.6 3 0v8h4v-11c0-4-4.47-3.9-6.34-1.9V9h-5v12z"/></svg>
+    </a>
   </div>
+</footer>
 
-  <!-- Footer -->
-  <div class="footer">
-    <p>&copy; 2025 Cloudswap Infotech Pvt Ltd. All Rights Reserved.</p>
-  </div>
+<!-- Floating Quick Links Button -->
+<div id="quickLinksBtn" title="Quick Links" aria-label="Quick Links">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/></svg>
+</div>
+<div id="quickLinksMenu" aria-hidden="true">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="services.html">Services</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="careers.html">Careers</a>
+  <a href="contact.html">Contact Us</a>
+</div>
 
-  <!-- JavaScript -->
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+<script>
+  const quickBtn = document.getElementById('quickLinksBtn');
+  const quickMenu = document.getElementById('quickLinksMenu');
 
-      const firstName = encodeURIComponent(document.getElementById('firstName').value.trim());
-      const lastName = encodeURIComponent(document.getElementById('lastName').value.trim());
-      const collection = encodeURIComponent(document.getElementById('collection').value.trim());
-      const email = encodeURIComponent(document.getElementById('email').value.trim());
-      const phone = encodeURIComponent(document.getElementById('phone').value.trim());
-      const message = encodeURIComponent(document.getElementById('message').value.trim());
+  quickBtn.addEventListener('click', () => {
+    const activated = quickMenu.classList.toggle('active');
+    quickMenu.setAttribute('aria-hidden', !activated);
+  });
 
-      if (!firstName || !lastName || !collection || !email || !phone || !message) {
-        alert("Please fill all fields.");
-        return;
-      }
-
-      const subject = encodeURIComponent('Contact Form Submission from ' + firstName + ' ' + lastName);
-      let body = `First Name: ${firstName}%0D%0A`;
-      body += `Last Name: ${lastName}%0D%0A`;
-      body += `Collection: ${collection}%0D%0A`;
-      body += `Email: ${email}%0D%0A`;
-      body += `Phone: ${phone}%0D%0A%0D%0A`;
-      body += `Message:%0D%0A${message}`;
-
-      window.location.href = `mailto:contact@cloudswapinfotech.com?subject=${subject}&body=${body}`;
-    });
-  </script>
+  document.addEventListener('click', (e)=>{
+    if(!quickBtn.contains(e.target) && !quickMenu.contains(e.target)) {
+      quickMenu.classList.remove('active');
+      quickMenu.setAttribute('aria-hidden','true');
+    }
+  });
+</script>
 
 </body>
 </html>
