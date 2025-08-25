@@ -1,192 +1,230 @@
+<!-- careers.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Careers | Cloudswap Infotech</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <style>
-    /* Global */
-    body { margin:0; font-family:"Poppins", sans-serif; background:#f0fdf4; color:#1a202c; }
-    a { text-decoration:none; color:inherit; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Careers - Cloudswap Infotech</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  /* Global and header/footer same as previous pages */
+  *{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
+  body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a {color:#fff;}
+  a:hover {color:#ffcc00;}
+  header,footer {background:#1a1a2e; padding:1rem 3rem; box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
+  header {display:flex; justify-content:space-between; align-items:center; position: sticky; top:0; z-index: 100; transform-style: preserve-3d;}
+  header .logo img {height:50px; filter: drop-shadow(0 0 3px #ffcc00);}
+  nav ul {list-style:none; display:flex; gap:2rem; perspective:800px;}
+  nav ul li {transition: transform 0.3s ease; transform-style: preserve-3d;}
+  nav ul li:hover {transform: rotateX(20deg) translateZ(10px);}
+  footer {text-align:center; margin-top:auto; box-shadow:0 -4px 10px rgba(0,0,0,0.5);}
+  footer .social-icons a {margin: 0 10px; font-size:1.5rem; color:white; transition: color 0.3s ease; display:inline-block;}
+  footer .social-icons a:hover {color:#ffcc00;}
 
-    /* Navbar */
-    nav {
-      position:fixed; top:0; left:0; width:100%; background:rgba(173, 216, 230,0.9);
-      display:flex; justify-content:space-between; align-items:center;
-      padding:12px 5%; z-index:1000; transition:0.3s;
-    }
-    nav.scrolled { background:#81e6d9; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
-    nav a { margin:0 12px; font-weight:600; color:#034d52; transition:0.3s; }
-    nav a:hover { color:#065f46; }
-    nav img { height:40px; }
+  #quickLinksBtn, #quickLinksMenu {position: fixed; right: 30px; z-index: 1000; transform-style: preserve-3d;}
+  #quickLinksBtn {
+    bottom: 30px;
+    background: #ffcc00;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(255,204,0,0.6);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  #quickLinksBtn:hover {background:#e6b800;}
+  #quickLinksBtn svg {fill:#1a1a2e; width:30px; height:30px;}
+  #quickLinksMenu {
+    bottom: 100px;
+    background: #1a1a2e;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.7);
+    display: none;
+  }
+  #quickLinksMenu.active {display:block;}
+  #quickLinksMenu a {
+    display: block;
+    color: #ffcc00;
+    margin: 0.5rem 0;
+    font-weight: 600;
+  }
 
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.4)), url('assets/images/career.png') center/cover no-repeat;
-      height:70vh; display:flex; justify-content:center; align-items:center; text-align:center;
-      color:#fff; padding:20px; margin-top:60px;
-    }
-    .hero h1 { font-size:2.5rem; margin-bottom:15px; text-shadow:2px 2px 8px rgba(0,0,0,0.6); }
-    .hero p { font-size:1rem; max-width:600px; margin:auto; }
-
-    /* Sections */
-    section { padding:60px 5%; }
-    section h2 { text-align:center; font-size:2rem; margin-bottom:30px; color:#065f46; }
-    section p.centered { text-align:center; max-width:800px; margin:auto; font-size:1rem; line-height:1.5; }
-
-    /* Carousel */
-    .carousel { position:relative; overflow:hidden; border-radius:15px; max-width:100%; margin:auto; }
-    .carousel img { width:100%; display:none; object-fit:cover; height:auto; border-radius:15px; }
-    .carousel img.active { display:block; }
-    .carousel-caption { position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
-      background:rgba(255,255,255,0.9); padding:10px 15px; border-radius:10px; width:90%; text-align:center; }
-    .carousel-caption h3 { color:#065f46; margin-bottom:5px; font-size:1.2rem; }
-    .carousel-caption p { font-size:0.9rem; margin:0; }
-
-    /* Job Cards */
-    .card-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-    .card { background:#e6fffa; border-radius:12px; overflow:hidden; box-shadow:0 6px 12px rgba(0,0,0,0.08);
-            transition:transform 0.3s ease; }
-    .card:hover { transform:translateY(-6px); }
-    .card img { width:100%; height:180px; object-fit:cover; }
-    .card-content { padding:15px; }
-    .card-content h3 { margin:0; color:#0d9488; font-size:1.2rem; }
-    .card-content p { margin:4px 0; font-size:0.9rem; }
-    .card-content a { display:inline-block; margin-top:10px; padding:8px 18px; background:#38b2ac;
-                      color:white; border-radius:20px; font-weight:600; font-size:0.9rem; transition:0.3s; }
-    .card-content a:hover { background:#0d9488; }
-
-    /* Footer */
-    footer { background:#2c7a7b; color:white; text-align:center; padding:20px 5%; }
-    footer a { color:#bbf7d0; }
-    footer a:hover { text-decoration:underline; }
-
-    /* Back to Top */
-    .back-to-top { position:fixed; bottom:20px; right:20px; background:#38b2ac; color:white;
-                   padding:10px; border-radius:50%; font-size:16px; display:none; cursor:pointer; }
-    .back-to-top:hover { background:#0d9488; }
-
-    /* Responsive */
-    @media(max-width:768px){
-      .hero h1{ font-size:2rem; }
-      .hero p{ font-size:0.9rem; }
-      section h2{ font-size:1.6rem; }
-      .carousel-caption h3{ font-size:1rem; }
-      .carousel-caption p{ font-size:0.85rem; }
-      .card img{ height:150px; }
-      .card-content h3{ font-size:1rem; }
-      .card-content p{ font-size:0.85rem; }
-      .card-content a{ padding:6px 14px; font-size:0.85rem; }
-    }
-  </style>
+  main {
+    max-width: 900px;
+    margin: 3rem auto 4rem auto;
+    padding: 0 1rem;
+    perspective: 900px;
+  }
+  main h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 10px #ffcc00;
+    transform-style: preserve-3d;
+  }
+  .job-listing {
+    background: rgba(255 255 255 / 0.15);
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    box-shadow:
+      0 10px 20px rgba(0,0,0,0.3),
+      0 0 15px #ffcc007d,
+      inset 0 0 25px #fff7cc;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    font-weight: 600;
+    color: #ffcc00;
+    transition: all 0.3s ease;
+  }
+  .job-listing:hover {
+    background: #ffcc00;
+    color: #1a1a2e;
+    transform: translateZ(20px);
+  }
+  .apply-form-container {
+    display: none;
+    background: rgba(255 255 255 / 0.1);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgb(255 204 0 / 0.6);
+    margin-top: 2rem;
+    transform-style: preserve-3d;
+  }
+  form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  form input, form textarea, form select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+  }
+  form input[type="submit"] {
+    cursor: pointer;
+    background: #ffcc00;
+    color: #1a1a2e;
+    font-weight: 700;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 999px;
+    box-shadow: 0 0 20px #ffcc00;
+    transition: background 0.3s ease;
+  }
+  form input[type="submit"]:hover {
+    background: #e6b800;
+  }
+  .close-btn {
+    background: #1a1a2e;
+    color: #ffcc00;
+    border: none;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 1rem;
+  }
+</style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav id="navbar">
-    <a href="#"><img src="assets/images/logo_CSIT.png" alt="Logo"></a>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="Jobs Openings.html">Job Openings</a>
-      <a href="loginpage.html">Login</a>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <div class="hero">
-    <div>
-      <h1>Careers at Cloudswap</h1>
-      <p>Choose the right path for your future. Explore opportunities in Science, Commerce, and Arts to build a successful career.</p>
-    </div>
+<header>
+  <div class="logo">
+    <a href="index.html"><img src="https://cdn-icons-png.flaticon.com/512/3721/3721895.png" alt="Cloudswap Infotech Logo"/></a>
   </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="careers.html" aria-current="page">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- Info Section -->
-  <section>
-    <h2>Which Field to Choose?</h2>
-    <p class="centered">
-      The biggest decision post class 10 is picking the right stream. Science offers engineering, IT, medical, and research. Commerce leads to Chartered Accountancy, Investment Banking, and Finance roles. Arts students can pursue Journalism, Literature, Social Work, Teaching, and more.
-    </p>
-  </section>
+<main>
+  <h1>Careers</h1>
+  <div class="job-listing" data-job="DevOps Engineer">DevOps Engineer</div>
+  <div class="job-listing" data-job="Site Reliability Engineer">Site Reliability Engineer</div>
+  <div class="job-listing" data-job="Linux Support Engineer">Linux Support Engineer</div>
+  <div class="job-listing" data-job="Web Developer Intern">Web Developer Intern</div>
+  <div class="job-listing" data-job="Android Developer Intern">Android Developer Intern</div>
 
-  <!-- Carousel -->
-  <section>
-    <div class="carousel" id="careerCarousel">
-      <img src="assets/images/slide1.jpeg" class="active" alt="Arts">
-      <img src="assets/images/slide2.jpeg" alt="Science">
-      <img src="assets/images/slide3.jpeg" alt="Commerce">
-      <div class="carousel-caption">
-        <h3 id="carousel-title">Arts</h3>
-        <p id="carousel-desc">Humanities or Arts offer diverse career options like Journalism, Literature, Social Work, and Teaching.</p>
-      </div>
-    </div>
-  </section>
+  <div class="apply-form-container" id="applyFormContainer" aria-hidden="true">
+    <button class="close-btn" id="closeFormBtn" aria-label="Close Apply Form">✕</button>
+    <h2>Apply for <span id="jobTitle"></span></h2>
+    <form id="applyForm" action="mailto:contact@cloudswapinfotech.com" method="post" enctype="text/plain" onsubmit="alert('Submitting... This will open your email client to send your application.');">
+      <label for="fullname">Full Name *</label>
+      <input type="text" id="fullname" name="Name" required />
 
-  <!-- Apply Section -->
-  <section>
-    <h2>Apply Here</h2>
-    <div class="card-container">
-      <div class="card">
-        <img src="assets/images/card11.jpeg" alt="Web Developer">
-        <div class="card-content">
-          <h3>Web Developer</h3>
-          <p><strong>Company:</strong> Cloudswap Infotech</p>
-          <p><strong>Location:</strong> Pune</p>
-          <p><strong>Description:</strong> Frontend & Backend development</p>
-          <a href="Jobs Openings.html">Apply Now</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="assets/images/card22.jpeg" alt="Graphic Designer">
-        <div class="card-content">
-          <h3>Graphic Designer</h3>
-          <p><strong>Company:</strong> Cloudswap Infotech Technologies</p>
-          <p><strong>Location:</strong> Nagpur</p>
-          <p><strong>Description:</strong> UI/UX & Branding</p>
-          <a href="Jobs Openings.html">Apply Now</a>
-        </div>
-      </div>
-    </div>
-  </section>
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="Email" required />
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; <a href="https://www.cloudswapinfotech.com/">Cloudswap Infotech</a>, All Rights Reserved.</p>
-    <p>Designed By <a href="https://www.CloudswapInfotech.com/">Cloudswap Infotech</a></p>
-  </footer>
+      <label for="phone">Phone Number *</label>
+      <input type="tel" id="phone" name="Phone" required pattern="[+0-9\s\-]+" title="Please enter a valid phone number" />
 
-  <!-- Back to Top -->
-  <div class="back-to-top" id="backToTop"><i class="fa fa-arrow-up"></i></div>
+      <label for="jobProfile">Job Profile</label>
+      <input type="text" id="jobProfile" name="Job Profile" readonly />
 
-  <script>
-    // Navbar scroll effect & Back to top
-    window.addEventListener("scroll", () => {
-      const navbar = document.getElementById("navbar");
-      if (window.scrollY > 50) navbar.classList.add("scrolled");
-      else navbar.classList.remove("scrolled");
+      <label for="resume">Additional Message / Resume</label>
+      <textarea id="resume" name="Message" rows="4" placeholder="Add your message or resume details"></textarea>
 
-      document.getElementById("backToTop").style.display = window.scrollY > 200 ? "block" : "none";
-    });
-    document.getElementById("backToTop").addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+      <input type="submit" value="Submit Application" />
+    </form>
+  </div>
+</main>
 
-    // Carousel JS
-    const images = document.querySelectorAll("#careerCarousel img");
-    const titles = ["Arts", "Science", "Commerce"];
-    const descs = [
-      "Humanities or Arts offer diverse career options like Journalism, Literature, Social Work, and Teaching.",
-      "Science stream offers opportunities in Engineering, IT, Medical, and Research fields.",
-      "Commerce stream leads to careers in Accounting, Finance, and Business Management."
-    ];
-    let index = 0;
-    setInterval(() => {
-      images[index].classList.remove("active");
-      index = (index + 1) % images.length;
-      images[index].classList.add("active");
-      document.getElementById("carousel-title").innerText = titles[index];
-      document.getElementById("carousel-desc").innerText = descs[index];
-    }, 5000);
-  </script>
-</body>
-</html>
+<footer>
+  <div>© 2025 Cloudswap Infotech. All Rights Reserved.</div>
+  <div class="social-icons" style="margin-top: 0.5rem;">
+    <a href="https://www.facebook.com/profile.php?id=61577852488083" target="_blank" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.95v-7.05h-2v-2.9h2v-2.2c0-2 1.18-3.1 3-3.1.87 0 1.65.06 1.88.09v2.18h-1.3c-1.02 0-1.2.5-1.2 1.16v1.9h2.54l-.4 2.9h-2.14V22A10 10 0 0022 12z"/></svg>
+    </a>
+    <a href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09" target="_blank" aria-label="X Twitter">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23 3c-1 .5-2 .8-3 1v.2c1-.2 2-.5 3-1zm-6 7c-4 0-7.5-3-7.5-6.8 0-.3 0-.5 0-.8-3 1.7-5 4.8-5 8.6 0 5 4 9 9 9 4.3 0 7.8-3 8.4-6.9v-.3l-2.9 1.3v.1c.2 1.5 0 3.5-2.2 3.5-1.8 0-2.7-1.6-2.7-3.4v-2c.5 0 1 0 1.5-.1 0-.3 0-.6 0-1 0-1 .2-1.4 1-1.4 1 0 1.8.8 1.8 2v1z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/cloudswapinfotech?" target="_blank" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-2.7 0-4.9 2.2-4.9 4.9v10.2c0 2.7 2.2 4.9 4.9 4.9h10.2c2.7 0 4.9-2.2 4.9-4.9V7c0-2.7-2.2-4.9-4.9-4.9H7.5zm0 2h10.2c1.6 0 2.9 1.3 2.9 2.9v10.2c0 1.6-1.3 2.9-2.9 2.9H7.5c-1.6 0-2.9-1.3-2.9-2.9V7c0-1.6 1.3-2.9 2.9-2.9zm5.1 3a4.6 4.6 0 100 9.3 4.6 4.6 0 000-9.3zm0 2a2.6 2.6 0 110 5.2 2.6 2.6 0 010-5.2zm4.3-.8a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info" target="_blank" aria-label="LinkedIn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.98 3a2.5 2.5 0 100 5.001 2.5 2.5 0 000-5zM2 21h6v-9H2v9zm7.5 0H15V13c0-2.4 3-2.6 3 0v8h4v-11c0-4-4.47-3.9-6.34-1.9V9h-5v12z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<!-- Floating Quick Links Button -->
+<div id="quickLinksBtn" title="Quick Links" aria-label="Quick Links">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/></svg>
+</div>
+<div id="quickLinksMenu" aria-hidden="true">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="services.html">Services</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="careers.html">Careers</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<script>
+  // Floating quick links toggle
+  const quickBtn = document.getElementById('quickLinksBtn');
+  const quickMenu = document.getElementBy

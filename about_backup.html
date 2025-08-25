@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cloudswap Infotech Pvt Ltd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&family=Playfair+Display:700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <style>
+    :root {
+      --primary-blue: #6bdaff;
+      --primary-green: #b7ffc5;
+      --background: #f5fcff;
+      --accent: #caf0ff;
+      --card-shadow: 0 8px 32px 0 rgba(100,255,200,0.25);
+      --glass-bg: rgba(200,255,245,0.5);
+      --nav-bg: linear-gradient(90deg, #caf0ff 0%, #b7ffc5 100%);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: var(--background);
+    }
+
+    header {
+      background: var(--nav-bg);
+      box-shadow: 0 3px 15px rgba(110,210,255,0.14);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 3%;
+    }
+    nav .logo img {
+      height: 60px;
+      filter: drop-shadow(0 4px 10px #6bdaff66);
+      transition: transform 0.2s;
+    }
+    nav .logo img:hover {
+      transform: scale(1.05);
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+    }
+    nav .nav-links a,
+    .dropdown .dropbtn {
+      color: #30838e;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: .45rem 1rem;
+      border-radius: 15px;
+      background: transparent;
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+    }
+    nav .nav-links a:hover,
+    .dropdown-content a:hover {
+      background: var(--primary-green);
+      color: #fff;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+    .dropdown .dropbtn:after {
+      content: '▼';
+      font-size: 0.7em;
+      margin-left: 7px;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: var(--glass-bg);
+      box-shadow: var(--card-shadow);
+      min-width: 220px;
+      border-radius: 15px;
+      top: 110%;
+      left: 0;
+      z-index: 20;
+      backdrop-filter: blur(7px);
+      padding: 0.8rem 0;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.6rem 1.1rem;
+      color: #31839e;
+      text-decoration: none;
+      font-size: 0.98rem;
+    }
+    .dropdown-content a i {
+      margin-right: 8px;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .nav-links .dropdown:hover .dropbtn {
+      background: var(--primary-blue);
+      color: #fff;
+    }
+    /* 3D Hero Section */
+    .hero {
+      background: linear-gradient(120deg, #b7ffc588 0%, #caf0ff98 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 320px;
+      position: relative;
+      margin-bottom: -40px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #22757e;
+      margin-bottom: 0.6rem;
+      text-shadow: 0 8px 18px #92e8ff33;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .hero p {
+      font-size: 1.4rem;
+      color: #31839e;
+      background: rgba(255,255,255,0.55);
+      border-radius: 7px;
+      padding: 0.3rem 1.4rem;
+      box-shadow: 0 2px 10px #caf0ff21;
+      margin-top: 0;
+    }
+    .breadcrumb {
+      display: flex;
+      gap: 8px;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+    .breadcrumb a {
+      color: #53bdb7;
+      text-decoration: none;
+      font-weight: 600;
+      background: var(--accent);
+      border-radius: 6px;
+      padding: 0 9px;
+      transition: background 0.2s;
+    }
+    .breadcrumb a:hover {
+      background: var(--primary-blue);
+      color: white;
+    }
+    .breadcrumb .active {
+      color: #337ad2;
+      background: transparent;
+      font-weight: bold;
+    }
+
+    /* About Card Section */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 55px;
+      margin: 50px auto 10px;
+      max-width: 1100px;
+      background: var(--glass-bg);
+      border-radius: 32px;
+      box-shadow: var(--card-shadow);
+      padding: 45px 3vw;
+      backdrop-filter: blur(12px);
+      position: relative;
+    }
+    .about-img {
+      width: 340px;
+      height: 340px;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px #b7ffc566, 0 1.2px 9px #caf0ff28;
+      background: linear-gradient(135deg,#caf0ff 60%,#b7ffc5 100%);
+    }
+    .about-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: 22px;
+      box-shadow: 0 0px 25px #caf0ff19;
+    }
+    .about-exp {
+      position: absolute;
+      bottom: 14px; left: 20px;
+      background: rgba(30,180,138,0.44);
+      color: #fff;
+      padding: 7px 20px 7px 10px;
+      border-radius: 13px 13px 13px 13px/13px 13px 14px 14px;
+      box-shadow: 0 4px 20px #8ef6e766;
+      font-weight: bold;
+      font-size: 1.12rem;
+      letter-spacing: 0.8px;
+    }
+    .about-desc {
+      flex: 1;
+      min-width: 320px;
+      max-width: 550px;
+    }
+    .about-desc h2 {
+      color: #2ebfa7;
+      letter-spacing: 1.7px;
+      font-size: 2.15rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 8px #b7ffc566;
+    }
+    .about-desc h3 {
+      color: #1c799b;
+      font-size: 1.32rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+    .about-desc p {
+      font-size: 1.09rem;
+      line-height: 1.7;
+      color: #186573;
+      margin-bottom: 1rem;
+    }
+    .highlight {
+      background: linear-gradient(120deg,#caf0ff 15%,#b7ffc5 70%);
+      box-shadow: 0 1px 15px #caf0ff22;
+      border-radius: 7px;
+      color: #22757e;
+      padding: 2px 7px 0 7px;
+      font-weight: 600;
+    }
+
+    /* 3D Counter Cards */
+    .counter-row {
+      display: flex; flex-wrap: wrap;
+      justify-content: center;
+      gap: 22px;
+      margin: 55px auto 40px;
+      max-width: 1100px;
+    }
+    .counter-item {
+      background: linear-gradient(149deg,#caf0ffbb 30%,#b7ffc5bb 100%);
+      border-radius: 26px;
+      box-shadow: 0 8px 27px #b7ffc543;
+      text-align: center;
+      padding: 30px 20px;
+      min-width: 220px;
+      min-height: 212px;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .counter-item:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 18px 42px #caf0ff77;
+      background: linear-gradient(149deg,#b7ffc5bb 60%,#caf0ffbb 100%);
+    }
+    .counter-item-icon {
+      margin-bottom: 13px;
+      color: #37c9e9;
+    }
+    .counter-item-icon i {
+      text-shadow: 0 10px 16px #b7ffc555;
+      filter: drop-shadow(0 2px 12px #caf0ff36);
+    }
+    .counter-item h4 {
+      color: #186573;
+      margin: 12px 0 12px;
+      font-size: 1.12rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .counter-counting {
+      font-size: 2.11rem;
+      font-weight: bold;
+      color: #22757e;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    /* Features Grid with 3D Cards */
+    .features-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 45px auto 65px;
+      justify-content: center;
+      max-width: 1200px;
+    }
+    .feature-card {
+      background: linear-gradient(120deg,#b7ffc5 40%, #caf0ff 100%);
+      border-radius: 21px;
+      box-shadow: 0 8px 28px #caf0ff44;
+      min-width: 225px;
+      max-width: 245px;
+      flex: 1 1 225px;
+      padding: 32px 20px 25px 20px;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+      position: relative;
+      cursor: pointer;
+    }
+    .feature-card:hover {
+      box-shadow: 0 24px 44px #b7ffc577;
+      background: linear-gradient(109deg, #caf0ff 40%, #b7ffc5 100%);
+      transform: translateY(-8px) scale(1.04);
+    }
+    .feature-icon {
+      font-size: 2.7rem;
+      color: #22757e;
+      margin-bottom: 1.1rem;
+      text-shadow: 0 6px 20px #b7ffc566;
+    }
+    .feature-title {
+      font-size: 1.14rem;
+      color: #186573;
+      font-weight: bold;
+      margin-bottom: 7px;
+      letter-spacing: 1px;
+    }
+    .feature-desc {
+      font-size: 0.98rem;
+      color: #2ebfa7;
+      margin-bottom: 0;
+    }
+
+    /* Footer & Copyright */
+    footer {
+      background: linear-gradient(90deg,#caf0ff 0%,#b7ffc5 100%);
+      box-shadow: 0 -4px 18px #caf0ff44;
+      margin-top: 55px;
+      padding: 1.7rem 0;
+      border-radius: 35px 35px 0 0 / 40px 40px 0 0;
+      text-align: center;
+    }
+    footer .footer-title {
+      color: #288671;
+      font-weight: bold;
+      font-size: 1.15rem;
+      letter-spacing: 1.2px;
+      margin-bottom: 6px;
+      font-family: 'Playfair Display', serif;
+    }
+    footer .footer-contact,
+    footer .footer-social {
+      color: #186573;
+      margin-bottom: 7px;
+      font-size: 0.97rem;
+    }
+    .footer-social a {
+      margin: 0 8px;
+      color: #22757e;
+      font-size: 1.15rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-social a:hover {
+      color: #186573;
+    }
+    .copyright {
+      text-align: center;
+      padding: 0.7rem 0;
+      font-size: 0.97rem;
+      background: #caf0ff28;
+      color: #288682;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 34px;
+      right: 36px;
+      z-index: 300;
+      font-size: 1.4rem;
+      background: linear-gradient(120deg,#caf0ff 15%,#b7ffc5 85%);
+      border: none;
+      border-radius: 50%;
+      width: 54px;
+      height: 54px;
+      box-shadow: 0 7px 31px #caf0ff43;
+      color: #22757e;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.13s;
+      outline: none;
+      opacity: 0.94;
+    }
+    .back-to-top:hover {
+      box-shadow: 0 10px 37px #b7ffc552;
+      background: linear-gradient(120deg,#b7ffc5 15%,#caf0ff 85%);
+      color: #186573;
+      transform: scale(1.09) translateY(-4px);
+      opacity: 1;
+    }
+    /* Responsive styles */
+    @media (max-width: 950px) {
+      .about {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 95vw;
+        padding: 22px 2vw;
+      }
+      .about-img {
+        margin: 0 auto 18px auto;
+      }
+      .counter-row,
+      .features-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <div class="logo">
+      <img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo">
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <div class="dropdown">
+        <span class="dropbtn">About</span>
+        <div class="dropdown-content">
+          <a href="about.html"><i class="fas fa-address-card"></i> About Us</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <span class="dropbtn">Services</span>
+        <div class="dropdown-content">
+          <a href="Web Development.html"><i class="fas fa-code"></i> Web Development</a>
+          <a href="Interface Design.html"><i class="fas fa-pencil-ruler"></i> Interface Design</a>
+          <a href="Business Consulting.html"><i class="fas fa-briefcase"></i> Business Consulting</a>
+          <a href="gis_services.html"><i class="fas fa-map-marked-alt"></i> GIS Services</a>
+          <a href="App_Development.html"><i class="fas fa-mobile-alt"></i> App Development</a>
+          <a href="Content_Creation.html"><i class="fas fa-pen"></i> Content Creation</a>
+          <a href="Branding.html"><i class="fas fa-bullhorn"></i> Branding</a>
+          <a href="gps_services.html"><i class="fas fa-location-arrow"></i> GPS Services</a>
+          <a href="Software TestingS.html"><i class="fas fa-bug"></i> Software Testing</a>
+          <a href="UI UX Design.html"><i class="fas fa-palette"></i> UI/UX Design</a>
+          <a href="24_7_Service.html"><i class="fas fa-clock"></i> 24/7 Service</a>
+        </div>
+      </div>
+      <a href="blog.html">Blogs & News</a>
+      <div class="dropdown">
+        <span class="dropbtn">Projects</span>
+        <div class="dropdown-content">
+          <a href="Web Design.html"><i class="fas fa-paint-brush"></i> Web Design</a>
+          <a href="Cyber Security.html"><i class="fas fa-shield-alt"></i> Cyber Security</a>
+          <a href="Mobile Information.html"><i class="fas fa-mobile-alt"></i> Mobile Information</a>
+          <a href="Web developmentP.html"><i class="fas fa-code"></i> Web Development</a>
+          <a href="Software Testing.html"><i class="fas fa-vials"></i> Software Testing</a>
+          <a href="Digital Marketing.html"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+          <a href="Keyword Research.html"><i class="fas fa-search"></i> Keyword Research</a>
+        </div>
+      </div>
+      <a href="Careers.html">Careers</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>About Us</h1>
+  <p>Discover Cloudswap Infotech’s journey and values.</p>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <a href="about.html">About</a>
+    <span>/</span>
+    <span class="active">About Us</span>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-img">
+    <img src="assets/images/About_1.jpg" alt="About Image">
+    <div class="about-exp">04 Years Experience</div>
+  </div>
+  <div class="about-desc">
+    <h2>Committed to Quality, Driven by Excellence.</h2>
+    <h3>Who We Are</h3>
+    <p>
+      At <span class="highlight">Cloudswap Infotech Pvt Ltd</span>, we are a global leader in IT, consulting, and business process services. We leverage advanced technologies such as cognitive computing, hyper-automation, robotics, cloud, and analytics to empower clients in the digital age. Renowned for our diverse service portfolio, sustainability focus, and corporate responsibility, we are committed to driving innovation and transformative change, shaping a bold future through collaboration and technology.
+    </p>
+  </div>
+</section>
+
+<!-- Counter Section -->
+<div class="counter-row">
+  <div class="counter-item" title="Happy Clients">
+    <div class="counter-item-icon">
+      <i class="fas fa-thumbs-up fa-3x"></i>
+    </div>
+    <h4>Happy Clients</h4>
+    <div class="counter-counting">
+      <span id="clients-counter">91</span>+
+    </div>
+  </div>
+  <div class="counter-item" title="Ongoing Projects">
+    <div class="counter-item-icon">
+      <i class="fas fa-smile fa-3x"></i>
+    </div>
+    <h4>Ongoing Projects</h4>
+    <div class="counter-counting">
+      <span id="projects-counter">22</span>+
+    </div>
+  </div>
+  <div class="counter-item" title="Employees">
+    <div class="counter-item-icon">
+      <i class="fas fa-users fa-3x"></i>
+    </div>
+    <h4>Employees</h4>
+    <div class="counter-counting">
+      <span id="employees-counter">50</span>+
+    </div>
+  </div>
+  <div class="counter-item" title="Years Experience">
+    <div class="counter-item-icon">
+      <i class="fas fa-heart fa-3x"></i>
+    </div>
+    <h4>Years Experience</h4>
+    <div class="counter-counting">
+      <span id="experience-counter">06</span>+
+    </div>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="features-row">
+  <div class="feature-card">
+    <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+    <div class="feature-title">Innovation and Technology</div>
+    <div class="feature-desc">
+      Lead in developing cutting-edge solutions, whether in software development, hardware advancements, or technological services.
+    </div>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon"><i class="fas fa-globe"></i></div>
+    <div class="feature-title">Global Reach & Impact</div>
+    <div class="feature-desc">
+      Products and services transcend boundaries, impacting how businesses and individuals operate.
+    </div>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon"><i class="fas fa-yin-yang"></i></div>
+    <div class="feature-title">Human Capital & Skills</div>
+    <div class="feature-desc">
+      Building a strong workforce and culture of continuous learning, empowering talent.
+    </div>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon"><i class="fas fa-atom"></i></div>
+    <div class="feature-title">Challenges & Opportunities</div>
+    <div class="feature-desc">
+      Facing challenges like talent attraction, retention, skill gaps, and diversity.
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-title">Cloudswap Infotech Pvt Ltd</div>
+  <div class="footer-contact">
+    Office: 123 Business Lane, Pune, India | Email: contact@cloudswapinfotech.com | Phone: +91-8793501997
+  </div>
+  <div class="footer-social">
+    <a href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09" title="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.facebook.com/profile.php?id=61577852488083" title="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/cloudswapinfotech?igsh=YmZudzUzNmg5dzl1" title="Instagram"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
+<div class="copyright">
+  &copy; Cloudswap Infotech, All Rights Reserved.<br>
+  Designed By <span style="color:#22757e;font-weight:bold;">Cloudswap Infotech</span>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Back to Top">
+  <i class="fa fa-arrow-up"></i>
+</button>
+
+<script>
+  // Simple counter animation for main stats
+  function animateCounter(elementId, target, duration) {
+    var el = document.getElementById(elementId);
+    var start = 0;
+    var range = target - start;
+    var timeStep = Math.abs(Math.floor(duration / range));
+    var curr = start;
+    var timer = setInterval(function() {
+      curr += 1;
+      el.innerText = curr < 10 ? "0" + curr : curr;
+      if(curr >= target) clearInterval(timer);
+    }, timeStep);
+    el.innerText = curr < 10 ? "0" + curr : curr;
+  }
+  window.onload = function() {
+    animateCounter('clients-counter', 110, 1100);
+    animateCounter('projects-counter', 20, 700);
+    animateCounter('employees-counter', 250, 1500);
+    animateCounter('experience-counter', 6, 800);
+  };
+  // Navbar mobile toggle
+  // For full SPA, you could add mobile menu JS here, but for brevity, using simple 'hover' dropdowns as above.
+
+  // Optional: Add 3D hover effect to feature cards
+  document.querySelectorAll('.feature-card').forEach(card => {
+    card.addEventListener('mousemove', function(e){
+      const x = e.offsetX / card.offsetWidth;
+      const y = e.offsetY / card.offsetHeight;
+      card.style.transform = `scale(1.04) rotateY(${(x - 0.5) * 10}deg) rotateX(${-(y - 0.5) * 10}deg)`;
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = '';
+    });
+  });
+</script>
+</body>
+</html>

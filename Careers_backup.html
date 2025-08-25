@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers | Cloudswap Infotech</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Global */
+    body { margin:0; font-family:"Poppins", sans-serif; background:#f0fdf4; color:#1a202c; }
+    a { text-decoration:none; color:inherit; }
+
+    /* Navbar */
+    nav {
+      position:fixed; top:0; left:0; width:100%; background:rgba(173, 216, 230,0.9);
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 5%; z-index:1000; transition:0.3s;
+    }
+    nav.scrolled { background:#81e6d9; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+    nav a { margin:0 12px; font-weight:600; color:#034d52; transition:0.3s; }
+    nav a:hover { color:#065f46; }
+    nav img { height:40px; }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.4)), url('assets/images/career.png') center/cover no-repeat;
+      height:70vh; display:flex; justify-content:center; align-items:center; text-align:center;
+      color:#fff; padding:20px; margin-top:60px;
+    }
+    .hero h1 { font-size:2.5rem; margin-bottom:15px; text-shadow:2px 2px 8px rgba(0,0,0,0.6); }
+    .hero p { font-size:1rem; max-width:600px; margin:auto; }
+
+    /* Sections */
+    section { padding:60px 5%; }
+    section h2 { text-align:center; font-size:2rem; margin-bottom:30px; color:#065f46; }
+    section p.centered { text-align:center; max-width:800px; margin:auto; font-size:1rem; line-height:1.5; }
+
+    /* Carousel */
+    .carousel { position:relative; overflow:hidden; border-radius:15px; max-width:100%; margin:auto; }
+    .carousel img { width:100%; display:none; object-fit:cover; height:auto; border-radius:15px; }
+    .carousel img.active { display:block; }
+    .carousel-caption { position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+      background:rgba(255,255,255,0.9); padding:10px 15px; border-radius:10px; width:90%; text-align:center; }
+    .carousel-caption h3 { color:#065f46; margin-bottom:5px; font-size:1.2rem; }
+    .carousel-caption p { font-size:0.9rem; margin:0; }
+
+    /* Job Cards */
+    .card-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .card { background:#e6fffa; border-radius:12px; overflow:hidden; box-shadow:0 6px 12px rgba(0,0,0,0.08);
+            transition:transform 0.3s ease; }
+    .card:hover { transform:translateY(-6px); }
+    .card img { width:100%; height:180px; object-fit:cover; }
+    .card-content { padding:15px; }
+    .card-content h3 { margin:0; color:#0d9488; font-size:1.2rem; }
+    .card-content p { margin:4px 0; font-size:0.9rem; }
+    .card-content a { display:inline-block; margin-top:10px; padding:8px 18px; background:#38b2ac;
+                      color:white; border-radius:20px; font-weight:600; font-size:0.9rem; transition:0.3s; }
+    .card-content a:hover { background:#0d9488; }
+
+    /* Footer */
+    footer { background:#2c7a7b; color:white; text-align:center; padding:20px 5%; }
+    footer a { color:#bbf7d0; }
+    footer a:hover { text-decoration:underline; }
+
+    /* Back to Top */
+    .back-to-top { position:fixed; bottom:20px; right:20px; background:#38b2ac; color:white;
+                   padding:10px; border-radius:50%; font-size:16px; display:none; cursor:pointer; }
+    .back-to-top:hover { background:#0d9488; }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .hero h1{ font-size:2rem; }
+      .hero p{ font-size:0.9rem; }
+      section h2{ font-size:1.6rem; }
+      .carousel-caption h3{ font-size:1rem; }
+      .carousel-caption p{ font-size:0.85rem; }
+      .card img{ height:150px; }
+      .card-content h3{ font-size:1rem; }
+      .card-content p{ font-size:0.85rem; }
+      .card-content a{ padding:6px 14px; font-size:0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="#"><img src="assets/images/logo_CSIT.png" alt="Logo"></a>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="Jobs Openings.html">Job Openings</a>
+      <a href="loginpage.html">Login</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div>
+      <h1>Careers at Cloudswap</h1>
+      <p>Choose the right path for your future. Explore opportunities in Science, Commerce, and Arts to build a successful career.</p>
+    </div>
+  </div>
+
+  <!-- Info Section -->
+  <section>
+    <h2>Which Field to Choose?</h2>
+    <p class="centered">
+      The biggest decision post class 10 is picking the right stream. Science offers engineering, IT, medical, and research. Commerce leads to Chartered Accountancy, Investment Banking, and Finance roles. Arts students can pursue Journalism, Literature, Social Work, Teaching, and more.
+    </p>
+  </section>
+
+  <!-- Carousel -->
+  <section>
+    <div class="carousel" id="careerCarousel">
+      <img src="assets/images/slide1.jpeg" class="active" alt="Arts">
+      <img src="assets/images/slide2.jpeg" alt="Science">
+      <img src="assets/images/slide3.jpeg" alt="Commerce">
+      <div class="carousel-caption">
+        <h3 id="carousel-title">Arts</h3>
+        <p id="carousel-desc">Humanities or Arts offer diverse career options like Journalism, Literature, Social Work, and Teaching.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apply Section -->
+  <section>
+    <h2>Apply Here</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="assets/images/card11.jpeg" alt="Web Developer">
+        <div class="card-content">
+          <h3>Web Developer</h3>
+          <p><strong>Company:</strong> Cloudswap Infotech</p>
+          <p><strong>Location:</strong> Pune</p>
+          <p><strong>Description:</strong> Frontend & Backend development</p>
+          <a href="Jobs Openings.html">Apply Now</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/images/card22.jpeg" alt="Graphic Designer">
+        <div class="card-content">
+          <h3>Graphic Designer</h3>
+          <p><strong>Company:</strong> Cloudswap Infotech Technologies</p>
+          <p><strong>Location:</strong> Nagpur</p>
+          <p><strong>Description:</strong> UI/UX & Branding</p>
+          <a href="Jobs Openings.html">Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <a href="https://www.cloudswapinfotech.com/">Cloudswap Infotech</a>, All Rights Reserved.</p>
+    <p>Designed By <a href="https://www.CloudswapInfotech.com/">Cloudswap Infotech</a></p>
+  </footer>
+
+  <!-- Back to Top -->
+  <div class="back-to-top" id="backToTop"><i class="fa fa-arrow-up"></i></div>
+
+  <script>
+    // Navbar scroll effect & Back to top
+    window.addEventListener("scroll", () => {
+      const navbar = document.getElementById("navbar");
+      if (window.scrollY > 50) navbar.classList.add("scrolled");
+      else navbar.classList.remove("scrolled");
+
+      document.getElementById("backToTop").style.display = window.scrollY > 200 ? "block" : "none";
+    });
+    document.getElementById("backToTop").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Carousel JS
+    const images = document.querySelectorAll("#careerCarousel img");
+    const titles = ["Arts", "Science", "Commerce"];
+    const descs = [
+      "Humanities or Arts offer diverse career options like Journalism, Literature, Social Work, and Teaching.",
+      "Science stream offers opportunities in Engineering, IT, Medical, and Research fields.",
+      "Commerce stream leads to careers in Accounting, Finance, and Business Management."
+    ];
+    let index = 0;
+    setInterval(() => {
+      images[index].classList.remove("active");
+      index = (index + 1) % images.length;
+      images[index].classList.add("active");
+      document.getElementById("carousel-title").innerText = titles[index];
+      document.getElementById("carousel-desc").innerText = descs[index];
+    }, 5000);
+  </script>
+</body>
+</html>
