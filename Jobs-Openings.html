@@ -1,963 +1,1190 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobs</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css\bootstrap.min.css">
-    <link rel="stylesheet" href="css\style.css">
-    <style>
-        /* General Styles */
-        .container1 {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-        }
-
-        .info-section {
-            flex: 1;
-            padding-right: 20px;
-        }
-
-        .info-section h2 {
-            color: #f3f3f3;
-        }
-
-        .info-section p {
-            line-height: 1.6;
-        }
-
-        .info-section ul {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-
-        .info-section ul li {
-            margin-bottom: 5px;
-        }
-
-        .info-section a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .info-section a:hover {
-            text-decoration: underline;
-        }
-
-        .image-section {
-            flex: 1;
-        }
-
-        .image-section img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        body {
-
-
-
-            background: #1A1A2E;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        header {
-            background: #002D62;
-            /* Dark blue header */
-            color: white;
-            padding: 20px;
-            text-align: center;
-            animation: slideDown 1s ease-out;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        .search-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 20px 0;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        .search-container input,
-        .search-container select {
-            padding: 10px;
-            width: 200px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .search-container button {
-            padding: 10px 20px;
-            border: none;
-            background: #f39c12;
-            color: white;
-            border-radius: 5px;
-            cursor: not-allowed;
-            transition: background 0.3s ease;
-        }
-
-        .search-container button.enabled {
-            cursor: pointer;
-            background: #f39c12;
-        }
-
-        .search-container button.enabled:hover {
-            background: #e67e22;
-        }
-
-        #jobs {
-            padding: 20px;
-        }
-
-        .job-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            /* 3 columns */
-            grid-template-rows: repeat(3, 1fr);
-            /* 3 rows */
-            gap: 20px;
-        }
-
-        .job-card {
-            background: rgb(255, 255, 255);
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transform: scale(0.95);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .job-card:hover {
-            transform: scale(1);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .job-card h3 {
-            margin: 10px 0;
-            color: #333;
-        }
-
-        .job-card p {
-            margin: 10px 0;
-            color: #555;
-        }
-
-        .job-card a {
-            text-decoration: none;
-            color: #002D62;
-            font-weight: bold;
-        }
-
-        .job-card a:hover {
-            text-decoration: underline;
-        }
-
-
-
-        /* Center the modal on the page */
-        .modal {
-            display: none;
-            /* Hide modal by default */
-            justify-content: center;
-            /* Horizontally center */
-            align-items: center;
-            /* Vertically center */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Semi-transparent background */
-            z-index: 1000;
-        }
-
-        /* Show the modal when it's active */
-        .modal.active {
-            display: flex;
-            /* Show modal when it has the "active" class */
-        }
-
-        /* Adjust the size and centering of the modal content */
-        .modal-content {
-            background: #fff;
-            padding: 30px 40px;
-            /* Increased padding for better spacing */
-            width: 600px;
-            /* Adjusted form width */
-            max-width: 90%;
-            /* Ensure form is responsive */
-            border-radius: 10px;
-            /* Add rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: relative;
-            text-align: left;
-            /* Keep form content aligned left */
-        }
-
-
-        /* Form styling */
-        .form-row {
-            display: flex;
-            gap: 20px;
-            /* Increase gap for better spacing between fields */
-            margin-bottom: 20px;
-            /* Increase spacing between rows */
-        }
-
-        .form-group {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            margin-bottom: 5px;
-            font-weight: bold;
-            /* Make labels stand out */
-        }
-
-        input {
-            padding: 10px;
-            /* Adjust padding for inputs */
-            font-size: 16px;
-            /* Make input text larger */
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            /* Ensure inputs take full width of their container */
-        }
-
-        /* Button styles */
-        .modal button {
-            display: block;
-            margin: 20px auto 0;
-            padding: 10px 20px;
-            border: none;
-            background: #f39c12;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .modal button:hover {
-            background: #e67e22;
-        }
-
-        /* Header styling */
-        .modal-header h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #002D62;
-            font-size: 24px;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        .heading {
-            font-size: 2em;
-            margin-top: 20px;
-            text-align: center;
-            color: #e5e9ed;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .job-cards {
-                grid-template-columns: repeat(2, 1fr);
-                /* 2 columns */
-            }
-
-            .search-container input,
-            .search-container select,
-            .search-container button {
-                width: 100%;
-                /* Full width on small screens */
-            }
-
-            .modal-content {
-                width: 90%;
-            }
-
-            .job-card {
-                padding: 15px;
-            }
-
-            .search-container {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .job-cards {
-                grid-template-columns: 1fr;
-                /* 1 column on very small screens */
-            }
-
-            .search-container input,
-            .search-container select,
-            .search-container button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
-
-
-
-        /* Default styling for the image container */
-        .image-container {
-            position: relative;
-            width: 100%;
-            height: auto;
-            /* Makes the container fill the entire viewport height */
-        }
-
-        /* Styling for the image inside the container */
-        .image-container img {
-            width: 100%;
-            height: 50%;
-            /* Ensures the image fills the container's height */
-            object-fit: cover;
-            /* Makes sure the image covers the container without distorting */
-        }
-
-        /* Styling for the centered text */
-        .centered {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            /* Ensures the text is visible on the image */
-            font-size: 1.7em;
-            /* Increases the font size */
-            text-align: center;
-            /* Centers multi-line text */
-            line-height: 1.4;
-            /* Improves readability for multi-line text */
-        }
-
-        /* Default styling for the image container */
-        .image-container {
-            position: relative;
-            width: 100%;
-            /* Full width of its parent */
-            height: auto;
-            /* Maintain aspect ratio */
-            overflow: hidden;
-            /* Ensures content doesn't overflow the container */
-        }
-
-        .image-container img {
-            width: 100%;
-            /* Ensures the image fills the container */
-            height: auto;
-            /* Maintains the image aspect ratio */
-            object-fit: cover;
-            /* Ensures the image scales correctly */
-        }
-
-        /* Media Query for screens smaller than 1024px (medium laptops, tablets) */
-        @media (max-width: 1024px) {
-            .centered {
-                font-size: 1.6em;
-                /* Slightly reduces font size */
-                top: 42%;
-                /* Adjusts text position */
-            }
-
-            .image-container img {
-                height: 90%;
-                /* Scales down image for medium screens */
-            }
-        }
-
-        /* Media Query for screens smaller than 768px (tablets, small laptops) */
-        @media (max-width: 768px) {
-            .image-container img {
-                height: 80%;
-                /* Adjusts the image height for smaller screens */
-            }
-
-            .centered {
-                font-size: 1.5em;
-                /* Reduces font size */
-                top: 40%;
-                /* Adjusts the position of the centered text */
-            }
-        }
-
-        /* Media Query for screens smaller than 480px (smartphones) */
-        @media (max-width: 480px) {
-            .image-container {
-                padding: 10px;
-                /* Adds padding to avoid edge overflow */
-            }
-
-            .image-container img {
-                height: 70%;
-                /* Further reduces image height */
-                object-fit: contain;
-                /* Ensures the entire image is visible */
-            }
-
-            .centered {
-                font-size: 1.2em;
-                /* Further reduces font size */
-                top: 50%;
-                /* Adjusts text position */
-            }
-        }
-
-        /* Media Query for screens smaller than 320px (very small devices) */
-        @media (max-width: 320px) {
-            .centered {
-                font-size: 1em;
-                /* Makes text smaller for very small screens */
-                top: 30%;
-                /* Adjusts position further */
-            }
-
-            .modal-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .close-button {
-                font-size: 24px;
-                cursor: pointer;
-                color: #ff0000;
-            }
-
-            .close-button:hover {
-                color: #cc0000;
-            }
-        }
-    </style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Job Openings - Cloudswap Infotech</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Inline CSS: aligned with new site (header, hero, quick links, white/blue theme) -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    :root {
+      --bg-page: #f5f7ff;
+      --bg-header: #020617;
+      --bg-footer: #020617;
+      --bg-card: #ffffff;
+      --bg-accent: #2563eb;
+      --bg-accent-dark: #1d4ed8;
+      --text-main: #020617;
+      --text-muted: #4b5563;
+      --text-light: #f9fafb;
+      --border-soft: #d1d5db;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.12);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg-page);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header / nav same style as new index/careers */
+    .site-header {
+      background: var(--bg-header);
+      color: var(--text-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.6);
+    }
+
+    .site-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-logo img {
+      height: 48px;
+      display: block;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .main-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--bg-accent);
+      transition: width 0.25s ease;
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    .main-nav a.active {
+      color: var(--bg-accent);
+    }
+
+    @media (max-width: 768px) {
+      .site-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .main-nav ul {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+    }
+
+    /* Hero carousel reused pattern */
+    .hero-carousel {
+      background: linear-gradient(120deg, #0b1120, #1e293b);
+      padding: 1.5rem 0 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .carousel {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+      background: #020617;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+      color: var(--text-light);
+    }
+
+    .carousel-slide img {
+      display: block;
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+    }
+
+    .carousel-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .carousel-text {
+      font-size: 0.95rem;
+      color: #e5e7eb;
+    }
+
+    .carousel-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(15, 23, 42, 0.6);
+      color: #e5e7eb;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-control:hover {
+      background: rgba(37, 99, 235, 0.9);
+    }
+
+    .carousel-control.prev {
+      left: 12px;
+    }
+
+    .carousel-control.next {
+      right: 12px;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(148, 163, 184, 0.8);
+      cursor: pointer;
+    }
+
+    .carousel-dot.active {
+      background: #38bdf8;
+    }
+
+    /* Layout */
+    .page-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+      width: 100%;
+    }
+
+    .page-hero {
+      padding: 2rem 1rem 1rem;
+      text-align: center;
+    }
+
+    .page-hero-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--bg-header);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .page-content-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      box-shadow: var(--shadow-soft);
+      padding: 1.75rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Job search + grid (adapted from your styles) */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 0 1.5rem;
+    }
+
+    .search-container input,
+    .search-container select {
+      padding: 0.6rem 0.75rem;
+      width: 220px;
+      border-radius: 6px;
+      border: 1px solid var(--border-soft);
+      font-size: 0.95rem;
+      background: #f9fafb;
+    }
+
+    .search-container button {
+      padding: 0.6rem 1.4rem;
+      border: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      background: #9ca3af;
+      cursor: not-allowed;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .search-container button.enabled {
+      background: var(--bg-accent);
+      cursor: pointer;
+    }
+
+    .search-container button.enabled:hover {
+      background: var(--bg-accent-dark);
+      transform: translateY(-1px);
+    }
+
+    #jobs h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--bg-header);
+    }
+
+    .job-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .job-card {
+      background: #0f172a;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.45);
+      transform: scale(0.98);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: #e5e7eb;
+    }
+
+    .job-card:hover {
+      transform: scale(1);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.6);
+    }
+
+    .job-card h3 {
+      margin-bottom: 0.3rem;
+      color: #e5e7eb;
+      font-size: 1.05rem;
+    }
+
+    .job-card p {
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
+      color: #cbd5f5;
+    }
+
+    .job-card a {
+      display: inline-flex;
+      margin-top: 0.4rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .job-card a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1024px) {
+      .job-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .job-cards {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Apply modal */
+    .modal-backdrop-custom {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.55);
+      z-index: 1200;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-backdrop-custom.active {
+      display: flex;
+    }
+
+    .modal-content-custom {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.75rem 1.75rem 1.9rem;
+      width: 600px;
+      max-width: 92%;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+      position: relative;
+    }
+
+    .modal-header-custom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .modal-header-custom h2 {
+      font-size: 1.4rem;
+      color: #111827;
+    }
+
+    .close-button {
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #ef4444;
+      border: none;
+      background: transparent;
+      line-height: 1;
+    }
+
+    .close-button:hover {
+      color: #b91c1c;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      flex: 1;
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #374151;
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 0.6rem 0.75rem;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      width: 100%;
+    }
+
+    .form-group input[type="file"] {
+      padding: 0.4rem;
+      background: #f9fafb;
+    }
+
+    .modal-submit-btn {
+      display: block;
+      margin: 1rem auto 0;
+      padding: 0.75rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #f9fafb;
+      background: var(--bg-accent);
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.5);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .modal-submit-btn:hover {
+      background: var(--bg-accent-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Info section at bottom (converted to light card layout) */
+    .info-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+      align-items: center;
+    }
+
+    .info-text-block {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 16px;
+      padding: 1.5rem 1.5rem;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.6);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .info-text-block h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+      color: #e5e7eb;
+    }
+
+    .info-text-block h3 {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+      color: #e5e7eb;
+    }
+
+    .info-text-block ul {
+      margin-left: 1.2rem;
+      margin-top: 0.3rem;
+    }
+
+    .info-text-block li {
+      margin-bottom: 0.2rem;
+    }
+
+    .info-text-block a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .info-text-block a:hover {
+      text-decoration: underline;
+    }
+
+    .info-image-block img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.55);
+      object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+      .info-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Footer + quick links same pattern */
+    .site-footer {
+      margin-top: auto;
+      background: var(--bg-footer);
+      color: var(--text-light);
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    .site-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer-social {
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      color: var(--text-light);
+      font-size: 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-social a:hover {
+      color: #38bdf8;
+    }
+
+    .quick-links-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-accent);
+      color: var(--text-light);
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 12px 25px rgba(15, 23, 42, 0.4);
+      border: none;
+      z-index: 120;
+      font-size: 1.4rem;
+    }
+
+    .quick-links-btn:hover {
+      background: var(--bg-accent-dark);
+    }
+
+    .quick-links-menu {
+      position: fixed;
+      bottom: 94px;
+      right: 24px;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+      min-width: 180px;
+      display: none;
+      z-index: 110;
+    }
+
+    .quick-links-menu.active {
+      display: block;
+    }
+
+    .quick-links-menu a {
+      display: block;
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.35rem 0;
+    }
+
+    .quick-links-menu a:hover {
+      color: #38bdf8;
+    }
+
+    @media (max-width: 640px) {
+      .page-content-card {
+        padding: 1.25rem 1rem;
+      }
+
+      .carousel-slide img {
+        height: 210px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <!-- Header aligned with other pages -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo">
+        <img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo" />
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="Project.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="Jobs-Openings.html" class="active" aria-current="page">Job Openings</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Navbar & Hero Start -->
-    <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-            <a href="/" class="navbar-brand p-0">
-                <!-- <h1 class="text-primary"><i class="fas fa-hand-holding-water me-3"></i>Acuas</h1> -->
-                <img src="assets/images/logo_CSIT.png" alt="Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="Jobs Openings.html" class="nav-item nav-link ">Job Openings</a>
-                    <div class="text-center my-4">
-
-                        <a href="loginpage.html"> <button class="btn btn-secondary" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">
-                                Login</button> </a>
-
-                    </div>
-
-
-                </div>
-        </nav>
-
-        <div class="image-container">
-            <img src="assets/images/notepad.png" alt="Snow">
-            <div class="centered">
-                <h1 style="color: white;">Find The Perfect Job That You Deserve</h1>
+  <!-- Hero carousel (uses your notepad image as first slide) -->
+  <section class="hero-carousel">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="assets/images/notepad.png" alt="Find the perfect job" />
+          <div class="carousel-overlay">
+            <div class="carousel-title">Find The Perfect Job</div>
+            <div class="carousel-text">
+              Discover openings that match your skills, experience, and preferred locations.
             </div>
+          </div>
         </div>
-
-        <header>
-
-            <div class="search-container">
-                <input type="text" id="jobRole" placeholder="Search Job Role" oninput="checkFields()">
-
-                <select id="jobRole" onchange="checkFields()">
-                    <option value="">Select Experience</option>
-                    <option value="fresher">Fresher</option>
-                    <option value="1">1 Year</option>
-                    <option value="2">2 Years</option>
-                    <option value="3">3 Years</option>
-                    <option value="4">4 Years</option>
-                    <option value="5">5 Years</option>
-                    <option value="6">6 Years</option>
-                    <option value="7">7 Years</option>
-                    <option value="8">8 Years</option>
-                    <option value="9">9 Years</option>
-                    <option value="10">10 Years</option>
-                </select>
-
-                <select id="location" onchange="checkFields()">
-                    <option value="">Select Location</option>
-                    <option value="Mumbai">Mumbai</option>
-                    <option value="Pune">Pune</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Bangalore">Bangalore</option>
-                    <option value="Hyderabad">Hyderabad</option>
-                    <option value="Chennai">Chennai</option>
-                    <option value="Kolkata">Kolkata</option>
-                    <option value="Ahmedabad">Ahmedabad</option>
-                    <option value="Gurgaon">Gurgaon</option>
-                </select>
-                <button id="searchButton" class="disabled" onclick="searchJobs()" disabled>Search</button>
+        <div class="carousel-slide">
+          <img src="assets/images/hero-careers-2.jpg" alt="Team working in office" />
+          <div class="carousel-overlay">
+            <div class="carousel-title">Work With Expert Teams</div>
+            <div class="carousel-text">
+              Join Cloudswap Infotech and collaborate on real-world projects across domains.
             </div>
-        </header>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/hero-careers-3.jpg" alt="Students and interns working together" />
+          <div class="carousel-overlay">
+            <div class="carousel-title">Opportunities At Every Level</div>
+            <div class="carousel-text">
+              Explore roles from fresher positions to experienced professionals and specialists.
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <button type="button" class="carousel-control prev" aria-label="Previous slide">❮</button>
+      <button type="button" class="carousel-control next" aria-label="Next slide">❯</button>
 
+      <div class="carousel-dots" aria-hidden="true">
+        <button type="button" class="carousel-dot active"></button>
+        <button type="button" class="carousel-dot"></button>
+        <button type="button" class="carousel-dot"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main job search + list -->
+  <div class="page-wrapper">
+    <section class="page-hero">
+      <h1 class="page-hero-title">Job Openings</h1>
+      <p class="page-hero-subtitle">
+        Search by role and location, browse available profiles, and apply directly online.
+      </p>
+    </section>
+
+    <section class="page-content-card">
+      <div class="page-content">
         <section id="jobs">
-            <h2 style="text-align: center; color: white;">Available Job Profiles</h2>
+          <div class="search-container">
+            <input
+              type="text"
+              id="jobRoleInput"
+              placeholder="Search Job Role"
+              aria-label="Search job role"
+            />
 
-            <div class="job-cards" id="jobCards">
-                <!-- Job cards will be dynamically added here -->
-            </div>
+            <select id="experienceSelect" aria-label="Select experience">
+              <option value="">Select Experience</option>
+              <option value="fresher">Fresher</option>
+              <option value="1">1 Year</option>
+              <option value="2">2 Years</option>
+              <option value="3">3 Years</option>
+              <option value="4">4 Years</option>
+              <option value="5">5 Years</option>
+              <option value="6">6 Years</option>
+              <option value="7">7 Years</option>
+              <option value="8">8 Years</option>
+              <option value="9">9 Years</option>
+              <option value="10">10 Years</option>
+            </select>
+
+            <select id="locationSelect" aria-label="Select location">
+              <option value="">Select Location</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Pune">Pune</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Ahmedabad">Ahmedabad</option>
+              <option value="Gurgaon">Gurgaon</option>
+            </select>
+
+            <button id="searchButton" disabled>Search</button>
+          </div>
+
+          <h2>Available Job Profiles</h2>
+          <div class="job-cards" id="jobCards">
+            <!-- Job cards populated by JS -->
+          </div>
         </section>
+      </div>
+    </section>
 
-
-
-
-        <!-- Modal for applying -->
-        <div id="applyModal" class="modal" style="align-items: center; justify-items: center;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 style="color:#002D62">Apply for Job</h2>
-                    <span class="close-button" onclick="closeModal()"
-                        style="font-size: 24px; cursor: pointer; color: #ff0000;">&times;</span>
-
-                </div>
-                <form id="userForm" enctype="multipart/form-data">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name:</label>
-                            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name"
-                                required pattern="[A-Za-z\s]+"
-                                title="Only alphabetic characters and spaces are allowed.">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="lastName">Last Name:</label>
-                            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required
-                                pattern="[A-Za-z\s]+" title="Only alphabetic characters and spaces are allowed.">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Country:</label>
-                            <input type="text" id="country" name="country" placeholder="Enter your country" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="mobileNumber">Mobile Number:</label>
-                            <input type="number" id="mobileNumber" name="mobileNumber"
-                                placeholder="Enter your mobile number" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="position">Position:</label>
-                            <input type="text" id="position" name="position" placeholder="Enter your position" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="location">Location:</label>
-                            <input type="text" id="location" name="location" placeholder="Enter your location" required
-                                pattern="[A-Za-z\s]+" title="Only alphabetic characters and spaces are allowed.">
-                        </div>
-                        <div class="form-group">
-                            <label for="adminId">Admin ID:</label>
-                            <input type="number" id="adminId" name="adminId" value="1" placeholder="Please Enter admin ID 1"
-                                required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cv">CV:</label>
-                            <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
-                        </div>
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
+    <!-- Apply Modal -->
+    <div id="applyModal" class="modal-backdrop-custom" aria-hidden="true">
+      <div class="modal-content-custom">
+        <div class="modal-header-custom">
+          <h2>Apply for Job</h2>
+          <button class="close-button" type="button" aria-label="Close" onclick="closeModal()">&times;</button>
         </div>
-
-
-
-
-
-
-        <div class="container1">
-            <!-- Information Section -->
-            <div class="info-section" style="color: white;">
-                <h2 style="color: white;">Information</h2>
-                <p style="color: white;">Welcome to Cloudswap Infotech! We specialize in delivering cutting-edge
-                    solutions in Responsive Website Designing, Digital Consulting, Cyber Security, Application
-                    Development, Data Analysis, and Automation. Our approach ensures that every project is tailored to
-                    meet client needs with strategic planning, transparent communication, and timely execution.</p>
-
-                <!-- <p style="color: white;">Here's another paragraph with more information. You can also use this space to include links, call-to-actions, or other relevant content.</p> -->
-
-                <h3 style="color: white;">Additional Details</h3>
-                <ul style="color: white;">
-                    <li style="color: white;">Responsive Website Design – Crafting mobile-friendly, high-performance
-                        websites.</li>
-                    <li style="color: white;">Digital Consulting – Providing expert guidance to boost your digital
-                        presence.</li>
-                    <li style="color: white;">Cyber Security Solutions – Safeguarding your data and systems from cyber
-                        threats.</li>
-                    <li style="color: white;">Application Development – Developing scalable web and mobile applications.
-                    </li>
-                    <li style="color: white;">Data Analysis & Automation – Leveraging data insights and automation for
-                        efficiency.</li>
-                </ul>
-
-                <h3 style="color: white;">Contact Info</h3>
-                <p style="color: white;">If you'd like to reach out, please contact us at <br><br><a
-                        href="contact@cloudswapinfotech.com" style="color: white;">📧
-                        Email:<span class="__cf_email__" data-cfemail="">[email&#160;protected]</span></a>.</p>
-                <p>📞 Phone:+91-8793501997</p>
+        <form id="userForm" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name:</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                placeholder="Enter your first name"
+                required
+                pattern="[A-Za-z\\s]+"
+                title="Only alphabetic characters and spaces are allowed."
+              />
             </div>
-
-            <!-- Image Section (one image) -->
-            <div class="image-section">
-                <img src="assets/images/business-consulting2.jpg" alt="Image 1">
+            <div class="form-group">
+              <label for="lastName">Last Name:</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                placeholder="Enter your last name"
+                required
+                pattern="[A-Za-z\\s]+"
+                title="Only alphabetic characters and spaces are allowed."
+              />
             </div>
+          </div>
 
-
-
-        </div>
-
-
-
-        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-            // Job data with experience
-            const jobs = [
-                { role: "Software Engineer", location: "Mumbai", experience: "1-2 years", link: "#", icon: "fa-laptop-code" },
-                { role: "Data Analyst", location: "Pune", experience: "1-2 years", link: "#", icon: "fa-chart-bar" },
-                { role: "Web Developer", location: "Delhi", experience: "1-2 years", link: "#", icon: "fa-code" },
-                { role: "Project Manager", location: "Bangalore", experience: "1-2 years", link: "#", icon: "fa-project-diagram" },
-                { role: "UI/UX Designer", location: "Hyderabad", experience: "1-2 years", link: "#", icon: "fa-brush" },
-                { role: "Quality Analyst", location: "Chennai", experience: "1-2 years", link: "#", icon: "fa-check-circle" },
-                { role: "Backend Developer", location: "Kolkata", experience: "1-2 years", link: "#", icon: "fa-server" },
-                { role: "HR Manager", location: "Ahmedabad", experience: "1-2 years", link: "#", icon: "fa-user-tie" },
-                { role: "DevOps Engineer", location: "Gurgaon", experience: "1-2 years", link: "#", icon: "fa-cogs" },
-                { role: "Software Tester", location: "Nagpur", experience: "1-3 years", link: "#", icon: "fa-check-circle" },
-                { role: "AI Engineers", location: "New Delhi", experience: "1-2 years", link: "#", icon: "fa-robot" },
-                { role: "Blockchain Engineer", location: "Nagpur", experience: "1-3 years", link: "#", icon: "fa-cogs" }
-            ];
-
-            // Populate job cards
-            function populateJobCards(jobs) {
-                const jobCardsContainer = document.getElementById('jobCards');
-                jobCardsContainer.innerHTML = '';
-
-                jobs.forEach(job => {
-                    const card = document.createElement('div');
-                    card.classList.add('job-card');
-                    card.innerHTML = `
-                <h3>${job.role}</h3>
-                <p>Location: ${job.location}</p>
-                <p>Experience: ${job.experience}</p>
-                <a href="${job.link}" onclick="openModal(event)">Apply</a>
-            `;
-                    jobCardsContainer.appendChild(card);
-                });
-            }
-
-            // Filter jobs based on search input
-            function searchJobs() {
-                const jobRole = document.getElementById('jobRole').value.toLowerCase();
-                const location = document.getElementById('location').value.toLowerCase();
-
-                const filteredJobs = jobs.filter(job => {
-                    const matchesRole = job.role.toLowerCase().includes(jobRole);
-                    const matchesLocation = location === "" || job.location.toLowerCase().includes(location);
-                    return matchesRole && matchesLocation;
-                });
-
-                populateJobCards(filteredJobs);
-            }
-
-            // Enable or disable the search button based on inputs
-            function checkFields() {
-                const jobRole = document.getElementById('jobRole').value;
-                const location = document.getElementById('location').value;
-                const button = document.getElementById('searchButton');
-
-                if (jobRole || location) {
-                    button.classList.add('enabled');
-                    button.disabled = false;
-                } else {
-                    button.classList.remove('enabled');
-                    button.disabled = true;
-                }
-            }
-
-            // Open modal
-            function openModal(event) {
-                event.preventDefault();
-                document.getElementById('applyModal').style.display = "block";
-            }
-
-            // Close modal
-            function closeModal() {
-                document.getElementById('applyModal').style.display = "none";
-            }
-
-            // Handle form submission and close modal
-            document.getElementById('userForm').addEventListener('submit', function (event) {
-                event.preventDefault(); // Prevent page reload
-
-                // Form submission logic here (e.g., AJAX, etc.)
-                alert("Form submitted successfully!"); // Just for demonstration
-
-                // Close the modal after submission
-                closeModal();
-            });
-
-            // Attach event listeners to inputs to trigger filtering
-            document.getElementById('jobRole').addEventListener('input', () => {
-                searchJobs();
-                checkFields(); // Check fields on input change
-            });
-
-            document.getElementById('location').addEventListener('input', () => {
-                searchJobs();
-                checkFields(); // Check fields on input change
-            });
-
-            // Initial job population
-            populateJobCards(jobs);
-
-            function closeModal() {
-                document.getElementById("applyModal").style.display = "none";
-            }
-        </script>
-
-
-        <!-- Footer Start -->
-        <!-- Container for the footer -->
-         <div id="footer-container"></div>
-
-         <!-- JavaScript to load the footer -->
-         <script>
-           fetch('address.html')
-             .then(response => response.text())
-             .then(data => {
-               document.getElementById('footer-container').innerHTML = data;
-             })
-             .catch(error => console.error('Error loading footer:', error));
-         </script>
-        <!-- Footer End -->
-
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright py-4">
-            <div class="container">
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-body"><a href="#" class="border-bottom text-white"><i
-                                    class="fas fa-copyright text-light me-2"></i>Cloudswap Infotech</a>, All right
-                            reserved.</span>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end text-body" style="text-align: right !important;">
-
-                        Designed By <a class="border-bottom text-white" href="#">Cloudswap Infotech</a>
-                    </div>
-                </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
             </div>
-        </div>
-        <!-- Copyright End -->
-
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i
-                class="fa fa-arrow-up"></i></a>
-
-
-
-
-
-        <!-- JavaScript Libraries -->
-        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/wow/wow.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/counterup/counterup.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-
-
-
-        <script>
-            document.getElementById('userForm').addEventListener('submit', async function (event) {
-                event.preventDefault(); // Prevent default form submission
-
-                // Create a FormData object from the form
-                const formElement = document.getElementById('userForm');
-                const formData = new FormData(formElement);
-
-                // Append the nested JSON object as a string
-                const adminId = formData.get('adminId');
-                const nestedData = {
-                    firstName: formData.get('firstName'),
-                    lastName: formData.get('lastName'),
-                    email: formData.get('email'),
-                    country: formData.get('country'),
-                    mobileNumber: formData.get('mobileNumber'),
-                    position: formData.get('position'),
-                    location: formData.get('location'),
-                    admin: { id: parseInt(adminId) }
-                };
-
-                formData.delete('adminId'); // Remove adminId since it's part of the nested object
-                formData.append('formData', JSON.stringify(nestedData)); // Add the nested JSON
-
-                try {
-                    const response = await fetch('/api/forms/form/saveForm', {
-                        method: 'POST',
-                        body: formData, // Use FormData directly as the body
-                    });
-
-
-                } catch (error) {
-                    alert(`Error: ${error.message}`);
-                }
-            });
-
-        </script>
-
-        <script>
-
-            // Function to fetch jobs from the backend
-
-            async function fetchJobs() {
-
-                try {
-
-                    // Replace with your backend API endpoint
-
-                    const response = await fetch('/api/jobs/job/getAllJobs');
-
-                    if (!response.ok) {
-
-                        throw new Error(`Failed to fetch jobs: ${response.statusText}`);
-
-                    }
-
-                    const jobs = await response.json(); // Parse JSON response
-
-                    populateJobCards(jobs); // Populate the job cards dynamically
-
-                } catch (error) {
-
-                    console.error('Error fetching jobs:', error);
-
-                    alert('Failed to load job openings. Please try again later.');
-
-                }
-
-            }
-
-            // Populate job cards dynamically
-
-            function populateJobCards(jobs) {
-
-                const jobCardsContainer = document.getElementById('jobCards');
-
-                jobCardsContainer.innerHTML = ''; // Clear existing cards
-
-                if (jobs.length === 0) {
-
-                    jobCardsContainer.innerHTML = `<p>No job openings available at the moment.</p>`;
-
-                    return;
-
-                }
-
-                jobs.forEach((job) => {
-
-                    const card = document.createElement('div');
-
-                    card.classList.add('job-card');
-
-                    card.innerHTML = `
-<h3>${job.title}</h3>
-<p>Location: ${job.location}</p>
-<p>Experience: ${job.experience}</p>
-<p>Salary: ${job.salary}</p>
-<a href="#" onclick="openModal(event)">Apply</a>
-
-            `;
-
-                    jobCardsContainer.appendChild(card);
-
-                });
-
-            }
-
-
-
-
-
-
-
-            // Fetch jobs on page load
-
-            document.addEventListener('DOMContentLoaded', fetchJobs);
-        </script>
-
-
-
-
-
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
-        <script src="config/Config.js"></script>
-        <script src="js/script.js"></script>
-
-
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input
+                type="text"
+                id="country"
+                name="country"
+                placeholder="Enter your country"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="mobileNumber">Mobile Number:</label>
+              <input
+                type="number"
+                id="mobileNumber"
+                name="mobileNumber"
+                placeholder="Enter your mobile number"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="position">Position:</label>
+              <input
+                type="text"
+                id="position"
+                name="position"
+                placeholder="Enter your position"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="locationField">Location:</label>
+              <input
+                type="text"
+                id="locationField"
+                name="location"
+                placeholder="Enter your location"
+                required
+                pattern="[A-Za-z\\s]+"
+                title="Only alphabetic characters and spaces are allowed."
+              />
+            </div>
+            <div class="form-group">
+              <label for="adminId">Admin ID:</label>
+              <input
+                type="number"
+                id="adminId"
+                name="adminId"
+                value="1"
+                placeholder="Please enter admin ID 1"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cv">CV:</label>
+              <input
+                type="file"
+                id="cv"
+                name="cv"
+                accept=".pdf,.doc,.docx"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="modal-submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Info section + image, aligned with theme -->
+    <section class="info-layout">
+      <div class="info-text-block">
+        <h2>Information</h2>
+        <p>
+          Welcome to Cloudswap Infotech! We specialize in delivering cutting-edge
+          solutions in responsive website designing, digital consulting, cyber security,
+          application development, data analysis, and automation.
+        </p>
+        <p>
+          Every project is tailored to client needs with strategic planning, transparent communication,
+          and timely execution.
+        </p>
+
+        <h3>Additional Details</h3>
+        <ul>
+          <li>Responsive website design – crafting mobile-friendly, high-performance websites.</li>
+          <li>Digital consulting – providing expert guidance to boost your digital presence.</li>
+          <li>Cyber security solutions – safeguarding your data and systems from cyber threats.</li>
+          <li>Application development – building scalable web and mobile applications.</li>
+          <li>Data analysis & automation – leveraging data insights and automation for efficiency.</li>
+        </ul>
+
+        <h3>Contact Info</h3>
+        <p>
+          If you'd like to reach out, please contact us at
+          <a href="mailto:contact@cloudswapinfotech.com">contact@cloudswapinfotech.com</a>
+          or call 📞 +91-8793501997.
+        </p>
+      </div>
+
+      <div class="info-image-block">
+        <img src="assets/images/business-consulting2.jpg" alt="Business consulting" />
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer aligned with other pages -->
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>© 2025 Cloudswap Infotech. All Rights Reserved.</div>
+      <div class="footer-social" aria-label="Social media links">
+        <a
+          href="https://www.facebook.com/profile.php?id=61577852488083"
+          target="_blank"
+          rel="noopener"
+          aria-label="Facebook"
+        >
+          <!-- Facebook SVG -->
+        </a>
+        <a
+          href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09"
+          target="_blank"
+          rel="noopener"
+          aria-label="X"
+        >
+          <!-- X/Twitter SVG -->
+        </a>
+        <a
+          href="https://www.instagram.com/cloudswapinfotech?"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <!-- Instagram SVG -->
+        </a>
+        <a
+          href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+        >
+          <!-- LinkedIn SVG -->
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating quick links, same pattern -->
+  <button class="quick-links-btn" type="button" title="Quick Links" aria-label="Quick Links">
+    ☰
+  </button>
+  <div class="quick-links-menu" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="App_Development.html">App Development</a>
+    <a href="Web-Design.html">Web Design</a>
+    <a href="Cyber-Security.html">Cyber Security</a>
+    <a href="Content_Creation.html">Content Creation</a>
+    <a href="Keyword-Research.html">Keyword Research</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="careers.html">Careers</a>
+    <a href="Jobs-Openings.html">Job Openings</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Inline JS: carousel, quick links, jobs search, modal, form submit -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      /* Carousel */
+      const carousels = document.querySelectorAll("[data-carousel]");
+      carousels.forEach((carousel) => {
+        const track = carousel.querySelector(".carousel-track");
+        const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
+        const dots = Array.from(carousel.querySelectorAll(".carousel-dot"));
+        const prevBtn = carousel.querySelector(".carousel-control.prev");
+        const nextBtn = carousel.querySelector(".carousel-control.next");
+        let currentIndex = 0;
+        let autoplayId = null;
+
+        function updateSlide(newIndex) {
+          const count = slides.length;
+          currentIndex = (newIndex + count) % count;
+          if (track) track.style.transform = "translateX(" + (-currentIndex * 100) + "%)";
+          dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
+        }
+
+        function next() { updateSlide(currentIndex + 1); }
+        function prev() { updateSlide(currentIndex - 1); }
+
+        function startAutoplay() {
+          if (autoplayId) return;
+          autoplayId = setInterval(next, 5000);
+        }
+
+        function stopAutoplay() {
+          if (!autoplayId) return;
+          clearInterval(autoplayId);
+          autoplayId = null;
+        }
+
+        if (nextBtn) nextBtn.addEventListener("click", () => {
+          stopAutoplay(); next(); startAutoplay();
+        });
+        if (prevBtn) prevBtn.addEventListener("click", () => {
+          stopAutoplay(); prev(); startAutoplay();
+        });
+        dots.forEach((dot, i) => {
+          dot.addEventListener("click", () => {
+            stopAutoplay(); updateSlide(i); startAutoplay();
+          });
+        });
+
+        updateSlide(0);
+        startAutoplay();
+        carousel.addEventListener("mouseenter", stopAutoplay);
+        carousel.addEventListener("mouseleave", startAutoplay);
+      });
+
+      /* Quick links */
+      const quickBtn = document.querySelector(".quick-links-btn");
+      const quickMenu = document.querySelector(".quick-links-menu");
+      if (quickBtn && quickMenu) {
+        quickBtn.addEventListener("click", () => {
+          const open = quickMenu.classList.toggle("active");
+          quickMenu.setAttribute("aria-hidden", (!open).toString());
+        });
+        document.addEventListener("click", (e) => {
+          if (!quickBtn.contains(e.target) && !quickMenu.contains(e.target)) {
+            quickMenu.classList.remove("active");
+            quickMenu.setAttribute("aria-hidden", "true");
+          }
+        });
+      }
+
+      /* Jobs: static data + filtering (from your original code) */
+      const jobs = [
+        { role: "Software Engineer", location: "Mumbai", experience: "1-2 years" },
+        { role: "Data Analyst", location: "Pune", experience: "1-2 years" },
+        { role: "Web Developer", location: "Delhi", experience: "1-2 years" },
+        { role: "Project Manager", location: "Bangalore", experience: "1-2 years" },
+        { role: "UI/UX Designer", location: "Hyderabad", experience: "1-2 years" },
+        { role: "Quality Analyst", location: "Chennai", experience: "1-2 years" },
+        { role: "Backend Developer", location: "Kolkata", experience: "1-2 years" },
+        { role: "HR Manager", location: "Ahmedabad", experience: "1-2 years" },
+        { role: "DevOps Engineer", location: "Gurgaon", experience: "1-2 years" },
+        { role: "Software Tester", location: "Nagpur", experience: "1-3 years" },
+        { role: "AI Engineers", location: "New Delhi", experience: "1-2 years" },
+        { role: "Blockchain Engineer", location: "Nagpur", experience: "1-3 years" }
+      ];
+
+      const jobCardsContainer = document.getElementById("jobCards");
+      const jobRoleInput = document.getElementById("jobRoleInput");
+      const locationSelect = document.getElementById("locationSelect");
+      const searchButton = document.getElementById("searchButton");
+      const experienceSelect = document.getElementById("experienceSelect");
+
+      function renderJobs(list) {
+        jobCardsContainer.innerHTML = "";
+        if (!list.length) {
+          jobCardsContainer.innerHTML = "<p>No job openings match your filters.</p>";
+          return;
+        }
+        list.forEach((job) => {
+          const card = document.createElement("div");
+          card.className = "job-card";
+          card.innerHTML = `
+            <h3>${job.role}</h3>
+            <p>Location: ${job.location}</p>
+            <p>Experience: ${job.experience}</p>
+            <a href="#" onclick="openModal(event)">Apply</a>
+          `;
+          jobCardsContainer.appendChild(card);
+        });
+      }
+
+      function filterJobs() {
+        const roleVal = (jobRoleInput.value || "").toLowerCase();
+        const locationVal = (locationSelect.value || "").toLowerCase();
+        const expVal = experienceSelect.value || "";
+        const filtered = jobs.filter((job) => {
+          const matchRole = !roleVal || job.role.toLowerCase().includes(roleVal);
+          const matchLoc = !locationVal || job.location.toLowerCase().includes(locationVal);
+          const matchExp = !expVal || job.experience.toLowerCase().includes(expVal);
+          return matchRole && matchLoc && matchExp;
+        });
+        renderJobs(filtered);
+      }
+
+      function updateSearchButtonState() {
+        const hasAny =
+          jobRoleInput.value || locationSelect.value || experienceSelect.value;
+        if (hasAny) {
+          searchButton.disabled = false;
+          searchButton.classList.add("enabled");
+        } else {
+          searchButton.disabled = true;
+          searchButton.classList.remove("enabled");
+        }
+      }
+
+      jobRoleInput.addEventListener("input", () => {
+        updateSearchButtonState();
+      });
+      locationSelect.addEventListener("change", () => {
+        updateSearchButtonState();
+      });
+      experienceSelect.addEventListener("change", () => {
+        updateSearchButtonState();
+      });
+
+      searchButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        filterJobs();
+      });
+
+      renderJobs(jobs);
+
+      /* Apply modal logic (same behaviour as your original) */
+      const applyModal = document.getElementById("applyModal");
+      const userForm = document.getElementById("userForm");
+
+      window.openModal = function (event) {
+        event.preventDefault();
+        if (!applyModal) return;
+        applyModal.classList.add("active");
+        applyModal.setAttribute("aria-hidden", "false");
+      };
+
+      window.closeModal = function () {
+        if (!applyModal) return;
+        applyModal.classList.remove("active");
+        applyModal.setAttribute("aria-hidden", "true");
+      };
+
+      userForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const formData = new FormData(userForm);
+        const adminId = formData.get("adminId");
+        const nestedData = {
+          firstName: formData.get("firstName"),
+          lastName: formData.get("lastName"),
+          email: formData.get("email"),
+          country: formData.get("country"),
+          mobileNumber: formData.get("mobileNumber"),
+          position: formData.get("position"),
+          location: formData.get("location"),
+          admin: { id: parseInt(adminId, 10) }
+        };
+        formData.delete("adminId");
+        formData.append("formData", JSON.stringify(nestedData));
+
+        try {
+          const response = await fetch("/api/forms/form/saveForm", {
+            method: "POST",
+            body: formData
+          });
+          if (!response.ok) {
+            throw new Error("Failed to submit form");
+          }
+          alert("Form submitted successfully!");
+          closeModal();
+          userForm.reset();
+        } catch (error) {
+          alert("Error: " + error.message);
+        }
+      });
+    });
+  </script>
 </body>
-
 </html>
