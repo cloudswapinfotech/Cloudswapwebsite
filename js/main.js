@@ -1,108 +1,100 @@
-(function ($) {
-    "use strict";
+// Carousel + Quick Links JS (shared for all pages)
 
-    // Spinner
-    var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
-            }
-        }, 1);
-    };
-    spinner(0);
+document.addEventListener('DOMContentLoaded', () => {
+  /* ==============
+     Carousel logic
+     ============== */
+  const carousels = document.querySelectorAll('[data-carousel]');
 
+  carousels.forEach((carousel) => {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+    const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+    const prevBtn = carousel.querySelector('.carousel-control.prev');
+    const nextBtn = carousel.querySelector('.carousel-control.next');
+    let currentIndex = 0;
+    let autoplayId = null;
+    const slideCount = slides.length;
 
-    // Initiate the wowjs
-    new WOW().init();
-
-
-    // Sticky Navbar
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 45) {
-            $('.navbar').addClass('sticky-top shadow-sm');
-        } else {
-            $('.navbar').removeClass('sticky-top shadow-sm');
-        }
-    });
-
-
-    // testimonial carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        center: false,
-        dots: true,
-        loop: true,
-        margin: 25,
-        nav : true,
-        navText : [
-            '<i class="fa fa-angle-right"></i>',
-            '<i class="fa fa-angle-left"></i>'
-        ],
-        responsiveClass: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:1
-            },
-            992:{
-                items:2
-            },
-            1200:{
-                items:2
-            }
-        }
-    });
-
-
-    // Facts counter
-    $('[data-toggle="counter-up"]').counterUp({
-        delay: 5,
-        time: 2000
-    });
-
-
-   // Back to top button
-   $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
-        $('.back-to-top').fadeIn('slow');
-    } else {
-        $('.back-to-top').fadeOut('slow');
+    function updateSlide(newIndex) {
+      currentIndex = (newIndex + slideCount) % slideCount;
+      const offset = -currentIndex * 100;
+      if (track) {
+        track.style.transform = `translateX(${offset}%)`;
+      }
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
     }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
-    });
 
-
-})(jQuery);
-
-document.addEventListener("DOMContentLoaded", () => {
-  // 1. Dynamically add the fade-in-section class to all <section> elements
-  const majorSections = document.querySelectorAll("section");
-
-  majorSections.forEach(section => {
-    if (!section.classList.contains("fade-in-section")) {
-      section.classList.add("fade-in-section");
+    function next() {
+      updateSlide(currentIndex + 1);
     }
+
+    function prev() {
+      updateSlide(currentIndex - 1);
+    }
+
+    function startAutoplay() {
+      if (autoplayId) return;
+      autoplayId = setInterval(next, 5000); // 5s rotation
+    }
+
+    function stopAutoplay() {
+      if (!autoplayId) return;
+      clearInterval(autoplayId);
+      autoplayId = null;
+    }
+
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+      stopAutoplay();
+      next();
+      startAutoplay();
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+      stopAutoplay();
+      prev();
+      startAutoplay();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopAutoplay();
+        updateSlide(index);
+        startAutoplay();
+      });
+    });
+
+    // Start
+    updateSlide(0);
+    startAutoplay();
+
+    // Pause on hover (desktop)
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
   });
 
-  // 2. Set up IntersectionObserver to trigger fade-in animation when sections enter viewport
-  const fadeElems = document.querySelectorAll(".fade-in-section");
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible"); // Add visible class to trigger CSS animation
-        observer.unobserve(entry.target);       // Stop observing after animation triggers once
+  /* =======================
+     Floating Quick Links Menu
+     ======================= */
+  const quickBtn = document.querySelector('.quick-links-btn');
+  const quickMenu = document.querySelector('.quick-links-menu');
+
+  if (quickBtn && quickMenu) {
+    quickBtn.addEventListener('click', () => {
+      const open = quickMenu.classList.toggle('active');
+      quickMenu.setAttribute('aria-hidden', (!open).toString());
+    });
+
+    document.addEventListener('click', (e) => {
+      if (
+        !quickBtn.contains(e.target) &&
+        !quickMenu.contains(e.target)
+      ) {
+        quickMenu.classList.remove('active');
+        quickMenu.setAttribute('aria-hidden', 'true');
       }
     });
-  }, { threshold: 0.15 });
-
-  fadeElems.forEach(el => observer.observe(el));
+  }
 });
