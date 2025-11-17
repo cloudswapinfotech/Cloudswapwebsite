@@ -1,239 +1,289 @@
-<!-- careers.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Careers - Cloudswap Infotech</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-<style>
-  /* Global and header/footer same as previous pages */
-  *{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
-  body {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  a {color:#fff;}
-  a:hover {color:#ffcc00;}
-  header,footer {background:#1a1a2e; padding:1rem 3rem; box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
-  header {display:flex; justify-content:space-between; align-items:center; position: sticky; top:0; z-index: 100; transform-style: preserve-3d;}
-  header .logo img {height:50px; filter: drop-shadow(0 0 3px #ffcc00);}
-  nav ul {list-style:none; display:flex; gap:2rem; perspective:800px;}
-  nav ul li {transition: transform 0.3s ease; transform-style: preserve-3d;}
-  nav ul li:hover {transform: rotateX(20deg) translateZ(10px);}
-  footer {text-align:center; margin-top:auto; box-shadow:0 -4px 10px rgba(0,0,0,0.5);}
-  footer .social-icons a {margin: 0 10px; font-size:1.5rem; color:white; transition: color 0.3s ease; display:inline-block;}
-  footer .social-icons a:hover {color:#ffcc00;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Careers - Cloudswap Infotech</title>
 
-  #quickLinksBtn, #quickLinksMenu {position: fixed; right: 30px; z-index: 1000; transform-style: preserve-3d;}
-  #quickLinksBtn {
-    bottom: 30px;
-    background: #ffcc00;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 5px 15px rgba(255,204,0,0.6);
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  #quickLinksBtn:hover {background:#e6b800;}
-  #quickLinksBtn svg {fill:#1a1a2e; width:30px; height:30px;}
-  #quickLinksMenu {
-    bottom: 100px;
-    background: #1a1a2e;
-    border-radius: 10px;
-    padding: 1rem 1.5rem;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.7);
-    display: none;
-  }
-  #quickLinksMenu.active {display:block;}
-  #quickLinksMenu a {
-    display: block;
-    color: #ffcc00;
-    margin: 0.5rem 0;
-    font-weight: 600;
-  }
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  main {
-    max-width: 900px;
-    margin: 3rem auto 4rem auto;
-    padding: 0 1rem;
-    perspective: 900px;
-  }
-  main h1 {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    text-shadow: 0 0 10px #ffcc00;
-    transform-style: preserve-3d;
-  }
-  .job-listing {
-    background: rgba(255 255 255 / 0.15);
-    margin-bottom: 2rem;
-    border-radius: 20px;
-    padding: 1.5rem 2rem;
-    box-shadow:
-      0 10px 20px rgba(0,0,0,0.3),
-      0 0 15px #ffcc007d,
-      inset 0 0 25px #fff7cc;
-    transform-style: preserve-3d;
-    cursor: pointer;
-    font-weight: 600;
-    color: #ffcc00;
-    transition: all 0.3s ease;
-  }
-  .job-listing:hover {
-    background: #ffcc00;
-    color: #1a1a2e;
-    transform: translateZ(20px);
-  }
-  .apply-form-container {
-    display: none;
-    background: rgba(255 255 255 / 0.1);
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgb(255 204 0 / 0.6);
-    margin-top: 2rem;
-    transform-style: preserve-3d;
-  }
-  form label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #fff;
-  }
-  form input, form textarea, form select {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-  }
-  form input[type="submit"] {
-    cursor: pointer;
-    background: #ffcc00;
-    color: #1a1a2e;
-    font-weight: 700;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 999px;
-    box-shadow: 0 0 20px #ffcc00;
-    transition: background 0.3s ease;
-  }
-  form input[type="submit"]:hover {
-    background: #e6b800;
-  }
-  .close-btn {
-    background: #1a1a2e;
-    color: #ffcc00;
-    border: none;
-    font-weight: 700;
-    padding: 0.3rem 0.7rem;
-    border-radius: 15px;
-    cursor: pointer;
-    float: right;
-    margin-bottom: 1rem;
-  }
-</style>
+  <!-- Shared CSS for all pages (white / black / blue theme, carousel, layout, buttons) -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-<header>
-  <div class="logo">
-    <a href="index.html"><img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo"/></a>
+  <!-- Shared Header / Navbar -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo">
+        <img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo" />
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="Project.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html" class="active" aria-current="page">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Shared Carousel (dummy images / text, careers focused) -->
+  <section class="hero-carousel">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="assets/images/hero-careers-1.jpg" alt="Team working together in an IT office" />
+          <div class="carousel-overlay">
+            <div class="carousel-title">Grow Your Career</div>
+            <div class="carousel-text">
+              Join a team that builds modern mobile, web, and cloud solutions for businesses of all sizes.
+            </div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/hero-careers-2.jpg" alt="Developers collaborating on DevOps and SRE" />
+          <div class="carousel-overlay">
+            <div class="carousel-title">DevOps & SRE Opportunities</div>
+            <div class="carousel-text">
+              Work on real-world infrastructure, reliability, and automation challenges in production.
+            </div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/hero-careers-3.jpg" alt="Students working as interns on web and Android" />
+          <div class="carousel-overlay">
+            <div class="carousel-title">Internships & Training</div>
+            <div class="carousel-text">
+              Build your first production‑grade projects as a Web Developer or Android Developer intern.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button type="button" class="carousel-control prev" aria-label="Previous slide">&#10094;</button>
+      <button type="button" class="carousel-control next" aria-label="Next slide">&#10095;</button>
+
+      <!-- Dots -->
+      <div class="carousel-dots" aria-hidden="true">
+        <button type="button" class="carousel-dot active"></button>
+        <button type="button" class="carousel-dot"></button>
+        <button type="button" class="carousel-dot"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page specific content -->
+  <div class="page-wrapper">
+    <section class="page-hero">
+      <h1 class="page-hero-title">Careers</h1>
+      <p class="page-hero-subtitle">
+        Explore open roles at Cloudswap Infotech and apply directly using the form or dedicated Google Forms links for each position.
+      </p>
+    </section>
+
+    <section class="page-content-card">
+      <div class="page-content">
+
+        <!-- Job listings (data unchanged, enriched with data attributes for Google Forms) -->
+        <div class="job-listing" data-job="DevOps Engineer" data-form-url="https://forms.gle/devops-engineer-form-id">
+          DevOps Engineer
+        </div>
+        <div class="job-listing" data-job="Site Reliability Engineer" data-form-url="https://forms.gle/site-reliability-form-id">
+          Site Reliability Engineer
+        </div>
+        <div class="job-listing" data-job="Linux Support Engineer" data-form-url="https://forms.gle/linux-support-form-id">
+          Linux Support Engineer
+        </div>
+        <div class="job-listing" data-job="Web Developer Intern" data-form-url="https://forms.gle/web-developer-intern-form-id">
+          Web Developer Intern
+        </div>
+        <div class="job-listing" data-job="Android Developer Intern" data-form-url="https://forms.gle/android-developer-intern-form-id">
+          Android Developer Intern
+        </div>
+
+        <!-- Apply form container (same data as original, just restyled and integrated) -->
+        <div class="apply-form-container" id="applyFormContainer" aria-hidden="true">
+          <button class="close-btn" id="closeFormBtn" aria-label="Close Apply Form">✕</button>
+          <h2>Apply for <span id="jobTitle"></span></h2>
+
+          <!-- Extra syntax: Google Form button (configured from data-form-url) -->
+          <p style="margin-bottom: 1.25rem;">
+            <a
+              id="jobFormLink"
+              href="#"
+              class="btn btn-primary btn-form-link"
+              target="_blank"
+              rel="noopener"
+              aria-label="Apply via Google Form (opens in new tab)"
+            >
+              Apply via Google Form
+            </a>
+          </p>
+
+          <!-- Original email-based form preserved (data unchanged) -->
+          <form
+            id="applyForm"
+            action="mailto:contact@cloudswapinfotech.com"
+            method="post"
+            enctype="text/plain"
+            onsubmit="alert('Submitting... This will open your email client to send your application.');"
+          >
+            <label for="fullname">Full Name *</label>
+            <input type="text" id="fullname" name="Name" required />
+
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="Email" required />
+
+            <label for="phone">Phone Number *</label>
+            <input
+              type="tel"
+              id="phone"
+              name="Phone"
+              required
+              pattern="[+0-9\\s\\-]+"
+              title="Please enter a valid phone number"
+            />
+
+            <label for="jobProfile">Job Profile</label>
+            <input type="text" id="jobProfile" name="Job Profile" readonly />
+
+            <label for="resume">Additional Message / Resume</label>
+            <textarea
+              id="resume"
+              name="Message"
+              rows="4"
+              placeholder="Add your message or resume details"
+            ></textarea>
+
+            <input type="submit" value="Submit Application" />
+          </form>
+        </div>
+
+      </div>
+    </section>
   </div>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="careers.html" aria-current="page">Careers</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main>
-  <h1>Careers</h1>
-  <div class="job-listing" data-job="DevOps Engineer">DevOps Engineer</div>
-  <div class="job-listing" data-job="Site Reliability Engineer">Site Reliability Engineer</div>
-  <div class="job-listing" data-job="Linux Support Engineer">Linux Support Engineer</div>
-  <div class="job-listing" data-job="Web Developer Intern">Web Developer Intern</div>
-  <div class="job-listing" data-job="Android Developer Intern">Android Developer Intern</div>
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>© 2025 Cloudswap Infotech. All Rights Reserved.</div>
+      <div class="footer-social" aria-label="Social media links">
+        <a
+          href="https://www.facebook.com/profile.php?id=61577852488083"
+          target="_blank"
+          rel="noopener"
+          aria-label="Facebook"
+        >
+          <!-- Facebook SVG -->
+        </a>
+        <a
+          href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09"
+          target="_blank"
+          rel="noopener"
+          aria-label="X"
+        >
+          <!-- X/Twitter SVG -->
+        </a>
+        <a
+          href="https://www.instagram.com/cloudswapinfotech?"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <!-- Instagram SVG -->
+        </a>
+        <a
+          href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+        >
+          <!-- LinkedIn SVG -->
+        </a>
+      </div>
+    </div>
+  </footer>
 
-  <div class="apply-form-container" id="applyFormContainer" aria-hidden="true">
-    <button class="close-btn" id="closeFormBtn" aria-label="Close Apply Form">✕</button>
-    <h2>Apply for <span id="jobTitle"></span></h2>
-    <form id="applyForm" action="mailto:contact@cloudswapinfotech.com" method="post" enctype="text/plain" onsubmit="alert('Submitting... This will open your email client to send your application.');">
-      <label for="fullname">Full Name *</label>
-      <input type="text" id="fullname" name="Name" required />
-
-      <label for="email">Email Address *</label>
-      <input type="email" id="email" name="Email" required />
-
-      <label for="phone">Phone Number *</label>
-      <input type="tel" id="phone" name="Phone" required pattern="[+0-9\s\-]+" title="Please enter a valid phone number" />
-
-      <label for="jobProfile">Job Profile</label>
-      <input type="text" id="jobProfile" name="Job Profile" readonly />
-
-      <label for="resume">Additional Message / Resume</label>
-      <textarea id="resume" name="Message" rows="4" placeholder="Add your message or resume details"></textarea>
-
-      <input type="submit" value="Submit Application" />
-    </form>
+  <!-- Floating Quick Links (shared pattern) -->
+  <button class="quick-links-btn" type="button" title="Quick Links" aria-label="Quick Links">
+    ☰
+  </button>
+  <div class="quick-links-menu" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="careers.html">Careers</a>
+    <a href="Jobs-Openings.html">Job Openings</a>
+    <a href="contact.html">Contact</a>
   </div>
-</main>
 
-<footer style="background: #1a1a2e; color: white; text-align:center; padding:1rem;">
-  <div>© 2025 Cloudswap Infotech. All Rights Reserved.</div>
-  <div class="social-icons" style="margin-top: 0.5rem; font-size: 0; display: flex; justify-content: center; gap: 1rem;">
-    <a href="https://www.facebook.com/profile.php?id=61577852488083" target="_blank" aria-label="Facebook" style="color: #3b5998;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M22 12a10 10 0 10-11.5 9.95v-7.05h-2v-2.9h2v-2.2c0-2 1.18-3.1 3-3.1.87 0 1.65.06 1.88.09v2.18h-1.3c-1.02 0-1.2.5-1.2 1.16v1.9h2.54l-.4 2.9h-2.14V22A10 10 0 0022 12z"/>
-      </svg>
-    </a>
-    <a href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09" target="_blank" aria-label="X Twitter" style="color: #1DA1F2;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M23 3c-1 .5-2 .8-3 1v.2c1-.2 2-.5 3-1zm-6 7c-4 0-7.5-3-7.5-6.8 0-.3 0-.5 0-.8-3 1.7-5 4.8-5 8.6 0 5 4 9 9 9 4.3 0 7.8-3 8.4-6.9v-.3l-2.9 1.3v.1c.2 1.5 0 3.5-2.2 3.5-1.8 0-2.7-1.6-2.7-3.4v-2c.5 0 1 0 1.5-.1 0-.3 0-.6 0-1 0-1 .2-1.4 1-1.4 1 0 1.8.8 1.8 2v1z"/>
-      </svg>
-    </a>
-    <a href="https://www.instagram.com/cloudswapinfotech?" target="_blank" aria-label="Instagram" style="color: #E1306C;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M7.5 2c-2.7 0-4.9 2.2-4.9 4.9v10.2c0 2.7 2.2 4.9 4.9 4.9h10.2c2.7 0 4.9-2.2 4.9-4.9V7c0-2.7-2.2-4.9-4.9-4.9H7.5zm0 2h10.2c1.6 0 2.9 1.3 2.9 2.9v10.2c0 1.6-1.3 2.9-2.9 2.9H7.5c-1.6 0-2.9-1.3-2.9-2.9V7c0-1.6 1.3-2.9 2.9-2.9zm5.1 3a4.6 4.6 0 100 9.3 4.6 4.6 0 000-9.3zm0 2a2.6 2.6 0 110 5.2 2.6 2.6 0 010-5.2zm4.3-.8a1 1 0 11-2 0 1 1 0 012 0z"/>
-      </svg>
-    </a>
-    <a href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info" target="_blank" aria-label="LinkedIn" style="color: #0077B5;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M4.98 3a2.5 2.5 0 100 5.001 2.5 2.5 0 000-5zM2 21h6v-9H2v9zm7.5 0H15V13c0-2.4 3-2.6 3 0v8h4v-11c0-4-4.47-3.9-6.34-1.9V9h-5v12z"/>
-      </svg>
-    </a>
-  </div>
-</footer>
+  <!-- Shared JS for carousel + quick links -->
+  <script src="assets/js/main.js"></script>
 
+  <!-- Careers‑specific JS: open/close apply form and wire job + Google Form link -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const jobCards = document.querySelectorAll('.job-listing');
+      const applyFormContainer = document.getElementById('applyFormContainer');
+      const jobTitleSpan = document.getElementById('jobTitle');
+      const jobProfileInput = document.getElementById('jobProfile');
+      const closeFormBtn = document.getElementById('closeFormBtn');
+      const jobFormLink = document.getElementById('jobFormLink');
 
-<!-- Floating Quick Links Button -->
-<div id="quickLinksBtn" title="Quick Links" aria-label="Quick Links">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/></svg>
-</div>
-<div id="quickLinksMenu" aria-hidden="true">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="services.html">Services</a>
-  <a href="case-studies.html">Case Studies</a>
-  <a href="careers.html">Careers</a>
-  <a href="contact.html">Contact Us</a>
-</div>
+      function openApplyForm(jobName, formUrl) {
+        if (jobTitleSpan) jobTitleSpan.textContent = jobName || '';
+        if (jobProfileInput) jobProfileInput.value = jobName || '';
 
-<script>
-  // Floating quick links toggle
-  const quickBtn = document.getElementById('quickLinksBtn');
-  const quickMenu = document.getElementBy
+        if (jobFormLink) {
+          if (formUrl && formUrl !== '#') {
+            jobFormLink.href = formUrl;
+            jobFormLink.style.display = 'inline-flex';
+            jobFormLink.setAttribute(
+              'aria-label',
+              'Apply for ' + jobName + ' via Google Form (opens in new tab)'
+            );
+          } else {
+            jobFormLink.href = '#';
+            jobFormLink.style.display = 'none';
+          }
+        }
+
+        if (applyFormContainer) {
+          applyFormContainer.style.display = 'block';
+          applyFormContainer.setAttribute('aria-hidden', 'false');
+        }
+      }
+
+      function closeApplyForm() {
+        if (applyFormContainer) {
+          applyFormContainer.style.display = 'none';
+          applyFormContainer.setAttribute('aria-hidden', 'true');
+        }
+      }
+
+      jobCards.forEach((card) => {
+        card.addEventListener('click', () => {
+          const jobName = card.getAttribute('data-job');
+          const formUrl = card.getAttribute('data-form-url') || '#';
+          openApplyForm(jobName, formUrl);
+        });
+      });
+
+      if (closeFormBtn) {
+        closeFormBtn.addEventListener('click', closeApplyForm);
+      }
+    });
+  </script>
+</body>
+</html>

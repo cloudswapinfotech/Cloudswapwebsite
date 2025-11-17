@@ -8,13 +8,19 @@
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- Shared CSS -->
+  <!-- If this file is in the same domain, you can use either the absolute URL or relative path -->
+  <!-- Absolute: -->
+  <!-- <link rel="stylesheet" href="https://cloudswapinfotech.com/assets/css/styles.css" /> -->
+  <!-- Recommended (inside your project): -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-
   <!-- Shared Header / Navbar -->
   <header class="site-header">
     <div class="site-header-inner">
@@ -41,7 +47,10 @@
     <div class="carousel" data-carousel>
       <div class="carousel-track">
         <div class="carousel-slide">
-          <img src="assets/images/hero-1.jpg" alt="Custom mobile and web solutions" />
+          <img
+            src="assets/images/hero-1.jpg"
+            alt="Custom mobile and web solutions"
+          />
           <div class="carousel-overlay">
             <div class="carousel-title">Custom Mobile & Web Solutions</div>
             <div class="carousel-text">
@@ -49,8 +58,12 @@
             </div>
           </div>
         </div>
+
         <div class="carousel-slide">
-          <img src="assets/images/hero-2.jpg" alt="Digital marketing and growth" />
+          <img
+            src="assets/images/hero-2.jpg"
+            alt="Digital marketing and growth"
+          />
           <div class="carousel-overlay">
             <div class="carousel-title">Digital Marketing & Growth</div>
             <div class="carousel-text">
@@ -58,8 +71,12 @@
             </div>
           </div>
         </div>
+
         <div class="carousel-slide">
-          <img src="assets/images/hero-3.jpg" alt="Training, placement and IT staffing" />
+          <img
+            src="assets/images/hero-3.jpg"
+            alt="Training, placement and IT staffing"
+          />
           <div class="carousel-overlay">
             <div class="carousel-title">Training, Placement & IT Staffing</div>
             <div class="carousel-text">
@@ -70,8 +87,12 @@
       </div>
 
       <!-- Controls -->
-      <button type="button" class="carousel-control prev" aria-label="Previous slide">&#10094;</button>
-      <button type="button" class="carousel-control next" aria-label="Next slide">&#10095;</button>
+      <button type="button" class="carousel-control prev" aria-label="Previous slide">
+        &#10094;
+      </button>
+      <button type="button" class="carousel-control next" aria-label="Next slide">
+        &#10095;
+      </button>
 
       <!-- Dots -->
       <div class="carousel-dots" aria-hidden="true">
@@ -93,13 +114,10 @@
 
     <section class="page-content-card">
       <div class="page-content">
-        <!-- Paste your existing index.html main content here.
-             Keep headings, paragraphs, lists, etc. exactly as they are (data unchanged). -->
         <p>
           Transforming ideas into cutting-edge mobile and web applications, digital marketing strategies, and complete IT solutions tailored to your business.
         </p>
         <p>
-          <!-- Example CTA button -->
           <a href="contact.html" class="btn btn-primary">Get in Touch</a>
         </p>
       </div>
@@ -111,17 +129,36 @@
     <div class="site-footer-inner">
       <div>© 2025 Cloudswap Infotech. All Rights Reserved.</div>
       <div class="footer-social" aria-label="Social media links">
-        <!-- Reuse your existing SVG icons and links -->
-        <a href="https://www.facebook.com/profile.php?id=61577852488083" target="_blank" rel="noopener" aria-label="Facebook">
+        <a
+          href="https://www.facebook.com/profile.php?id=61577852488083"
+          target="_blank"
+          rel="noopener"
+          aria-label="Facebook"
+        >
           <!-- Facebook SVG -->
         </a>
-        <a href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09" target="_blank" rel="noopener" aria-label="X">
+        <a
+          href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09"
+          target="_blank"
+          rel="noopener"
+          aria-label="X"
+        >
           <!-- X/Twitter SVG -->
         </a>
-        <a href="https://www.instagram.com/cloudswapinfotech?" target="_blank" rel="noopener" aria-label="Instagram">
+        <a
+          href="https://www.instagram.com/cloudswapinfotech?"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
           <!-- Instagram SVG -->
         </a>
-        <a href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <a
+          href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+        >
           <!-- LinkedIn SVG -->
         </a>
       </div>
@@ -149,6 +186,18 @@
   </div>
 
   <!-- Shared JS -->
+  <!-- Absolute: -->
+  <!-- <script src="https://cloudswapinfotech.com/assets/js/main.js"></script> -->
+  <!-- Recommended (inside your project): -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Cloudflare script (leave as-is if you are using it) -->
+  <script
+    defer
+    src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+    integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+    data-cf-beacon='{"version":"2024.11.0","token":"bd6cc79b6ed94296bf784dd4887fb62e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"
+  ></script>
 </body>
 </html>
