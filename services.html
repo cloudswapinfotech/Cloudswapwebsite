@@ -1,214 +1,512 @@
-<!-- services.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Services - Cloudswap Infotech</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-<style>
-  /* Global and header/footer same as previous pages */
-  *{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
-  body {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  a {color:#fff;}
-  a:hover {color:#ffcc00;}
-  header,footer {background:#1a1a2e; padding:1rem 3rem; box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
-  header {display:flex; justify-content:space-between; align-items:center; position: sticky; top:0; z-index: 100; transform-style: preserve-3d;}
-  header .logo img {height:50px; filter: drop-shadow(0 0 3px #ffcc00);}
-  nav ul {list-style:none; display:flex; gap:2rem; perspective:800px;}
-  nav ul li {transition: transform 0.3s ease; transform-style: preserve-3d;}
-  nav ul li:hover {transform: rotateX(20deg) translateZ(10px);}
-  footer {text-align:center; margin-top:auto; box-shadow:0 -4px 10px rgba(0,0,0,0.5);}
-  footer .social-icons a {margin: 0 10px; font-size:1.5rem; color:white; transition: color 0.3s ease; display:inline-block;}
-  footer .social-icons a:hover {color:#ffcc00;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services - Cloudswap Infotech</title>
 
-  #quickLinksBtn, #quickLinksMenu {position: fixed; right: 30px; z-index: 1000; transform-style: preserve-3d;}
-  #quickLinksBtn {
-    bottom: 30px;
-    background: #ffcc00;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 5px 15px rgba(255,204,0,0.6);
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  #quickLinksBtn:hover {background:#e6b800;}
-  #quickLinksBtn svg {fill:#1a1a2e; width:30px; height:30px;}
-  #quickLinksMenu {
-    bottom: 100px;
-    background: #1a1a2e;
-    border-radius: 10px;
-    padding: 1rem 1.5rem;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.7);
-    display: none;
-  }
-  #quickLinksMenu.active {display:block;}
-  #quickLinksMenu a {
-    display: block;
-    color: #ffcc00;
-    margin: 0.5rem 0;
-    font-weight: 600;
-  }
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-  main {
-    max-width: 900px;
-    margin: 3rem auto 4rem auto;
-    padding: 0 1rem;
-    perspective: 900px;
-  }
-  main h1 {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    text-shadow: 0 0 10px #ffcc00;
-    transform-style: preserve-3d;
-  }
-  .service-block {
-    background: rgba(255 255 255 / 0.15);
-    margin-bottom: 2rem;
-    border-radius: 20px;
-    padding: 2rem 2.5rem;
-    box-shadow:
-      0 10px 20px rgba(0,0,0,0.3),
-      0 0 15px #ffcc007d,
-      inset 0 0 25px #fff7cc;
-    transform-style: preserve-3d;
-    transition: transform 0.4s ease;
-    cursor: default;
-  }
-  .service-block:hover {
-    transform: translateZ(30px) rotateX(10deg) rotateY(10deg);
-    box-shadow:
-      0 15px 30px rgba(0,0,0,0.6),
-      0 0 35px #ffcc00,
-      inset 0 0 45px #fff7cc;
-  }
-  .service-block h2 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #ffcc00;
-  }
-  .service-block p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #fefae0;
-  }
-</style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    :root {
+      --bg-page: #f5f7ff;
+      --bg-header: #020617;
+      --bg-footer: #020617;
+      --bg-card: #ffffff;
+      --bg-card-dark: #0f172a;
+      --bg-accent: #2563eb;
+      --bg-accent-dark: #1d4ed8;
+      --text-main: #020617;
+      --text-muted: #4b5563;
+      --text-light: #f9fafb;
+      --border-soft: #d1d5db;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.12);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg-page);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Shared header / nav */
+    .site-header {
+      background: var(--bg-header);
+      color: var(--text-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.6);
+    }
+
+    .site-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-logo img {
+      height: 48px;
+      display: block;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .main-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--bg-accent);
+      transition: width 0.25s ease;
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    .main-nav a.active {
+      color: var(--bg-accent);
+    }
+
+    @media (max-width: 768px) {
+      .site-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .main-nav ul {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+    }
+
+    /* Services hero strip */
+    .services-hero {
+      background: linear-gradient(120deg, #0b1120, #1e293b);
+      color: #e5e7eb;
+      padding: 2.2rem 1rem;
+    }
+
+    .services-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    .services-hero-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .services-hero-subtitle {
+      font-size: 0.98rem;
+      color: #e5e7eb;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .services-hero-card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: 16px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.7);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .services-hero-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      color: #f9fafb;
+    }
+
+    .services-hero-card ul {
+      margin-left: 1.2rem;
+      margin-top: 0.3rem;
+    }
+
+    .services-hero-card li {
+      margin-bottom: 0.2rem;
+    }
+
+    @media (max-width: 900px) {
+      .services-hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Main services list */
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.2rem 1rem 3rem;
+      width: 100%;
+    }
+
+    .page-hero {
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .page-hero-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--bg-header);
+      margin-bottom: 0.4rem;
+    }
+
+    .page-hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .service-block {
+      background: var(--bg-card-dark);
+      border-radius: 16px;
+      padding: 1.5rem 1.6rem;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      transform-style: preserve-3d;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      color: #e5e7eb;
+    }
+
+    .service-block:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.9);
+    }
+
+    .service-block h2 {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+      color: #facc15;
+    }
+
+    .service-block p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #e5e7eb;
+    }
+
+    /* Footer + quick links */
+    .site-footer {
+      margin-top: auto;
+      background: var(--bg-footer);
+      color: var(--text-light);
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    .site-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer-social {
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      color: var(--text-light);
+      font-size: 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-social a:hover {
+      color: #38bdf8;
+    }
+
+    .quick-links-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-accent);
+      color: var(--text-light);
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 12px 25px rgba(15, 23, 42, 0.4);
+      border: none;
+      z-index: 120;
+      font-size: 1.4rem;
+    }
+
+    .quick-links-btn:hover {
+      background: var(--bg-accent-dark);
+    }
+
+    .quick-links-menu {
+      position: fixed;
+      bottom: 94px;
+      right: 24px;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+      min-width: 180px;
+      display: none;
+      z-index: 110;
+    }
+
+    .quick-links-menu.active {
+      display: block;
+    }
+
+    .quick-links-menu a {
+      display: block;
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.35rem 0;
+    }
+
+    .quick-links-menu a:hover {
+      color: #38bdf8;
+    }
+  </style>
 </head>
 <body>
+  <!-- Shared header -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo">
+        <img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo" />
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html" class="active" aria-current="page">Services</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="Project.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="Jobs-Openings.html">Job Openings</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <div class="logo">
-    <a href="index.html"><img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo" /></a>
+  <!-- Services hero strip -->
+  <section class="services-hero">
+    <div class="services-hero-inner">
+      <div>
+        <h1 class="services-hero-title">Our Services</h1>
+        <p class="services-hero-subtitle">
+          Cloudswap Infotech offers Android/iOS app development, website development, digital marketing,
+          staff augmentation, and training & placement services tailored to your business. [web:62]
+        </p>
+      </div>
+      <div class="services-hero-card">
+        <h3>How Cloudswap Infotech helps</h3>
+        <ul>
+          <li>Builds mobile and web solutions aligned to your goals. [web:62][web:60]</li>
+          <li>Strengthens your online presence via digital marketing. [web:62]</li>
+          <li>Extends your team with skilled IT professionals. [web:62]</li>
+          <li>Trains and supports talent to launch their careers. [web:62]</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main services content -->
+  <div class="page-wrapper">
+    <section class="page-hero">
+      <h2 class="page-hero-title">What Cloudswap Infotech offers</h2>
+      <p class="page-hero-subtitle">
+        Core service areas that cover end‑to‑end digital needs, from apps and websites to marketing and staffing. [web:62]
+      </p>
+    </section>
+
+    <section class="services-list">
+      <article class="service-block">
+        <h2>Android/iOS App Development</h2>
+        <p>
+          We create stunning and high-performance mobile applications for both Android and iOS platforms. Our team uses
+          the latest technologies for scalable and secure apps tailored to your business needs.
+        </p>
+      </article>
+
+      <article class="service-block">
+        <h2>Website Development</h2>
+        <p>
+          From responsive websites to complex web applications, we deliver customized web solutions built for
+          performance, user experience, and accessibility to help your brand shine online.
+        </p>
+      </article>
+
+      <article class="service-block">
+        <h2>Digital Marketing</h2>
+        <p>
+          Grow your business with our strategic digital marketing services, including SEO, social media marketing,
+          content marketing, and PPC campaigns designed to maximize your online reach and ROI.
+        </p>
+      </article>
+
+      <article class="service-block">
+        <h2>Staff Augmentation</h2>
+        <p>
+          Enhance your team with our skilled IT professionals on a flexible basis to help you achieve your project goals
+          efficiently without the hassle of full-time recruitment.
+        </p>
+      </article>
+
+      <article class="service-block">
+        <h2>Training and Placement</h2>
+        <p>
+          Our comprehensive training programs equip candidates with cutting-edge skills and practical experience,
+          backed by strong placement assistance to help launch promising careers.
+        </p>
+      </article>
+    </section>
   </div>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="services.html" aria-current="page">Services</a></li>
-      <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main>
-  <h1>Our Services</h1>
+  <!-- Shared footer -->
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>© 2025 Cloudswap Infotech. All Rights Reserved.</div>
+      <div class="footer-social" aria-label="Social media links">
+        <a
+          href="https://www.facebook.com/profile.php?id=61577852488083"
+          target="_blank"
+          rel="noopener"
+          aria-label="Facebook"
+        >
+          <!-- Facebook SVG -->
+        </a>
+        <a
+          href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09"
+          target="_blank"
+          rel="noopener"
+          aria-label="X"
+        >
+          <!-- X/Twitter SVG -->
+        </a>
+        <a
+          href="https://www.instagram.com/cloudswapinfotech?"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <!-- Instagram SVG -->
+        </a>
+        <a
+          href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+        >
+          <!-- LinkedIn SVG -->
+        </a>
+      </div>
+    </div>
+  </footer>
 
-  <section class="service-block">
-    <h2>Android/iOS App Development</h2>
-    <p>We create stunning and high-performance mobile applications for both Android and iOS platforms. Our team uses the latest technologies for scalable and secure apps tailored to your business needs.</p>
-  </section>
-
-  <section class="service-block">
-    <h2>Website Development</h2>
-    <p>From responsive websites to complex web applications, we deliver customized web solutions built for performance, user experience, and accessibility to help your brand shine online.</p>
-  </section>
-
-  <section class="service-block">
-    <h2>Digital Marketing</h2>
-    <p>Grow your business with our strategic digital marketing services, including SEO, social media marketing, content marketing, and PPC campaigns designed to maximize your online reach and ROI.</p>
-  </section>
-
-  <section class="service-block">
-    <h2>Staff Augmentation</h2>
-    <p>Enhance your team with our skilled IT professionals on a flexible basis to help you achieve your project goals efficiently without the hassle of full-time recruitment.</p>
-  </section>
-
-  <section class="service-block">
-    <h2>Training and Placement</h2>
-    <p>Our comprehensive training programs equip candidates with cutting-edge skills and practical experience, backed by our strong placement assistance to help launch promising careers.</p>
-  </section>
-</main>
-
-<footer style="background: #1a1a2e; color: white; text-align:center; padding:1rem;">
-  <div>© 2025 Cloudswap Infotech. All Rights Reserved.</div>
-  <div class="social-icons" style="margin-top: 0.5rem; font-size: 0; display: flex; justify-content: center; gap: 1rem;">
-    <a href="https://www.facebook.com/profile.php?id=61577852488083" target="_blank" aria-label="Facebook" style="color: #3b5998;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M22 12a10 10 0 10-11.5 9.95v-7.05h-2v-2.9h2v-2.2c0-2 1.18-3.1 3-3.1.87 0 1.65.06 1.88.09v2.18h-1.3c-1.02 0-1.2.5-1.2 1.16v1.9h2.54l-.4 2.9h-2.14V22A10 10 0 0022 12z"/>
-      </svg>
-    </a>
-    <a href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09" target="_blank" aria-label="X Twitter" style="color: #1DA1F2;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M23 3c-1 .5-2 .8-3 1v.2c1-.2 2-.5 3-1zm-6 7c-4 0-7.5-3-7.5-6.8 0-.3 0-.5 0-.8-3 1.7-5 4.8-5 8.6 0 5 4 9 9 9 4.3 0 7.8-3 8.4-6.9v-.3l-2.9 1.3v.1c.2 1.5 0 3.5-2.2 3.5-1.8 0-2.7-1.6-2.7-3.4v-2c.5 0 1 0 1.5-.1 0-.3 0-.6 0-1 0-1 .2-1.4 1-1.4 1 0 1.8.8 1.8 2v1z"/>
-      </svg>
-    </a>
-    <a href="https://www.instagram.com/cloudswapinfotech?" target="_blank" aria-label="Instagram" style="color: #E1306C;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M7.5 2c-2.7 0-4.9 2.2-4.9 4.9v10.2c0 2.7 2.2 4.9 4.9 4.9h10.2c2.7 0 4.9-2.2 4.9-4.9V7c0-2.7-2.2-4.9-4.9-4.9H7.5zm0 2h10.2c1.6 0 2.9 1.3 2.9 2.9v10.2c0 1.6-1.3 2.9-2.9 2.9H7.5c-1.6 0-2.9-1.3-2.9-2.9V7c0-1.6 1.3-2.9 2.9-2.9zm5.1 3a4.6 4.6 0 100 9.3 4.6 4.6 0 000-9.3zm0 2a2.6 2.6 0 110 5.2 2.6 2.6 0 010-5.2zm4.3-.8a1 1 0 11-2 0 1 1 0 012 0z"/>
-      </svg>
-    </a>
-    <a href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info" target="_blank" aria-label="LinkedIn" style="color: #0077B5;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M4.98 3a2.5 2.5 0 100 5.001 2.5 2.5 0 000-5zM2 21h6v-9H2v9zm7.5 0H15V13c0-2.4 3-2.6 3 0v8h4v-11c0-4-4.47-3.9-6.34-1.9V9h-5v12z"/>
-      </svg>
-    </a>
+  <!-- Floating quick links -->
+  <button class="quick-links-btn" type="button" title="Quick Links" aria-label="Quick Links">
+    ☰
+  </button>
+  <div class="quick-links-menu" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="App_Development.html">App Development</a>
+    <a href="Web-Design.html">Web Design</a>
+    <a href="Cyber-Security.html">Cyber Security</a>
+    <a href="Content_Creation.html">Content Creation</a>
+    <a href="Keyword-Research.html">Keyword Research</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="careers.html">Careers</a>
+    <a href="Jobs-Openings.html">Job Openings</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
   </div>
-</footer>
 
+  <!-- Inline JS: quick links toggle -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const quickBtn = document.querySelector(".quick-links-btn");
+      const quickMenu = document.querySelector(".quick-links-menu");
 
-<!-- Floating Quick Links Button -->
-<div id="quickLinksBtn" title="Quick Links" aria-label="Quick Links">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/></svg>
-</div>
-<div id="quickLinksMenu" aria-hidden="true">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="services.html">Services</a>
-  <a href="case-studies.html">Case Studies</a>
-  <a href="careers.html">Careers</a>
-  <a href="contact.html">Contact Us</a>
-</div>
+      if (quickBtn && quickMenu) {
+        quickBtn.addEventListener("click", () => {
+          const open = quickMenu.classList.toggle("active");
+          quickMenu.setAttribute("aria-hidden", (!open).toString());
+        });
 
-<script>
-  const quickBtn = document.getElementById('quickLinksBtn');
-  const quickMenu = document.getElementById('quickLinksMenu');
-
-  quickBtn.addEventListener('click', () => {
-    const activated = quickMenu.classList.toggle('active');
-    quickMenu.setAttribute('aria-hidden', !activated);
-  });
-
-  document.addEventListener('click', (e)=>{
-    if(!quickBtn.contains(e.target) && !quickMenu.contains(e.target)) {
-      quickMenu.classList.remove('active');
-      quickMenu.setAttribute('aria-hidden','true');
-    }
-  });
-</script>
-
+        document.addEventListener("click", (e) => {
+          if (!quickBtn.contains(e.target) && !quickMenu.contains(e.target)) {
+            quickMenu.classList.remove("active");
+            quickMenu.setAttribute("aria-hidden", "true");
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
