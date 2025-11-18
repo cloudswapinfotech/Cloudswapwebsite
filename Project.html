@@ -1,205 +1,561 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects | Cloudswap Infotech</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-    /* Basic Reset */
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Open Sans', sans-serif; }
-    body { background: #f0f8ff; color: #333; line-height: 1.6; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects - Cloudswap Infotech</title>
 
-    /* Navbar */
-    nav { background: linear-gradient(to right, #a0e9d3, #b2f7ef); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-bottom: 2px solid #004d40; }
-    nav .logo img { max-width: 150px; }
-    nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; }
-    nav ul li { position: relative; }
-    nav ul li a { text-decoration: none; color: #004d40; font-weight: 600; padding: 5px 0; transition: color 0.3s; }
-    nav ul li a:hover { color: #00695c; }
+  <!-- Google Font (aligned with other pages) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-    /* Dropdown */
-    nav ul li ul { display: none; position: absolute; top: 30px; left:0; background: #b2f7ef; border-radius: 8px; padding:10px 0; min-width:180px; box-shadow:0 4px 12px rgba(0,0,0,0.15);}
-    nav ul li:hover ul { display:block; }
-    nav ul li ul li { padding:5px 20px; }
-    nav ul li ul li a { color: #004d40; font-weight:400; }
-    nav ul li ul li a:hover { color:#00695c; }
-
-    /* Mobile Toggle */
-    .toggle { display:none; cursor:pointer; }
-    .toggle div { width:25px; height:3px; background:#004d40; margin:5px; transition:0.3s; }
-
-    @media(max-width:768px){
-        nav ul { flex-direction: column; width:100%; display:none; }
-        nav ul.show { display:flex; }
-        .toggle { display:block; }
-        nav ul li ul { position: relative; top:0; left:0; box-shadow:none; }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Header */
-    header { background: linear-gradient(to right, #a0e9d3, #b2f7ef); padding: 40px 20px; text-align:center; }
-    header img { max-width: 250px; border-radius: 12px; margin-bottom: 20px; }
-    header h1 { color: #004d40; margin-bottom: 10px; }
-    header p { color: #00695c; font-size: 1.1em; }
+    :root {
+      --bg-page: #f5f7ff;
+      --bg-header: #020617;
+      --bg-footer: #020617;
+      --bg-card: #ffffff;
+      --bg-card-dark: #0f172a;
+      --bg-accent: #2563eb;
+      --bg-accent-dark: #1d4ed8;
+      --text-main: #020617;
+      --text-muted: #4b5563;
+      --text-light: #f9fafb;
+      --border-soft: #d1d5db;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.12);
+    }
 
-    /* Container */
-    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    html, body {
+      height: 100%;
+    }
 
-    /* Card Wrapper */
-    .card-wrapper { display: flex; flex-wrap: wrap; gap: 20px; justify-content:center; margin: 30px 0; }
-    .card { background: linear-gradient(135deg, #b2f7ef, #a0e9d3); border-radius: 15px; padding: 20px; width: 300px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); transition: transform 0.4s, box-shadow 0.4s; opacity: 0; transform: translateY(50px); }
-    .card:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
-    .card h2 { color: #004d40; margin-bottom: 15px; font-size:1.3em; }
-    .card p { font-size: 0.95em; color: #004d40; }
+    body {
+      background: var(--bg-page);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
 
-    /* Info Sections */
-    .info-section { display: flex; flex-wrap: wrap; gap: 20px; margin: 40px 0; padding: 20px; border-radius: 15px; background: #e0f7fa; box-shadow: 0 4px 15px rgba(0,0,0,0.05); opacity: 0; transform: translateY(50px); transition: all 0.6s ease; }
-    .info-section.in-view { opacity: 1; transform: translateY(0); }
-    .info-text, .info-image { flex:1; min-width: 280px; }
-    .info-text h2 { color: #004d40; margin-bottom: 15px; }
-    .info-text p { color: #00695c; font-size: 1em; }
-    .info-image img { width: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    /* Shared header / nav */
+    .site-header {
+      background: var(--bg-header);
+      color: var(--text-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.6);
+    }
 
-    /* Responsive */
-    @media(max-width: 768px){ .info-section { flex-direction: column; } }
+    .site-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-    /* Footer */
-    footer { background:#004d40; color:white; padding:20px 0; text-align:center; margin-top:50px; }
-    footer a { color:#b2f7ef; text-decoration:none; }
+    .site-logo img {
+      height: 48px;
+      display: block;
+    }
 
-    /* Scroll Animations */
-    .fade-in { opacity:0; transform:translateY(50px); transition: all 0.6s ease; }
-    .fade-in.in-view { opacity:1; transform:translateY(0); }
-</style>
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .main-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--bg-accent);
+      transition: width 0.25s ease;
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    .main-nav a.active {
+      color: var(--bg-accent);
+    }
+
+    @media (max-width: 768px) {
+      .site-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .main-nav ul {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+    }
+
+    /* Projects hero (uses your logo image and careers intro text) */
+    .projects-hero {
+      background: linear-gradient(120deg, #0b1120, #1e293b);
+      color: #e5e7eb;
+      padding: 2.4rem 1rem;
+    }
+
+    .projects-hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.5fr);
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    .projects-hero-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .projects-hero-subtitle {
+      font-size: 0.98rem;
+      color: #e5e7eb;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .projects-hero-logo {
+      text-align: center;
+    }
+
+    .projects-hero-logo img {
+      max-width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.7);
+    }
+
+    @media (max-width: 900px) {
+      .projects-hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Main container */
+    .page-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.2rem 1rem 3rem;
+      width: 100%;
+    }
+
+    .page-hero {
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .page-hero-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--bg-header);
+      margin-bottom: 0.4rem;
+    }
+
+    .page-hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    /* Project cards (Data Science / AI / ML) */
+    .card-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .card-project {
+      background: linear-gradient(135deg, #b2f7ef, #a0e9d3);
+      border-radius: 15px;
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+      transform: translateY(0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform-origin: center;
+    }
+
+    .card-project.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-project:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.28);
+    }
+
+    .card-project h2 {
+      color: #004d40;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-project p {
+      font-size: 0.94rem;
+      color: #004d40;
+      line-height: 1.7;
+    }
+
+    /* Info sections (Caliber / PMCC / Custom) */
+    .info-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr);
+      gap: 1.5rem;
+      margin-top: 2.2rem;
+      padding: 1.6rem 1.4rem;
+      border-radius: 16px;
+      background: #e0f7fa;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    .info-section.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .info-text {
+      font-size: 0.96rem;
+      color: #00695c;
+      line-height: 1.7;
+    }
+
+    .info-text h2 {
+      color: #004d40;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .info-image img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+    }
+
+    @media (max-width: 900px) {
+      .info-section {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Footer + quick links */
+    .site-footer {
+      margin-top: auto;
+      background: var(--bg-footer);
+      color: var(--text-light);
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    .site-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer-social {
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      color: var(--text-light);
+      font-size: 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-social a:hover {
+      color: #38bdf8;
+    }
+
+    .quick-links-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-accent);
+      color: var(--text-light);
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 12px 25px rgba(15, 23, 42, 0.4);
+      border: none;
+      z-index: 120;
+      font-size: 1.4rem;
+    }
+
+    .quick-links-btn:hover {
+      background: var(--bg-accent-dark);
+    }
+
+    .quick-links-menu {
+      position: fixed;
+      bottom: 94px;
+      right: 24px;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+      min-width: 180px;
+      display: none;
+      z-index: 110;
+    }
+
+    .quick-links-menu.active {
+      display: block;
+    }
+
+    .quick-links-menu a {
+      display: block;
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.35rem 0;
+    }
+
+    .quick-links-menu a:hover {
+      color: #38bdf8;
+    }
+  </style>
 </head>
 <body>
-
-<!-- Navigation -->
-<nav>
-    <div class="logo"><a href="index.html"><img src="assets/images/logo_CSIT.png" alt="Cloudswap Logo"></a></div>
-    <div class="toggle" onclick="toggleMenu(this)">
-        <div></div>
-        <div></div>
-        <div></div>
+  <!-- Shared header -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo">
+        <img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo" />
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="Project.html" class="active" aria-current="page">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="Jobs-Openings.html">Job Openings</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li>
-            <a href="#">About</a>
-            <ul>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="Cloudswap Infotech Leadership.html">Leadership</a></li>
-                <li><a href="Testimonial.html">Testimonials</a></li>
-                <li><a href="ourStory.html">Our Story</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Services</a>
-            <ul>
-                <li><a href="Web Development.html">Web Development</a></li>
-                <li><a href="App_Development.html">App Development</a></li>
-                <li><a href="UI UX Design.html">UI/UX Design</a></li>
-                <li><a href="Software Testing.html">Software Testing</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Projects</a>
-            <ul>
-                <li><a href="Web Design.html">Web Design</a></li>
-                <li><a href="Cyber Security.html">Cyber Security</a></li>
-                <li><a href="Mobile Information.html">Mobile Info</a></li>
-                <li><a href="Digital Marketing.html">Digital Marketing</a></li>
-            </ul>
-        </li>
-        <li><a href="Careers.html">Careers</a></li>
-        <li><a href="blog.html">Blogs</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+  </header>
 
-<!-- Header -->
-<header>
-    <img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo">
-    <h1>Welcome to Cloudswap Infotech Careers</h1>
-    <p>Explore our projects and discover career opportunities that match your passion and skills.</p>
-</header>
+  <!-- Hero: uses your logo & careers intro text unchanged -->
+  <section class="projects-hero">
+    <div class="projects-hero-inner">
+      <div>
+        <h1 class="projects-hero-title">Projects & Career‑Focused Work</h1>
+        <p class="projects-hero-subtitle">
+          Explore our projects and discover career opportunities that match your passion and skills.
+        </p>
+      </div>
+      <div class="projects-hero-logo">
+        <img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo" />
+      </div>
+    </div>
+  </section>
 
-<div class="container">
+  <div class="page-wrapper">
+    <section class="page-hero">
+      <h2 class="page-hero-title">Highlighted Project Areas</h2>
+      <p class="page-hero-subtitle">
+        Key technology domains where Cloudswap Infotech builds real‑world solutions and showcases work.
+      </p>
+    </section>
 
-    <!-- Project Cards -->
+    <!-- Project cards (data unchanged) -->
     <div class="card-wrapper">
-        <div class="card fade-in">
-            <h2>Data Science</h2>
-            <p>Data Science involves analyzing complex datasets to uncover patterns and insights...</p>
-        </div>
-        <div class="card fade-in">
-            <h2>Artificial Intelligence</h2>
-            <p>AI focuses on creating systems capable of tasks that require human intelligence...</p>
-        </div>
-        <div class="card fade-in">
-            <h2>Machine Learning</h2>
-            <p>ML enables computers to learn and improve from data without explicit programming...</p>
-        </div>
+      <article class="card-project fade-in">
+        <h2>Data Science</h2>
+        <p>Data Science involves analyzing complex datasets to uncover patterns and insights...</p>
+      </article>
+
+      <article class="card-project fade-in">
+        <h2>Artificial Intelligence</h2>
+        <p>AI focuses on creating systems capable of tasks that require human intelligence...</p>
+      </article>
+
+      <article class="card-project fade-in">
+        <h2>Machine Learning</h2>
+        <p>ML enables computers to learn and improve from data without explicit programming...</p>
+      </article>
     </div>
 
-    <!-- Info Sections -->
-    <div class="info-section fade-in">
-        <div class="info-text">
-            <h2>Caliber Electricals</h2>
-            <p>We had the privilege of designing and developing the website for Caliber Electricals...</p>
-        </div>
-        <div class="info-image">
-            <img src="assets/images/ContentCreation.png" alt="Caliber Project">
-        </div>
+    <!-- Info sections (Caliber, PMCC, Custom) with original text and image paths -->
+    <section class="info-section fade-in">
+      <div class="info-text">
+        <h2>Caliber Electricals</h2>
+        <p>We had the privilege of designing and developing the website for Caliber Electricals...</p>
+      </div>
+      <div class="info-image">
+        <img src="assets/images/ContentCreation.png" alt="Caliber Project" />
+      </div>
+    </section>
+
+    <section class="info-section fade-in">
+      <div class="info-image">
+        <img src="assets/images/ab.jpg" alt="PMCC Project" />
+      </div>
+      <div class="info-text">
+        <h2>PMCC Engineers and Blessings</h2>
+        <p>We are proud to have developed the website for PMCC Engineers and Blessings...</p>
+      </div>
+    </section>
+
+    <section class="info-section fade-in">
+      <div class="info-text">
+        <h2>Custom Project</h2>
+        <p>Custom projects leveraging AI and ML are revolutionizing industries...</p>
+      </div>
+      <div class="info-image">
+        <img src="assets/images/career.png" alt="Custom AI Project" />
+      </div>
+    </section>
+  </div>
+
+  <!-- Shared footer -->
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>© 2025 Cloudswap Infotech. All Rights Reserved.</div>
+      <div class="footer-social" aria-label="Social media links">
+        <a
+          href="https://www.facebook.com/profile.php?id=61577852488083"
+          target="_blank"
+          rel="noopener"
+          aria-label="Facebook"
+        >
+          <!-- Facebook SVG -->
+        </a>
+        <a
+          href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09"
+          target="_blank"
+          rel="noopener"
+          aria-label="X"
+        >
+          <!-- X/Twitter SVG -->
+        </a>
+        <a
+          href="https://www.instagram.com/cloudswapinfotech?"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <!-- Instagram SVG -->
+        </a>
+        <a
+          href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+        >
+          <!-- LinkedIn SVG -->
+        </a>
+      </div>
     </div>
+  </footer>
 
-    <div class="info-section fade-in">
-        <div class="info-image">
-            <img src="assets/images/ab.jpg" alt="PMCC Project">
-        </div>
-        <div class="info-text">
-            <h2>PMCC Engineers and Blessings</h2>
-            <p>We are proud to have developed the website for PMCC Engineers and Blessings...</p>
-        </div>
-    </div>
+  <!-- Floating quick links -->
+  <button class="quick-links-btn" type="button" title="Quick Links" aria-label="Quick Links">
+    ☰
+  </button>
+  <div class="quick-links-menu" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="App_Development.html">App Development</a>
+    <a href="Web-Design.html">Web Design</a>
+    <a href="Cyber-Security.html">Cyber Security</a>
+    <a href="Content_Creation.html">Content Creation</a>
+    <a href="Keyword-Research.html">Keyword Research</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="careers.html">Careers</a>
+    <a href="Jobs-Openings.html">Job Openings</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
-    <div class="info-section fade-in">
-        <div class="info-text">
-            <h2>Custom Project</h2>
-            <p>Custom projects leveraging AI and ML are revolutionizing industries...</p>
-        </div>
-        <div class="info-image">
-            <img src="assets/images/career.png" alt="Custom AI Project">
-        </div>
-    </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      /* Quick links toggle */
+      const quickBtn = document.querySelector(".quick-links-btn");
+      const quickMenu = document.querySelector(".quick-links-menu");
 
-</div>
-
-<footer>
-    &copy; 2025 Cloudswap Infotech | Designed with ❤️ by Cloudswap Infotech
-</footer>
-
-<script>
-    // Mobile menu toggle
-    function toggleMenu(toggle){
-        const ul = document.querySelector('nav ul');
-        ul.classList.toggle('show');
-        toggle.classList.toggle('active');
-    }
-
-    // Scroll animations
-    const elements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                entry.target.classList.add('in-view');
-            }
+      if (quickBtn && quickMenu) {
+        quickBtn.addEventListener("click", () => {
+          const open = quickMenu.classList.toggle("active");
+          quickMenu.setAttribute("aria-hidden", (!open).toString());
         });
-    }, { threshold: 0.2 });
-    elements.forEach(el => observer.observe(el));
-</script>
 
+        document.addEventListener("click", (e) => {
+          if (!quickBtn.contains(e.target) && !quickMenu.contains(e.target)) {
+            quickMenu.classList.remove("active");
+            quickMenu.setAttribute("aria-hidden", "true");
+          }
+        });
+      }
+
+      /* Scroll animations (cards + info sections) */
+      const fadeElements = document.querySelectorAll(".fade-in, .card-project");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      fadeElements.forEach((el) => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
