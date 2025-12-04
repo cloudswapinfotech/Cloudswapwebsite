@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cloudswap Infotech - Home</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Inline CSS (was assets/css/styles.css) -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    :root {
+      --bg-page: #f5f7ff;
+      --bg-header: #020617;
+      --bg-footer: #020617;
+      --bg-card: #ffffff;
+      --bg-accent: #2563eb;
+      --bg-accent-dark: #1d4ed8;
+      --text-main: #020617;
+      --text-muted: #4b5563;
+      --text-light: #f9fafb;
+      --border-soft: #d1d5db;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.12);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg-page);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header {
+      background: var(--bg-header);
+      color: var(--text-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.6);
+    }
+
+    .site-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-logo img {
+      height: 48px;
+      display: block;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .main-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--bg-accent);
+      transition: width 0.25s ease;
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    .main-nav a.active {
+      color: var(--bg-accent);
+    }
+
+    @media (max-width: 768px) {
+      .site-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .main-nav ul {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+    }
+
+    .hero-carousel {
+      background: linear-gradient(120deg, #0b1120, #1e293b);
+      padding: 1.5rem 0 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .carousel {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+      background: #020617;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+      color: var(--text-light);
+    }
+
+    .carousel-slide img {
+      display: block;
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+    }
+
+    .carousel-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .carousel-text {
+      font-size: 0.95rem;
+      color: #e5e7eb;
+    }
+
+    .carousel-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(15, 23, 42, 0.6);
+      color: #e5e7eb;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-control:hover {
+      background: rgba(37, 99, 235, 0.9);
+    }
+
+    .carousel-control.prev {
+      left: 12px;
+    }
+
+    .carousel-control.next {
+      right: 12px;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(148, 163, 184, 0.8);
+      cursor: pointer;
+    }
+
+    .carousel-dot.active {
+      background: #38bdf8;
+    }
+
+    .page-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+      width: 100%;
+    }
+
+    .page-hero {
+      padding: 2rem 1rem 1rem;
+    }
+
+    .page-hero-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--bg-header);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .page-content-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      box-shadow: var(--shadow-soft);
+      padding: 1.75rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .page-content {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--text-main);
+    }
+
+    .page-content p {
+      margin-bottom: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      padding: 0.7rem 1.4rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--bg-accent);
+      color: var(--text-light);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--bg-accent-dark);
+    }
+
+    .site-footer {
+      margin-top: auto;
+      background: var(--bg-footer);
+      color: var(--text-light);
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    .site-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer-social {
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      color: var(--text-light);
+      font-size: 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-social a:hover {
+      color: #38bdf8;
+    }
+
+    .quick-links-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-accent);
+      color: var(--text-light);
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 12px 25px rgba(15, 23, 42, 0.4);
+      border: none;
+      z-index: 120;
+      font-size: 1.4rem;
+    }
+
+    .quick-links-btn:hover {
+      background: var(--bg-accent-dark);
+    }
+
+    .quick-links-menu {
+      position: fixed;
+      bottom: 94px;
+      right: 24px;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+      min-width: 180px;
+      display: none;
+      z-index: 110;
+    }
+
+    .quick-links-menu.active {
+      display: block;
+    }
+
+    .quick-links-menu a {
+      display: block;
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.35rem 0;
+    }
+
+    .quick-links-menu a:hover {
+      color: #38bdf8;
+    }
+
+    @media (max-width: 640px) {
+      .page-content-card {
+        padding: 1.25rem 1rem;
+      }
+
+      .carousel-slide img {
+        height: 210px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo">
+        <img src="assets/images/logo_CSIT.png" alt="Cloudswap Infotech Logo" />
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="Project.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-carousel">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img
+            src="assets/images/moinfo.jpg"
+            alt="Custom mobile and web solutions"
+          />
+          <div class="carousel-overlay">
+            <div class="carousel-title">Custom Mobile & Web Solutions</div>
+            <div class="carousel-text">
+              Transforming your ideas into high‑quality Android, iOS, and web applications.
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img
+            src="assets/images/Digital Consulting.png"
+            alt="Digital marketing and growth"
+          />
+          <div class="carousel-overlay">
+            <div class="carousel-title">Digital Marketing & Growth</div>
+            <div class="carousel-text">
+              Data‑driven digital campaigns that grow your brand and conversions.
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img
+            src="assets/images/career.png"
+            alt="Training, placement and IT staffing"
+          />
+          <div class="carousel-overlay">
+            <div class="carousel-title">Training, Placement & IT Staffing</div>
+            <div class="carousel-text">
+              Upskilling talent and augmenting your teams to deliver faster and better.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="carousel-control prev" aria-label="Previous slide">❮</button>
+      <button type="button" class="carousel-control next" aria-label="Next slide">❯</button>
+
+      <div class="carousel-dots" aria-hidden="true">
+        <button type="button" class="carousel-dot active"></button>
+        <button type="button" class="carousel-dot"></button>
+        <button type="button" class="carousel-dot"></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-wrapper">
+    <section class="page-hero">
+      <h1 class="page-hero-title">Welcome to Cloudswap Infotech</h1>
+      <p class="page-hero-subtitle">
+        Empowering your business with custom digital solutions across mobile apps, web development, digital marketing, and more.
+      </p>
+    </section>
+
+    <section class="page-content-card">
+      <div class="page-content">
+        <p>
+          Transforming ideas into cutting-edge mobile and web applications, digital marketing strategies, and complete IT solutions tailored to your business.
+        </p>
+        <p>
+          <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>© 2025 Cloudswap Infotech. All Rights Reserved.</div>
+      <div class="footer-social" aria-label="Social media links">
+        <a
+          href="https://www.facebook.com/profile.php?id=61577852488083"
+          target="_blank"
+          rel="noopener"
+          aria-label="Facebook"
+        >
+          <!-- Facebook SVG -->
+        </a>
+        <a
+          href="https://x.com/Cloudswap_1997?t=nO-DksW4LX948kM-_tPeNg&s=09"
+          target="_blank"
+          rel="noopener"
+          aria-label="X"
+        >
+          <!-- X/Twitter SVG -->
+        </a>
+        <a
+          href="https://www.instagram.com/cloudswapinfotech?"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <!-- Instagram SVG -->
+        </a>
+        <a
+          href="https://www.linkedin.com/in/cloudswap-infotech-970801374?trk=contact-info"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+        >
+          <!-- LinkedIn SVG -->
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="quick-links-btn" type="button" title="Quick Links" aria-label="Quick Links">
+    ☰
+  </button>
+  <div class="quick-links-menu" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="App_Development.html">App Development</a>
+    <a href="Web-Design.html">Web Design</a>
+    <a href="Cyber-Security.html">Cyber Security</a>
+    <a href="Content_Creation.html">Content Creation</a>
+    <a href="Keyword-Research.html">Keyword Research</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="careers.html">Careers</a>
+    <a href="Jobs-Openings.html">Job Openings</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Inline JS (was assets/js/main.js) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const carousels = document.querySelectorAll('[data-carousel]');
+
+      carousels.forEach((carousel) => {
+        const track = carousel.querySelector('.carousel-track');
+        const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+        const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+        const prevBtn = carousel.querySelector('.carousel-control.prev');
+        const nextBtn = carousel.querySelector('.carousel-control.next');
+        let currentIndex = 0;
+        let autoplayId = null;
+        const slideCount = slides.length;
+
+        function updateSlide(newIndex) {
+          currentIndex = (newIndex + slideCount) % slideCount;
+          const offset = -currentIndex * 100;
+          if (track) {
+            track.style.transform = `translateX(${offset}%)`;
+          }
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+          });
+        }
+
+        function next() {
+          updateSlide(currentIndex + 1);
+        }
+
+        function prev() {
+          updateSlide(currentIndex - 1);
+        }
+
+        function startAutoplay() {
+          if (autoplayId) return;
+          autoplayId = setInterval(next, 5000);
+        }
+
+        function stopAutoplay() {
+          if (!autoplayId) return;
+          clearInterval(autoplayId);
+          autoplayId = null;
+        }
+
+        if (nextBtn) nextBtn.addEventListener('click', () => {
+          stopAutoplay();
+          next();
+          startAutoplay();
+        });
+
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+          stopAutoplay();
+          prev();
+          startAutoplay();
+        });
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            stopAutoplay();
+            updateSlide(index);
+            startAutoplay();
+          });
+        });
+
+        updateSlide(0);
+        startAutoplay();
+
+        carousel.addEventListener('mouseenter', stopAutoplay);
+        carousel.addEventListener('mouseleave', startAutoplay);
+      });
+
+      const quickBtn = document.querySelector('.quick-links-btn');
+      const quickMenu = document.querySelector('.quick-links-menu');
+
+      if (quickBtn && quickMenu) {
+        quickBtn.addEventListener('click', () => {
+          const open = quickMenu.classList.toggle('active');
+          quickMenu.setAttribute('aria-hidden', (!open).toString());
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!quickBtn.contains(e.target) && !quickMenu.contains(e.target)) {
+            quickMenu.classList.remove('active');
+            quickMenu.setAttribute('aria-hidden', 'true');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
